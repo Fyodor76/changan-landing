@@ -114,15 +114,21 @@
   const groups = [
     {
       root: document.querySelector(".special-offers"),
+      target: document.querySelector(".special-offers__grid"),
       items: document.querySelectorAll(".special-offers__card"),
     },
     {
       root: document.querySelector(".why-changan"),
+      target: document.querySelector(".why-changan__grid"),
       items: document.querySelectorAll(".why-changan__card"),
     },
-  ].filter(({ root, items }) => root && items.length);
+  ].filter(({ root, target, items }) => root && target && items.length);
 
   if (!groups.length || reduceMotion.matches) return;
+
+  const groupByTarget = new Map(
+    groups.map((group) => [group.target, group]),
+  );
 
   groups.forEach(({ root, items }) => {
     root.classList.add("section-reveal--ready");
@@ -139,15 +145,22 @@
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("section-reveal--visible");
+        if (!entry.isIntersecting || entry.intersectionRatio < 0.995) return;
+
+        const group = groupByTarget.get(entry.target);
+        if (!group) return;
+
+        group.root.classList.add("section-reveal--visible");
         observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.14, rootMargin: "0px 0px -6%" },
+    {
+      threshold: 0.995,
+      rootMargin: `-${document.querySelector(".clh__header")?.offsetHeight || 0}px 0px 0px`,
+    },
   );
 
-  groups.forEach(({ root }) => observer.observe(root));
+  groups.forEach(({ target }) => observer.observe(target));
 })();
 
 (() => {
@@ -159,20 +172,39 @@
 
   const modelsToggle = header.querySelector(".clh__models-toggle");
   const modelsMenu = header.querySelector(".models-menu");
+  let lockedScrollY = 0;
+  let pageLocked = false;
 
   const closeModels = () => {
     if (modelsToggle) modelsToggle.setAttribute("aria-expanded", "false");
     if (modelsMenu) modelsMenu.hidden = true;
   };
 
+  const setPageLock = (shouldLock) => {
+    if (shouldLock === pageLocked) return;
+
+    if (shouldLock) {
+      lockedScrollY = window.scrollY;
+      document.documentElement.style.setProperty(
+        "--clh-menu-scroll-y",
+        `${lockedScrollY}px`,
+      );
+      document.documentElement.classList.add("clh-mobile-menu-open");
+      pageLocked = true;
+      return;
+    }
+
+    document.documentElement.classList.remove("clh-mobile-menu-open");
+    document.documentElement.style.removeProperty("--clh-menu-scroll-y");
+    pageLocked = false;
+    window.scrollTo(0, lockedScrollY);
+  };
+
   const setOpen = (isOpen) => {
     header.classList.toggle("clh__header--menu-open", isOpen);
     toggle.setAttribute("aria-expanded", String(isOpen));
     toggle.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
-    document.documentElement.classList.toggle(
-      "clh-mobile-menu-open",
-      isOpen && window.innerWidth <= 768,
-    );
+    setPageLock(isOpen && window.innerWidth <= 768);
 
     if (!isOpen) closeModels();
   };

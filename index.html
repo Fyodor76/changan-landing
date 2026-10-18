@@ -106,12 +106,6 @@
               <a class="models-menu__category" href="#model-lineup">
                 <span>Седаны</span><span aria-hidden="true">›</span>
               </a>
-              <a
-                class="models-menu__category models-menu__category--all"
-                href="#model-lineup"
-              >
-                <span>Весь модельный ряд</span><span aria-hidden="true">→</span>
-              </a>
             </nav>
 
             <div class="models-menu__showcase">
@@ -129,9 +123,6 @@
                   </a>
                   <h3>CS75 PRO</h3>
                   <p>от 2 500 000 ₽</p>
-                  <a class="models-menu__select" href="#model-lineup"
-                    >Выбрать модель <span aria-hidden="true">→</span></a
-                  >
                 </article>
 
                 <article class="models-menu__card">
@@ -147,9 +138,6 @@
                   </a>
                   <h3>UNI-S 4x4</h3>
                   <p>от 2 640 000 ₽</p>
-                  <a class="models-menu__select" href="#model-lineup"
-                    >Выбрать модель <span aria-hidden="true">→</span></a
-                  >
                 </article>
 
                 <article class="models-menu__card">
@@ -165,9 +153,6 @@
                   </a>
                   <h3>CS35 MAX</h3>
                   <p>от 2 215 000 ₽</p>
-                  <a class="models-menu__select" href="#model-lineup"
-                    >Выбрать модель <span aria-hidden="true">→</span></a
-                  >
                 </article>
 
                 <article class="models-menu__card">
@@ -183,9 +168,6 @@
                   </a>
                   <h3>CS75 PLUS</h3>
                   <p>Узнать цену</p>
-                  <a class="models-menu__select" href="#offers"
-                    >Выбрать модель <span aria-hidden="true">→</span></a
-                  >
                 </article>
               </div>
 
@@ -312,8 +294,6 @@
 
                 <p class="clh__lead">По цене от 2 490 000 ₽</p>
 
-                <p class="clh__gift">Зимняя резина в подарок</p>
-
                 <a class="clh__primary-button" href="#offers">Подробнее</a>
               </div>
             </div>
@@ -336,6 +316,15 @@
                 alt="Модельный ряд Changan — заслуженный дилер года 2025"
               />
             </picture>
+
+            <div class="clh__container clh__slide-container clh__slide-container--award">
+              <a class="clh__primary-button clh__award-cta" href="#offers">
+                Подробнее
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M14 7l5 5-5 5" />
+                </svg>
+              </a>
+            </div>
           </article>
         </div>
 
@@ -622,17 +611,6 @@
       <section class="special-offers">
         <div class="special-offers__head">
           <h2 class="special-offers__title">Спецпредложения</h2>
-
-          <!-- <div class="special-offers__cta"> -->
-            <button
-              class="special-offers__proposal-button"
-              type="button"
-              data-offer-modal-open
-            >
-              Получить персональное предложение
-              <span aria-hidden="true">→</span>
-            </button>
-          <!-- </div> -->
         </div>
 
         <div class="special-offers__grid">
@@ -665,9 +643,14 @@
                 автомобиля
               </p>
 
-              <span class="special-offers__arrow special-offers__arrow--dark">
-                →
-              </span>
+              <button
+                class="special-offers__arrow special-offers__arrow--dark"
+                type="button"
+                data-offer-modal-open
+                aria-label="Получить предложение по Trade-in"
+              >
+                <span aria-hidden="true">→</span>
+              </button>
             </div>
           </article>
 
@@ -694,7 +677,14 @@
               </div>
             </div>
 
-            <span class="special-offers__arrow">→</span>
+            <button
+              class="special-offers__arrow"
+              type="button"
+              data-offer-modal-open
+              aria-label="Получить предложение по кредиту или рассрочке"
+            >
+              <span aria-hidden="true">→</span>
+            </button>
           </article>
 
           <!-- Corporate -->
@@ -722,7 +712,14 @@
               </div>
             </div>
 
-            <span class="special-offers__arrow">→</span>
+            <button
+              class="special-offers__arrow"
+              type="button"
+              data-offer-modal-open
+              aria-label="Получить предложение для корпоративных клиентов"
+            >
+              <span aria-hidden="true">→</span>
+            </button>
           </article>
         </div>
 
@@ -736,7 +733,6 @@
             tabindex="-1"
           >
             <aside class="offer-modal__aside">
-             
               <div class="offer-modal__aside-copy">
                 <span class="offer-modal__accent"></span>
                 <p>Персональный подход</p>

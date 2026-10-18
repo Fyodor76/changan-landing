@@ -41,9 +41,14 @@
                 автомобиля
               </p>
 
-              <span class="special-offers__arrow special-offers__arrow--dark">
-                →
-              </span>
+              <button
+                class="special-offers__arrow special-offers__arrow--dark"
+                type="button"
+                data-offer-modal-open
+                aria-label="Получить предложение по Trade-in"
+              >
+                <span aria-hidden="true">→</span>
+              </button>
             </div>
           </article>
 
@@ -71,7 +76,14 @@
               </div>
             </div>
 
-            <span class="special-offers__arrow">→</span>
+            <button
+              class="special-offers__arrow"
+              type="button"
+              data-offer-modal-open
+              aria-label="Получить предложение по кредиту или рассрочке"
+            >
+              <span aria-hidden="true">→</span>
+            </button>
           </article>
 
           <!-- Corporate -->
@@ -100,19 +112,15 @@
               </div>
             </div>
 
-            <span class="special-offers__arrow">→</span>
+            <button
+              class="special-offers__arrow"
+              type="button"
+              data-offer-modal-open
+              aria-label="Получить предложение для корпоративных клиентов"
+            >
+              <span aria-hidden="true">→</span>
+            </button>
           </article>
-        </div>
-
-        <div class="special-offers__cta">
-          <button
-            class="special-offers__proposal-button"
-            type="button"
-            data-offer-modal-open
-          >
-            Получить персональное предложение
-            <span aria-hidden="true">→</span>
-          </button>
         </div>
 
         <div class="offer-modal" data-offer-modal hidden>
