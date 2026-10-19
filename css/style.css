@@ -1,15 +1,23 @@
-/*
-  CHANGAN — очищенный CSS.
-  Основа: последний предоставленный файл.
-  Удалены полностью перекрытые свойства у идентичных селекторов
-  в одинаковых условиях @media; порядок каскада сохранён.
-  Адаптивные стили, состояния и важные приоритеты сохранены.
-*/
-
 @font-face {
   font-family: "ChanganUniType";
   src: url("../fonts/ChanganUniType-Light.woff2") format("woff2");
   font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ChanganUniType";
+  src: url("../fonts/ChanganUniType-Regular.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ChanganUniType";
+  src: url("../fonts/ChanganUniType-Bold.woff2") format("woff2");
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -431,10 +439,6 @@
   width: min(1185px, calc(100% - 48px));
 }
 
-.special-offers__head {
-  margin-bottom: 30px;
-}
-
 .special-offers__card,
 .special-offers__card--trade,
 .special-offers__card--credit,
@@ -442,7 +446,6 @@
   width: auto;
   margin: 0;
   overflow: hidden;
-  /* border: 1px solid #dfe4e8; */
   border-radius: 10px;
   clip-path: none;
   background: #eef2f5;
@@ -937,22 +940,6 @@
   }
 }
 
-@font-face {
-  font-family: "ChanganUniType";
-  src: url("../fonts/ChanganUniType-Regular.woff2") format("woff2");
-  font-weight: 400 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "ChanganUniType";
-  src: url("../fonts/ChanganUniType-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -1118,7 +1105,6 @@ a {
   position: relative;
   min-height: calc(100vh - 116px);
   overflow: hidden;
-  outline: none;
 }
 
 .clh__track {
@@ -1157,7 +1143,7 @@ a {
     90deg,
     rgba(0, 0, 0, 0.66) 0%,
     rgba(0, 0, 0, 0.34) 37%,
-    transparent 70%
+    transparent 100%
   );
   pointer-events: none;
 }
@@ -1172,14 +1158,15 @@ a {
 
 .clh__content {
   width: min(520px, 52%);
-  padding-block: 0;
+  /* padding-block: 0; */
 }
 
 .clh__content--offer {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   gap: 12px;
+
 }
 
 .clh__title {
@@ -1248,8 +1235,9 @@ a {
 }
 
 .clh__primary-button {
-  width: max-content;
-  min-height: 48px;
+  /* width: max-content; */
+  /* min-height: 48px; */
+  padding: 14px 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1598,9 +1586,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 58px;
-  min-height: 48px;
-  margin: 0;
+  gap: 54px;
+  /* min-height: 48px; */
 }
 
 .catalog__tab {
@@ -2400,7 +2387,7 @@ a {
 
 .special-offers {
   width: 100%;
-  padding: 72px 0;
+  padding: 64px 0;
   color: #24272d;
   background: #fff;
   font-family: "ChanganUniType", Arial, sans-serif;
@@ -2409,19 +2396,14 @@ a {
 .special-offers__head {
   width: min(1185px, calc(100% - 48px));
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 32px;
-  margin: 0 auto 30px;
+  /* margin: 0 auto 30px; */
 }
 
 .special-offers__title {
-  margin: 0;
   color: #24272d;
   font-size: 48px;
   font-weight: 400;
   line-height: 1.2;
-  letter-spacing: normal;
 }
 
 .special-offers__all {
@@ -2456,7 +2438,7 @@ a {
   grid-template-rows: repeat(2, 176px);
   column-gap: 0;
   row-gap: 8px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   overflow: hidden;
 }
 
@@ -3092,8 +3074,7 @@ a {
   align-items: flex-end;
   justify-content: space-between;
   gap: 40px;
-  margin-top: 28px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .personal-cta__button--primary {
@@ -4967,7 +4948,7 @@ a {
   .why-changan__layout {
     width: min(1185px, calc(100% - 48px));
     max-width: 1185px;
-    margin-inline: auto;
+    /* margin-inline: auto; */
   }
 
   .special-offers__title,
@@ -6898,6 +6879,12 @@ html.offer-modal-open {
   .clh__award-cta {
     width: 100%;
   }
+
+  .clh__content > .clh__primary-button {
+    right: 0;
+    left: 0;
+    transform: none;
+  }
 }
 
 /* One interaction pattern for every primary and outlined action. */
@@ -6970,3 +6957,637 @@ html.offer-modal-open {
   transform: translateX(3px);
 }
 
+/* Phones and tablets have no hover feedback; desktop behaviour starts at 1025px. */
+@media (max-width: 1024px) {
+  .offers__button,
+  .clh__primary-button,
+  .catalog__button,
+  .personal-cta__button,
+  .contacts__card a,
+  .offer-modal__submit,
+  .reviews__arrow,
+  .special-offers__arrow,
+  .special-offers__arrow > span,
+  .special-offers__proposal-button,
+  .special-offers__proposal-button > span,
+  .special-offers__all span,
+  .offers__button span,
+  .site-footer__bottom a,
+  .clh__models-toggle,
+  .models-menu__image img {
+    transition: none !important;
+  }
+
+  .benefit-card:hover img,
+  .models-menu__image:hover img,
+  .why-us__item:hover,
+  .why-changan__card:hover,
+  .review-card:hover,
+  .offer-option:hover,
+  .special-offers__card:hover,
+  .offers__button:hover,
+  .clh__primary-button:hover,
+  .catalog__button:hover,
+  .personal-cta__button:hover,
+  .contacts__card a:hover,
+  .offer-modal__submit:hover,
+  .reviews__arrow:hover,
+  .special-offers__arrow:hover,
+  .special-offers__arrow:hover > span,
+  .special-offers__proposal-button:hover,
+  .special-offers__proposal-button:hover > span,
+  .special-offers__all:hover span,
+  .offers__button:hover span,
+  .site-footer__bottom a:hover {
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .offers__button:hover,
+  .clh__primary-button:hover,
+  .catalog__button--primary:hover,
+  .personal-cta__button--primary:hover,
+  .contacts__card .contacts__route:hover,
+  .offer-modal__submit:hover {
+    border-color: rgb(248, 148, 53) !important;
+    color: #fff !important;
+    background: rgb(248, 148, 53) !important;
+  }
+
+  .catalog__actions .catalog__button:not(.catalog__button--primary):hover {
+    border-color: rgba(36, 39, 45, 0.58) !important;
+    color: #24272d !important;
+    background: transparent !important;
+  }
+
+  .catalog__actions
+    .catalog__button:not(.catalog__button--primary):hover::after {
+    color: inherit !important;
+    transform: none !important;
+  }
+
+  .personal-cta__button:not(.personal-cta__button--primary):hover,
+  .contacts__card .contacts__call:hover {
+    border-color: rgba(255, 255, 255, 0.62) !important;
+    color: #fff !important;
+    background: transparent !important;
+  }
+
+  .reviews__arrow:not(:disabled):hover {
+    border-color: rgba(16, 39, 70, 0.42) !important;
+    color: #24272d !important;
+    background: transparent !important;
+  }
+
+  .special-offers__card--credit:hover .special-offers__arrow,
+  .special-offers__card--corporate:hover .special-offers__arrow,
+  .special-offers__card--credit .special-offers__arrow:hover,
+  .special-offers__card--corporate .special-offers__arrow:hover {
+    border-color: #d7d7d7 !important;
+    color: #173454 !important;
+    background: #fff !important;
+    transform: none !important;
+  }
+
+  .special-offers__card--trade:hover .special-offers__arrow--dark,
+  .special-offers__card--trade .special-offers__arrow--dark:hover {
+    border-color: rgba(255, 255, 255, 0.45) !important;
+    color: #fff !important;
+    background: transparent !important;
+    transform: none !important;
+  }
+
+  .special-offers__proposal-button:hover {
+    border-color: rgba(36, 39, 45, 0.58) !important;
+    color: #24272d !important;
+    background: transparent !important;
+  }
+
+  .special-offers__proposal-button:hover > span,
+  .site-footer__bottom a:hover {
+    color: inherit !important;
+  }
+
+  .offer-option:hover {
+    background: rgba(255, 255, 255, 0.91) !important;
+  }
+
+  .models-menu__category:hover:not(.models-menu__category--active) {
+    color: rgba(255, 255, 255, 0.84) !important;
+    background: transparent !important;
+  }
+
+  .clh__models-toggle:hover:not([aria-expanded="true"]) {
+    color: inherit !important;
+  }
+
+  .models-menu__category--all:hover {
+    color: rgba(255, 255, 255, 0.84) !important;
+    background: transparent !important;
+  }
+
+  .models-menu__all-row:hover {
+    color: rgba(255, 255, 255, 0.82) !important;
+    background: transparent !important;
+  }
+}
+
+/* Primary orange actions match the restrained hero CTA without a glow. */
+.offers__button,
+.clh__primary-button,
+.catalog__button--primary,
+.personal-cta__button--primary,
+.contacts__card .contacts__route,
+.offer-modal__submit,
+.offers__button:hover,
+.offers__button:focus-visible,
+.clh__primary-button:hover,
+.clh__primary-button:focus-visible,
+.catalog__button--primary:hover,
+.catalog__button--primary:focus-visible,
+.personal-cta__button--primary:hover,
+.personal-cta__button--primary:focus-visible,
+.contacts__card .contacts__route:hover,
+.contacts__card .contacts__route:focus-visible,
+.offer-modal__submit:hover,
+.offer-modal__submit:focus-visible {
+  box-shadow: none !important;
+}
+
+.catalog__button--primary,
+.catalog__button--primary:hover,
+.catalog__button--primary:focus-visible {
+  border-color: rgb(248, 148, 53) !important;
+  background: rgb(248, 148, 53) !important;
+}
+
+/* Tablet and phone sliders: top-aligned hero copy and touch-first controls. */
+@media (min-width: 1025px) {
+  .clh__slide-container:not(.clh__slide-container--award) {
+    align-items: flex-start;
+    padding-top: clamp(82px, 10svh, 118px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .clh__slide-container {
+    align-items: flex-start;
+    padding-top: clamp(56px, 8svh, 84px);
+  }
+
+  .clh__arrow,
+  .catalog__gallery-arrow {
+    display: none !important;
+  }
+
+  .clh__hero,
+  .catalog__photo-wrap {
+    touch-action: pan-y;
+  }
+
+  .clh__picture img,
+  .catalog__photo {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+}
+
+/* Under 900px categories and models form two equal, independently scrollable rows. */
+@media (max-width: 900px) {
+  .catalog .block_block {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .catalog__categories,
+  .catalog__tabs {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-right: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .catalog__categories::-webkit-scrollbar,
+  .catalog__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .catalog__categories button,
+  .catalog__tab {
+    flex: 0 0 calc((100% - 16px) / 3);
+    min-width: 0;
+    padding-inline: 4px;
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+    scroll-snap-align: start;
+  }
+
+  .catalog__gallery {
+    width: 100%;
+    display: block;
+    padding-right: 0;
+  }
+
+  .catalog__photo-wrap {
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .catalog__photo {
+    object-position: 50% 50%;
+  }
+}
+
+/* Special offers already sit inside .clh__container: avoid a second gutter. */
+.special-offers__head,
+.special-offers__grid {
+  width: 100%;
+  max-width: none;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* Vertically centre white-card content and scale type before it can overflow. */
+.special-offers__card--credit,
+.special-offers__card--corporate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.special-offers__card--credit .special-offers__horizontal,
+.special-offers__card--corporate .special-offers__horizontal {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 1.7vw, 24px);
+  padding: 0;
+}
+
+.special-offers__card--credit .special-offers__horizontal > div,
+.special-offers__card--corporate .special-offers__horizontal > div {
+  min-width: 0;
+  display: flex;
+  flex: 0 1 520px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.special-offers__card--credit .special-offers__card-title,
+.special-offers__card--corporate .special-offers__card-title {
+  max-width: 100%;
+  margin-bottom: clamp(5px, 0.6vw, 8px);
+  font-size: clamp(18px, 1.8vw, 27px);
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.special-offers__card--credit .special-offers__description,
+.special-offers__card--corporate .special-offers__description {
+  max-width: 100%;
+  font-size: clamp(13px, 1.2vw, 17px);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+@media (max-width: 768px) {
+  .special-offers__card--credit .special-offers__horizontal,
+  .special-offers__card--corporate .special-offers__horizontal {
+    height: auto;
+    justify-content: flex-start;
+  }
+}
+
+/* Shared vertical rhythm for every main page section. */
+.clh {
+  --clh-section-space: 72px;
+}
+
+.catalog,
+.benefits,
+.offers,
+.special-offers,
+.why-us,
+.why-changan,
+.reviews {
+  padding-top: var(--clh-section-space);
+  padding-bottom: var(--clh-section-space);
+}
+
+.personal-cta__inner {
+  padding-top: var(--clh-section-space);
+  padding-bottom: var(--clh-section-space);
+}
+
+.contacts {
+  padding-top: var(--clh-section-space);
+}
+
+@media (max-width: 1024px) {
+  .clh {
+    --clh-section-space: 56px;
+  }
+}
+
+@media (max-width: 768px) {
+  .clh {
+    --clh-section-space: 44px;
+  }
+}
+
+/* Trade-in card follows the same centred, fluid content rules as white cards. */
+.special-offers__card--trade {
+  display: flex;
+  container-type: inline-size;
+}
+
+.special-offers__card--trade .special-offers__content {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.special-offers__card--trade .special-offers__card-title {
+  max-width: 100%;
+  font-size: clamp(18px, 7cqi, 27px);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.special-offers__card--trade .special-offers__description {
+  max-width: 100%;
+  font-size: clamp(13px, 4.2cqi, 16px);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+@supports not (font-size: 1cqi) {
+  .special-offers__card--trade .special-offers__card-title {
+    font-size: clamp(18px, 2.1vw, 27px);
+  }
+
+  .special-offers__card--trade .special-offers__description {
+    font-size: clamp(13px, 1.25vw, 16px);
+  }
+}
+
+/* Keep the two advantage sections visually consistent. */
+.why-us,
+.why-changan {
+  --clh-feature-icon-box: 58px;
+  --clh-feature-icon-glyph: 46px;
+  --clh-feature-heading-gap: 48px;
+}
+
+.why-us__icon,
+.why-changan__icon {
+  width: var(--clh-feature-icon-box);
+  height: var(--clh-feature-icon-box);
+  min-width: var(--clh-feature-icon-box);
+  padding: 0;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  flex: 0 0 var(--clh-feature-icon-box);
+}
+
+.why-us__icon {
+  box-shadow: 0 0 0 12px #fff;
+}
+
+.why-us__icon svg,
+.why-changan__icon svg,
+.why-changan__card:first-child .why-changan__icon svg {
+  width: var(--clh-feature-icon-glyph);
+  height: var(--clh-feature-icon-glyph);
+}
+
+.why-changan__card,
+.why-changan__card:hover {
+  grid-template-columns: var(--clh-feature-icon-box) minmax(0, 1fr);
+}
+
+.why-us__title {
+  margin-bottom: var(--clh-feature-heading-gap);
+}
+
+.why-changan__intro {
+  margin-bottom: var(--clh-feature-heading-gap);
+}
+
+.why-changan__grid {
+  margin-top: 0;
+}
+
+/* Six fixed-width items overflow the container around tablet landscape sizes. */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .why-us__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: stretch;
+    column-gap: 24px;
+    row-gap: 44px;
+  }
+
+  .why-us__grid::before {
+    display: none;
+  }
+
+  .why-us__grid .why-us__item {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 900px) {
+  .why-us,
+  .why-changan {
+    --clh-feature-icon-box: 50px;
+    --clh-feature-icon-glyph: 42px;
+  }
+
+  .why-us__layout,
+  .why-changan__layout {
+    width: calc(100% - 48px);
+    max-width: 1185px;
+    margin-inline: auto;
+  }
+
+  .why-us__grid {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: stretch;
+  }
+
+  .why-us__grid .why-us__item {
+    width: 100%;
+    min-width: 0;
+    justify-self: stretch;
+  }
+
+  .why-changan__icon {
+    align-self: center;
+    justify-self: center;
+  }
+
+  .why-changan__icon svg {
+    display: block;
+    margin: auto;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 600px) {
+  .why-us,
+  .why-changan {
+    --clh-feature-icon-box: 46px;
+    --clh-feature-icon-glyph: 38px;
+  }
+
+  .why-us__layout,
+  .why-changan__layout {
+    width: calc(100% - 32px);
+  }
+
+  .why-us__item h3 {
+    font-size: clamp(13px, 4vw, 16px);
+    line-height: 1.25;
+  }
+
+  .why-changan__card,
+  .why-changan__card:hover,
+  .why-changan__card:nth-child(1),
+  .why-changan__card:nth-child(2),
+  .why-changan__card:nth-child(3),
+  .why-changan__card:nth-child(4),
+  .why-changan__card:nth-child(5),
+  .why-changan__card:nth-child(6) {
+    grid-template-columns: var(--clh-feature-icon-box) minmax(0, 1fr);
+    column-gap: 16px;
+  }
+}
+
+/* One responsive type scale for both advantage sections. */
+.why-us,
+.why-changan {
+  --clh-feature-title-size: clamp(34px, 4.2vw, 48px);
+  --clh-feature-label-size: clamp(14px, 1.8vw, 18px);
+  --clh-feature-label-line: 1.32;
+}
+
+.why-us__title,
+.why-changan__intro h2 {
+  font-family: "ChanganUniType", Arial, sans-serif;
+  font-size: var(--clh-feature-title-size);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.why-us__item h3,
+.why-changan__card h3 {
+  max-width: 100%;
+  font-family: "ChanganUniType", Arial, sans-serif;
+  font-size: var(--clh-feature-label-size);
+  font-weight: 400;
+  line-height: var(--clh-feature-label-line);
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Desktop hero copy stays inside the centred container and is centred vertically. */
+@media (min-width: 1025px) {
+  .clh__slide-container:not(.clh__slide-container--award) {
+    width: min(1185px, calc(100% - 48px));
+    margin-inline: auto;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+/* Legal documents can wrap without overflowing the footer. */
+.site-footer__bottom nav {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  row-gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .site-footer__bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-footer__bottom nav {
+    justify-content: flex-start;
+  }
+}
+
+/* Unified advantage-icon colour on every viewport. */
+.why-us__icon,
+.why-changan__icon {
+  color: #24272d !important;
+}
+
+.why-us__icon svg,
+.why-us__icon svg *,
+.why-changan__icon svg,
+.why-changan__icon svg * {
+  stroke: #24272d !important;
+}
+
+/* Every action uses the same arrow geometry instead of a font glyph. */
+.clh__primary-button > svg,
+.personal-cta__button--primary > span,
+.special-offers__proposal-button > span,
+.special-offers__arrow > span,
+.offer-modal__submit > span {
+  display: none;
+}
+
+.clh__primary-button::after,
+.catalog__button::after,
+.personal-cta__button--primary::after,
+.special-offers__proposal-button::after,
+.special-offers__arrow::after,
+.offer-modal__submit::after {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: block;
+  background-color: currentColor;
+  content: "";
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h14M14 7l5 5-5 5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h14M14 7l5 5-5 5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.catalog__button::after,
+.special-offers__proposal-button::after,
+.offer-modal__submit::after {
+  margin-left: auto;
+}

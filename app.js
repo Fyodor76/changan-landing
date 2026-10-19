@@ -145,7 +145,7 @@
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting || entry.intersectionRatio < 0.995) return;
+        if (!entry.isIntersecting || entry.intersectionRatio < 0.5) return;
 
         const group = groupByTarget.get(entry.target);
         if (!group) return;
@@ -155,7 +155,7 @@
       });
     },
     {
-      threshold: 0.995,
+      threshold: 0.5,
       rootMargin: `-${document.querySelector(".clh__header")?.offsetHeight || 0}px 0px 0px`,
     },
   );
@@ -299,7 +299,7 @@
     window.clearTimeout(closeTimer);
     lastFocused = trigger;
     if (status) status.hidden = true;
-    if (submit) submit.textContent = "Получить предложение →";
+    if (submit) submit.textContent = "Получить предложение";
     modal.hidden = false;
     document.documentElement.classList.add("offer-modal-open");
 
