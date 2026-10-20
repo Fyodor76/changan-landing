@@ -238,7 +238,10 @@
     const href = link.getAttribute("href");
     const wasLocked = pageLocked;
     setOpen(false);
-    if (wasLocked) scrollToHashTarget(href);
+    // Model cards select themselves via catalog-lineup; only "all models" needs hash scroll.
+    if (wasLocked && !link.hasAttribute("data-lineup-key")) {
+      scrollToHashTarget(href);
+    }
   });
 
   document.addEventListener("click", (event) => {
@@ -859,6 +862,7 @@
   };
 
   const cards = [...document.querySelectorAll("[data-catalog-card]")];
+  const cardControllers = new Map();
 
   cards.forEach((card) => {
     const frame = card.querySelector(".catalog-lineup__photo-frame");
@@ -873,7 +877,8 @@
     const modelName = card.querySelector(".catalog-lineup__info h4");
     const specValues = [...card.querySelectorAll(".catalog-lineup__specs dd")];
     const price = card.querySelector(".catalog-lineup__price strong");
-    const models = modelGroups[card.dataset.catalogKey] || [];
+    const catalogKey = card.dataset.catalogKey || "";
+    const models = modelGroups[catalogKey] || [];
     const initialPhotos = [
       ...card.querySelectorAll(".catalog-lineup__dot[data-photo-src]"),
     ]
@@ -1050,7 +1055,46 @@
         "Changan";
       mountPhotoSwiper(photos, alt);
     }
+
+    if (catalogKey) {
+      cardControllers.set(catalogKey, {
+        card,
+        selectModel: (index) => {
+          if (!models.length) return;
+          showModel(Number(index) || 0);
+        },
+      });
+    }
   });
+
+  const openLineupModel = ({ key, modelIndex = 0 } = {}) => {
+    const controller = cardControllers.get(key);
+    if (!controller) return;
+
+    controller.selectModel(modelIndex);
+    window.requestAnimationFrame(() => {
+      controller.card.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
+  window.addEventListener("catalog-lineup:select-model", (event) => {
+    openLineupModel(event.detail || {});
+  });
+
+  document
+    .querySelector(".models-menu")
+    ?.addEventListener("click", (event) => {
+      const link = event.target.closest(
+        ".models-menu__image[data-lineup-key]",
+      );
+      if (!link) return;
+
+      event.preventDefault();
+      openLineupModel({
+        key: link.dataset.lineupKey,
+        modelIndex: Number(link.dataset.lineupModel || 0),
+      });
+    });
 })();
 
 (() => {
@@ -1138,7 +1182,7 @@
   };
 
   const setZoomed = (isZoomed) => {
-    scale = isZoomed ? 2.2 : 1;
+    scale = isZoomed ? 1.4 : 1;
     if (!isZoomed) {
       offsetX = 0;
       offsetY = 0;
