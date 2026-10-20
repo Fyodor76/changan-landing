@@ -136,7 +136,6 @@
   }
 
   .why-changan__media {
-    order: -1;
     min-height: 0;
     aspect-ratio: 16 / 10;
   }
