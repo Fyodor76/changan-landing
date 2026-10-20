@@ -71,7 +71,7 @@
   padding: 64px 0;
   overflow: hidden;
   color: #24272d;
-  background: #f7f7f6;
+  background: #fff;
 }
 
 .offers__header {
@@ -308,6 +308,485 @@
 
   .benefit-card {
     flex-basis: 72vw;
+  }
+}
+
+/* Model lineup: three independent category cards. */
+.catalog-lineup {
+  display: grid;
+  gap: 18px;
+  margin-top: 42px;
+}
+
+.catalog-lineup__card {
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+}
+
+.catalog-lineup__header {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin: 0 24px; */
+  padding: 14px 0;
+  border-bottom: 1px solid #cfd1d4;
+}
+
+.catalog-lineup__header h3 {
+  margin: 0;
+  color: #24272d;
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.catalog-lineup__models {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  gap: 54px;
+  min-width: 0;
+  margin-left: auto;
+}
+
+.catalog-lineup__model,
+.catalog-lineup__model-next {
+  position: relative;
+  flex: 0 0 auto;
+  min-height: 48px;
+  padding: 0 0 15px;
+  border: 0;
+  color: #8a8d92;
+  background: transparent;
+  font: inherit;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.catalog-lineup__model::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: transparent;
+}
+
+.catalog-lineup__model--active {
+  color: #24272d;
+  font-weight: 600;
+}
+
+.catalog-lineup__model--active::after {
+  background: #ff8e2b;
+}
+
+.catalog-lineup__model-next {
+  width: 22px;
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  padding: 0;
+  color: #24272d;
+}
+
+.catalog-lineup__model-next svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.catalog-lineup__body {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(325px, 1fr);
+  gap: 0;
+  align-items: start;
+  min-height: 360px;
+  padding-top: 30px;
+}
+
+.catalog-lineup__visual,
+.catalog-lineup__info {
+  min-width: 0;
+}
+
+.catalog-lineup__visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 18px 32px 18px 0;
+  background: transparent;
+}
+
+.catalog-lineup__photo-frame {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.catalog-lineup__arrow.catalog__gallery-arrow {
+  z-index: 2;
+  display: grid !important;
+  place-items: center;
+}
+
+.catalog-lineup__photo {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain !important;
+  object-position: center;
+  touch-action: pan-y;
+  user-select: none;
+  transition: opacity 180ms ease;
+}
+
+.catalog-lineup__photo--changing {
+  opacity: 0.35;
+}
+
+.catalog-lineup__colors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 38px;
+}
+
+.catalog-lineup__color {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  padding: 3px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.catalog-lineup__color::before {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 2px solid #bec0c2;
+  border-radius: 7px;
+  background: var(--swatch);
+  content: "";
+}
+
+.catalog-lineup__color--active {
+  border-color: #ff8e2b;
+  box-shadow: none;
+}
+
+.catalog-lineup__color-name {
+  margin: 6px 0 0;
+  color: #6f747c;
+  font-size: 13px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.catalog-lineup__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 20px;
+  margin-top: 8px;
+}
+
+.catalog-lineup__dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #b9bcc0;
+  cursor: pointer;
+}
+
+.catalog-lineup__dot--active {
+  background: #ff8e2b;
+}
+
+.catalog-lineup__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 18px 0 0 34px;
+  border-left: 1px solid #dfe0e1;
+  background: transparent;
+}
+
+.catalog-lineup__info h4 {
+  margin: 0 0 6px;
+  color: #24272d;
+  font-size: clamp(25px, 2.2vw, 34px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.catalog-lineup__specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 22px;
+  margin: 0;
+}
+
+.catalog-lineup__specs > div {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  column-gap: 10px;
+  align-items: center;
+}
+
+.catalog-lineup__specs span {
+  grid-row: 1 / 3;
+  width: 38px;
+  height: 38px;
+  border-radius: 0;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.catalog-lineup__specs > div:nth-child(1) span {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23ff8e2b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 8v31M24 8v31M37 8v31M11 15h13M24 15h13M11 32h13M24 32h13'/%3E%3Ccircle cx='11' cy='8' r='4'/%3E%3Ccircle cx='24' cy='8' r='4'/%3E%3Ccircle cx='37' cy='8' r='4'/%3E%3Ccircle cx='11' cy='39' r='4'/%3E%3Ccircle cx='24' cy='39' r='4'/%3E%3Ccircle cx='37' cy='39' r='4'/%3E%3C/svg%3E");
+}
+
+.catalog-lineup__specs > div:nth-child(2) span {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23ff8e2b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='10' y='13' width='28' height='23' rx='4'/%3E%3Cpath d='M16 13V9h16v4M10 19H6v11h4M38 19h4v11h-4M17 36v4M31 36v4'/%3E%3C/svg%3E");
+}
+
+.catalog-lineup__specs > div:nth-child(3) span {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23ff8e2b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M24 5S10 20 10 30a14 14 0 0 0 28 0C38 20 24 5 24 5Z'/%3E%3Cpath d='M17 30c1 5 4 7 9 7'/%3E%3C/svg%3E");
+}
+
+.catalog-lineup__specs > div:nth-child(4) span {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%23ff8e2b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M24 5 38 10v11c0 10-5.6 17.4-14 22-8.4-4.6-14-12-14-22V10l14-5Z'/%3E%3Cpath d='m18 24 4 4 8-9'/%3E%3C/svg%3E");
+}
+
+.catalog-lineup__specs dt,
+.catalog-lineup__specs dd {
+  margin: 0;
+}
+
+.catalog-lineup__specs dt {
+  color: #777c84;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.catalog-lineup__specs dd {
+  margin-top: 4px;
+  color: #24272d;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.catalog-lineup__price {
+  display: grid;
+  gap: 5px;
+  margin-top: 26px;
+  padding-top: 23px;
+  border-top: 1px solid #dfe0e1;
+}
+
+.catalog-lineup__price small {
+  color: #646a72;
+  font-size: 13px;
+}
+
+.catalog-lineup__price strong {
+  color: #24272d;
+  font-size: clamp(22px, 2vw, 29px);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.catalog-lineup__actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.catalog-lineup__actions .catalog__button {
+  width: 100%;
+  min-width: 0;
+  min-height: 60px;
+  margin: 0;
+  padding: 12px 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 1050px) {
+  .catalog-lineup {
+    gap: 16px;
+    margin-top: 34px;
+  }
+
+  .catalog-lineup__body {
+    grid-template-columns: minmax(0, 1.55fr) minmax(320px, 1fr);
+  }
+
+  .catalog-lineup__visual {
+    padding-inline: 22px;
+  }
+
+  .catalog-lineup__info {
+    padding: 18px 0 28px 24px;
+  }
+
+  .catalog-lineup__info h4 {
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 900px) {
+  body .catalog > .clh__container {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: 24px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 760px) {
+  .catalog-lineup {
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .catalog-lineup__header {
+    min-height: 54px;
+    margin-inline: 18px;
+    padding: 12px 0;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+  }
+
+  .catalog-lineup__models {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 24px;
+    overflow-x: auto;
+    margin-left: 0;
+    scrollbar-width: none;
+  }
+
+  .catalog-lineup__models::-webkit-scrollbar {
+    display: none;
+  }
+
+  .catalog-lineup__body {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .catalog-lineup__visual {
+    padding: 18px 18px 14px;
+  }
+
+  .catalog-lineup__colors {
+    margin-top: 28px;
+  }
+
+  .catalog-lineup__photo-frame {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .catalog-lineup__info {
+    padding: 22px 18px 24px;
+    border-top: 0;
+    border-left: 0;
+  }
+
+  .catalog-lineup__info h4 {
+    margin-bottom: 6px;
+    font-size: clamp(23px, 6vw, 29px);
+  }
+
+  .catalog-lineup__price {
+    margin-top: 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  body .catalog > .clh__container {
+    padding-inline: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .catalog-lineup__card {
+    border-radius: 0;
+  }
+
+  .catalog-lineup__header h3 {
+    font-size: 21px;
+  }
+
+  .catalog-lineup__photo-frame {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .catalog-lineup__colors {
+    margin-top: 24px;
+  }
+
+  .catalog-lineup__specs {
+    gap: 16px 12px;
+  }
+
+  .catalog-lineup__specs > div {
+    grid-template-columns: 32px minmax(0, 1fr);
+    column-gap: 8px;
+  }
+
+  .catalog-lineup__specs span {
+    width: 32px;
+    height: 32px;
+  }
+
+  .catalog-lineup__specs dt {
+    font-size: 11px;
+  }
+
+  .catalog-lineup__specs dd {
+    font-size: 15px;
+  }
+
+  .catalog-lineup__actions {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
 
@@ -1520,7 +1999,7 @@ a {
 .catalog {
   padding-block: 64px;
   color: #24272d;
-  background: #f7f7f6;
+  background: #fff;
 }
 
 .catalog__heading {
@@ -2285,7 +2764,7 @@ a {
   overflow: hidden;
   border: 0;
   border-radius: 0;
-  background: #f7f7f6;
+  background: #fff;
   box-shadow: none;
 }
 
@@ -2371,7 +2850,7 @@ a {
     min-height: 0;
     display: block;
     padding: 0;
-    background: #f7f7f6;
+    background: #fff;
   }
 
   .offers__car-shot {
@@ -3344,7 +3823,6 @@ a {
 }
 
 .contacts {
-  padding-top: 46px;
   color: #24272d;
   background: #fff;
 }
@@ -5126,8 +5604,8 @@ a {
   }
 
   .why-us__icon svg {
-    width: 46px;
-    height: 46px;
+    width: var(--clh-feature-icon-glyph);
+    height: var(--clh-feature-icon-glyph);
     display: block;
   }
 
@@ -6687,11 +7165,11 @@ html.offer-modal-open {
     transform: translateX(-50%);
   }
 
-  .clh__slide:nth-child(4) {
+  .clh__slide--award {
     background: #111923;
   }
 
-  .clh__slide:nth-child(4) .clh__picture img {
+  .clh__slide--award .clh__picture img {
     object-fit: contain;
     object-position: center top;
   }
@@ -6828,7 +7306,7 @@ html.offer-modal-open {
     border-radius: 48px;
   }
 
-  .clh__slide:nth-child(4) .clh__picture img {
+  .clh__slide--award .clh__picture img {
     object-fit: fill;
     object-position: center;
   }
@@ -7549,17 +8027,7 @@ html.offer-modal-open {
 }
 
 /* Unified advantage-icon colour on every viewport. */
-.why-us__icon,
-.why-changan__icon {
-  color: #24272d !important;
-}
 
-.why-us__icon svg,
-.why-us__icon svg *,
-.why-changan__icon svg,
-.why-changan__icon svg * {
-  stroke: #24272d !important;
-}
 
 /* Every action uses the same arrow geometry instead of a font glyph. */
 .clh__primary-button > svg,
@@ -7590,4 +8058,703 @@ html.offer-modal-open {
 .special-offers__proposal-button::after,
 .offer-modal__submit::after {
   margin-left: auto;
+}
+
+/* Model-menu categories filter in place instead of closing the curtain. */
+.models-menu__empty {
+  min-height: 142px;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 16px;
+  text-align: center;
+}
+
+.models-menu__empty[hidden] {
+  display: none;
+}
+
+/* Preserve the current catalog tabs and add a plain overflow arrow. */
+.catalog__models-nav {
+  min-width: 0;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.catalog__models-nav .catalog__tabs {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.catalog__model-next {
+  width: 34px;
+  height: 48px;
+  flex: 0 0 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: #24272d;
+  background: transparent;
+  cursor: pointer;
+}
+
+.catalog__model-next[hidden] {
+  display: none;
+}
+
+.catalog__model-next svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.catalog__empty {
+  min-height: 320px;
+  margin: 18px 0 0;
+  border-top: 1px solid #dfe0e1;
+  color: #8a8d91;
+  font-size: 18px;
+  text-align: center;
+}
+
+.catalog__empty:not([hidden]) {
+  display: grid;
+  place-items: center;
+}
+
+/* Photo pagination always sits directly below the colour controls. */
+.catalog__gallery-footer {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  padding-top: 14px;
+}
+
+.catalog__colors {
+  order: 1;
+}
+
+.catalog__color-name {
+  order: 2;
+  margin: 6px 0 0;
+}
+
+.catalog__photo-dots {
+  position: static;
+  order: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.catalog__photo-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .catalog__models-nav {
+    width: 100%;
+  }
+
+  .catalog__empty {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .models-menu__empty {
+    min-height: 156px;
+  }
+
+  .catalog__model-next {
+    width: 28px;
+    flex-basis: 28px;
+  }
+
+  .catalog__model-next svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+body .catalog-lineup__card:nth-child(even),
+body .catalog-lineup__card:nth-child(even) .catalog-lineup__body {
+  background: #fff;
+}
+
+body .why-us {
+  background: #fff;
+}
+
+body .special-offers,
+body .clh .special-offers {
+  background: #f7f7f6;
+}
+
+body .why-changan {
+  background: #fff;
+}
+
+body .reviews {
+  background: #fff;
+}
+
+/* Keep the large model gallery cheap to scroll: no motion or off-screen paint. */
+.catalog-lineup__card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
+}
+
+.catalog-lineup,
+.catalog-lineup * {
+  animation: none !important;
+  transition: none !important;
+}
+
+.catalog-lineup__photo--changing {
+  opacity: 1;
+}
+
+/* "Почему мы": 3 × 2 on desktop, then a readable adaptive grid. */
+body .why-us .why-us__grid {
+  width: 100%;
+  max-width: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: minmax(190px, auto);
+  align-items: stretch;
+  justify-items: stretch;
+  justify-content: stretch;
+  gap: 28px 24px;
+  margin-inline: 0;
+  padding: 0;
+  background: transparent;
+}
+
+body .why-us .why-us__grid::before {
+  display: none;
+}
+
+body .why-us .why-us__grid .why-us__item,
+body .why-us .why-us__grid .why-us__item:nth-child(n) {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 190px;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  transform: none;
+}
+
+body .why-us .why-us__grid .why-us__icon {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+}
+
+body .why-us .why-us__grid .why-us__icon svg {
+  width: 42px;
+  height: 42px;
+}
+
+body .why-us .why-us__grid .why-us__item h3 {
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  body .why-us .why-us__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(170px, auto);
+    gap: 18px;
+  }
+
+  body .why-us .why-us__grid .why-us__item,
+  body .why-us .why-us__grid .why-us__item:nth-child(n) {
+    min-height: 170px;
+    padding: 22px 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  body .why-us .why-us__grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: minmax(112px, auto);
+    gap: 12px;
+  }
+
+  body .why-us .why-us__grid .why-us__item,
+  body .why-us .why-us__grid .why-us__item:nth-child(n) {
+    min-height: 112px;
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    justify-content: initial;
+    column-gap: 18px;
+    padding: 20px;
+    text-align: left;
+  }
+
+  body .why-us .why-us__grid .why-us__item h3 {
+    text-align: left;
+  }
+}
+
+/* Corporate offer icon uses the same light outline language as the other icons. */
+.special-offers__card--corporate .special-offers__icon svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Each special-offer row is 40px taller than the original layout. */
+@media (min-width: 901px) {
+  .special-offers__grid {
+    grid-template-rows: repeat(2, 216px);
+  }
+
+  .special-offers__card--trade {
+    min-height: 440px;
+  }
+
+  .special-offers__card--credit,
+  .special-offers__card--corporate {
+    min-height: 216px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .special-offers__grid {
+    grid-template-rows: repeat(2, 200px);
+  }
+
+  .special-offers__card--trade {
+    min-height: 408px;
+  }
+
+  .special-offers__card--credit,
+  .special-offers__card--corporate {
+    min-height: 200px;
+  }
+}
+
+/* More breathing room above the footer content. */
+.site-footer {
+  padding-top: 24px;
+}
+
+/* Desktop hero: even rhythm between copy blocks and a clearer car silhouette. */
+@media (min-width: 1025px) {
+  .clh__slide-container:not(.clh__slide-container--award) .clh__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    transform: translate(
+      clamp(-120px, -6vw, -60px),
+      clamp(-96px, -5vw, -56px)
+    );
+  }
+
+  .clh__slide-container:not(.clh__slide-container--award)
+    .clh__content
+    > .clh__title,
+  .clh__slide-container:not(.clh__slide-container--award)
+    .clh__content
+    > .clh__lead,
+  .clh__slide-container:not(.clh__slide-container--award)
+    .clh__content
+    > .clh__eyebrow,
+  .clh__slide-container:not(.clh__slide-container--award)
+    .clh__content
+    > .clh__benefits,
+  .clh__slide-container:not(.clh__slide-container--award)
+    .clh__content
+    > .clh__primary-button {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* Personal offer: one full-bleed image with a seamless readability gradient. */
+@media (min-width: 901px) {
+  .personal-cta::before {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    opacity: 0.64 !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.98) 0%,
+      rgba(35, 44, 53, 0.95) 24%,
+      rgba(35, 44, 53, 0.8) 40%,
+      rgba(35, 44, 53, 0.5) 56%,
+      rgba(35, 44, 53, 0.2) 74%,
+      rgba(35, 44, 53, 0.06) 100%
+    ) !important;
+  }
+}
+
+/* From tablet landscape upward, keep the vehicle strictly to the right of copy. */
+@media (min-width: 769px) {
+  .personal-cta__inner {
+    grid-template-columns: minmax(0, 48%) minmax(0, 52%) !important;
+  }
+
+  .personal-cta__copy {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .personal-cta::before {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-position:
+      calc(100% + clamp(220px, calc(420px - 10vw), 300px)) center !important;
+    background-size: auto 100% !important;
+    background-repeat: no-repeat !important;
+    opacity: 0.7 !important;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 34%,
+      rgba(0, 0, 0, 0.2) 39%,
+      rgba(0, 0, 0, 0.78) 46%,
+      #000 53%,
+      #000 100%
+    ) !important;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 34%,
+      rgba(0, 0, 0, 0.2) 39%,
+      rgba(0, 0, 0, 0.78) 46%,
+      #000 53%,
+      #000 100%
+    ) !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.99) 0%,
+      rgba(35, 44, 53, 0.96) 30%,
+      rgba(35, 44, 53, 0.7) 38%,
+      rgba(35, 44, 53, 0.28) 47%,
+      rgba(35, 44, 53, 0.05) 58%,
+      transparent 70%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .personal-cta__inner {
+    min-height: 520px;
+  }
+
+  .personal-cta__copy {
+    max-width: 430px;
+    padding: 52px 0;
+  }
+
+  .personal-cta::before {
+    background-size: auto 100% !important;
+    background-position: calc(100% + 240px) center !important;
+    opacity: 0.8 !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.99) 0%,
+      rgba(35, 44, 53, 0.94) 34%,
+      rgba(35, 44, 53, 0.5) 45%,
+      rgba(35, 44, 53, 0.12) 57%,
+      transparent 68%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Compact desktop: preserve a clear gap between copy and the complete bonnet. */
+@media (min-width: 901px) and (max-width: 1119px) {
+  .personal-cta__inner {
+    grid-template-columns: minmax(0, 44%) minmax(0, 56%) !important;
+  }
+
+  .personal-cta__copy {
+    max-width: 430px;
+    padding-right: 20px;
+  }
+
+  .personal-cta::before {
+    background-size: auto 100% !important;
+    background-position: calc(100% + 320px) center !important;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(0, 0, 0, 0.3) 41%,
+      rgba(0, 0, 0, 0.9) 47%,
+      #000 52%,
+      #000 100%
+    ) !important;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(0, 0, 0, 0.3) 41%,
+      rgba(0, 0, 0, 0.9) 47%,
+      #000 52%,
+      #000 100%
+    ) !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.99) 0%,
+      rgba(35, 44, 53, 0.96) 32%,
+      rgba(35, 44, 53, 0.62) 39%,
+      rgba(35, 44, 53, 0.2) 46%,
+      rgba(35, 44, 53, 0.04) 53%,
+      transparent 62%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Large phones / portrait tablets: reveal the vehicle without changing <=600px. */
+@media (min-width: 601px) and (max-width: 768px) {
+  .personal-cta::before {
+    background-size: auto 100% !important;
+    background-position: calc(100% + 220px) center !important;
+    background-repeat: no-repeat !important;
+    opacity: 0.82 !important;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.18) 30%,
+      rgba(0, 0, 0, 0.82) 44%,
+      #000 53%,
+      #000 100%
+    ) !important;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.18) 30%,
+      rgba(0, 0, 0, 0.82) 44%,
+      #000 53%,
+      #000 100%
+    ) !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.99) 0%,
+      rgba(35, 44, 53, 0.92) 37%,
+      rgba(35, 44, 53, 0.46) 49%,
+      rgba(35, 44, 53, 0.1) 61%,
+      transparent 72%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Wide desktop composition from the approved reference. */
+@media (min-width: 1400px) {
+  .personal-cta::before {
+    background-size: auto 100% !important;
+    background-position: right center !important;
+    opacity: 0.72 !important;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 25%,
+      rgba(0, 0, 0, 0.2) 32%,
+      rgba(0, 0, 0, 0.75) 40%,
+      #000 48%,
+      #000 100%
+    ) !important;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 25%,
+      rgba(0, 0, 0, 0.2) 32%,
+      rgba(0, 0, 0, 0.75) 40%,
+      #000 48%,
+      #000 100%
+    ) !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.99) 0%,
+      rgba(35, 44, 53, 0.96) 28%,
+      rgba(35, 44, 53, 0.7) 37%,
+      rgba(35, 44, 53, 0.28) 46%,
+      rgba(35, 44, 53, 0.05) 56%,
+      transparent 66%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Smaller tablets need a wider dark field beneath all copy and actions. */
+@media (min-width: 769px) and (max-width: 899px) {
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.995) 0%,
+      rgba(35, 44, 53, 0.97) 45%,
+      rgba(35, 44, 53, 0.78) 58%,
+      rgba(35, 44, 53, 0.35) 70%,
+      rgba(35, 44, 53, 0.08) 84%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Phone / portrait-tablet copy remains readable across the full text width. */
+@media (max-width: 768px) {
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.995) 0%,
+      rgba(35, 44, 53, 0.98) 50%,
+      rgba(35, 44, 53, 0.85) 64%,
+      rgba(35, 44, 53, 0.5) 76%,
+      rgba(35, 44, 53, 0.18) 88%,
+      rgba(35, 44, 53, 0.05) 100%
+    ) !important;
+  }
+}
+
+/* Blend the solid copy background into the photo without a vertical seam. */
+@media (min-width: 901px) {
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.995) 0%,
+      rgba(35, 44, 53, 0.98) 32%,
+      rgba(35, 44, 53, 0.9) 42%,
+      rgba(35, 44, 53, 0.68) 50%,
+      rgba(35, 44, 53, 0.4) 58%,
+      rgba(35, 44, 53, 0.18) 66%,
+      rgba(35, 44, 53, 0.05) 74%,
+      transparent 82%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Ultra-wide screens: keep the image edge covered, then reveal it gradually. */
+@media (min-width: 2201px) {
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 1) 0%,
+      rgba(35, 44, 53, 0.995) 38%,
+      rgba(35, 44, 53, 0.96) 48%,
+      rgba(35, 44, 53, 0.82) 55%,
+      rgba(35, 44, 53, 0.56) 63%,
+      rgba(35, 44, 53, 0.3) 71%,
+      rgba(35, 44, 53, 0.12) 79%,
+      rgba(35, 44, 53, 0.03) 87%,
+      transparent 94%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Mid-size desktop: crop the empty right side and conceal the shifted photo edge. */
+@media (min-width: 1400px) and (max-width: 1700px) {
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 1) 0%,
+      rgba(35, 44, 53, 0.995) 40%,
+      rgba(35, 44, 53, 0.97) 49%,
+      rgba(35, 44, 53, 0.8) 57%,
+      rgba(35, 44, 53, 0.5) 66%,
+      rgba(35, 44, 53, 0.22) 75%,
+      rgba(35, 44, 53, 0.06) 85%,
+      transparent 94%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* From desktop upward, crop the unused right side of the source photo. */
+@media (min-width: 1400px) {
+  .personal-cta::before {
+    background-position: calc(100% + 240px) center !important;
+  }
+}
+
+/* Wide desktop: tie the fade to the photo edge instead of viewport percentages. */
+@media (min-width: 1700px) {
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 1) 0%,
+      rgba(35, 44, 53, 1) calc(100% - 940px),
+      rgba(35, 44, 53, 0.96) calc(100% - 860px),
+      rgba(35, 44, 53, 0.8) calc(100% - 760px),
+      rgba(35, 44, 53, 0.55) calc(100% - 650px),
+      rgba(35, 44, 53, 0.28) calc(100% - 520px),
+      rgba(35, 44, 53, 0.1) calc(100% - 380px),
+      rgba(35, 44, 53, 0.02) calc(100% - 240px),
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Divider between the model lineup and the advantages section. */
+.why-us {
+  border-top: 1px solid #d3d6d8;
 }

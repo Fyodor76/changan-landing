@@ -97,20 +97,29 @@
               <a
                 class="models-menu__category models-menu__category--active"
                 href="#model-lineup"
+                data-menu-category="crossovers"
               >
                 <span>Кроссоверы</span><span aria-hidden="true">›</span>
               </a>
-              <a class="models-menu__category" href="#model-lineup">
+              <a
+                class="models-menu__category"
+                href="#model-lineup"
+                data-menu-category="suv"
+              >
                 <span>Внедорожники</span><span aria-hidden="true">›</span>
               </a>
-              <a class="models-menu__category" href="#model-lineup">
+              <a
+                class="models-menu__category"
+                href="#model-lineup"
+                data-menu-category="sedans"
+              >
                 <span>Седаны</span><span aria-hidden="true">›</span>
               </a>
             </nav>
 
             <div class="models-menu__showcase">
               <div class="models-menu__grid">
-                <article class="models-menu__card">
+                <article class="models-menu__card" data-category="crossovers">
                   <a
                     class="models-menu__image"
                     href="#model-lineup"
@@ -125,7 +134,7 @@
                   <p>от 2 500 000 ₽</p>
                 </article>
 
-                <article class="models-menu__card">
+                <article class="models-menu__card" data-category="crossovers">
                   <a
                     class="models-menu__image"
                     href="#model-lineup"
@@ -140,7 +149,7 @@
                   <p>от 2 640 000 ₽</p>
                 </article>
 
-                <article class="models-menu__card">
+                <article class="models-menu__card" data-category="crossovers">
                   <a
                     class="models-menu__image"
                     href="#model-lineup"
@@ -155,7 +164,7 @@
                   <p>от 2 215 000 ₽</p>
                 </article>
 
-                <article class="models-menu__card">
+                <article class="models-menu__card" data-category="crossovers">
                   <a
                     class="models-menu__image"
                     href="#model-lineup"
@@ -170,6 +179,8 @@
                   <p>Узнать цену</p>
                 </article>
               </div>
+
+              <p class="models-menu__empty" role="status" hidden>Список пуст</p>
 
               <a class="models-menu__all-row" href="#model-lineup">
                 Перейти к модельному ряду <span aria-hidden="true">→</span>
@@ -186,7 +197,7 @@
         tabindex="0"
       >
         <div class="clh__track">
-          <article class="clh__slide clh__slide--active" aria-label="1 из 4">
+          <article class="clh__slide clh__slide--active" aria-label="1 из 3">
             <picture class="clh__picture">
               <source
                 media="(max-width: 768px)"
@@ -211,7 +222,7 @@
                 <h1 class="clh__title">Модельный ряд CHANGAN 2026</h1>
 
                 <p class="clh__lead">
-                  Официальный дилер. Автомобили с ПТС в наличии.
+                  Официальный дилер. <br /> Автомобили с ПТС в наличии.
                 </p>
 
                 <ul class="clh__benefits">
@@ -235,7 +246,7 @@
             </div>
           </article>
 
-          <article class="clh__slide" aria-label="2 из 4" aria-hidden="true">
+          <article class="clh__slide" aria-label="2 из 3" aria-hidden="true">
             <picture class="clh__picture">
               <source
                 media="(max-width: 768px)"
@@ -257,9 +268,9 @@
 
             <div class="clh__container clh__slide-container">
               <div class="clh__content clh__content--offer">
-                <p class="clh__eyebrow">Новинка уже в нашем автосалоне</p>
-
                 <h2 class="clh__title">DEEPAL S09</h2>
+
+                <p class="clh__eyebrow">Новинка уже в нашем автосалоне</p>
 
                 <p class="clh__lead">По цене от 6 490 000 ₽</p>
 
@@ -274,7 +285,7 @@
             </div>
           </article>
 
-          <article class="clh__slide" aria-label="3 из 4" aria-hidden="true">
+          <article class="clh__slide" aria-label="3 из 3" aria-hidden="true">
             <picture class="clh__picture">
               <source
                 media="(max-width: 768px)"
@@ -308,36 +319,6 @@
                   </svg>
                 </a>
               </div>
-            </div>
-          </article>
-
-          <article class="clh__slide" aria-label="4 из 4" aria-hidden="true">
-            <picture class="clh__picture">
-              <source
-                media="(max-width: 768px)"
-                srcset="./assets/hero-mobile.jpg"
-              />
-
-              <source
-                media="(max-width: 1024px)"
-                srcset="./assets/hero-tablet.jpg"
-              />
-
-              <img
-                src="./assets/hero-desktop.jpg"
-                alt="Модельный ряд Changan — заслуженный дилер года 2025"
-              />
-            </picture>
-
-            <div
-              class="clh__container clh__slide-container clh__slide-container--award"
-            >
-              <a class="clh__primary-button clh__award-cta" href="#offers">
-                Подробнее
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M5 12h14M14 7l5 5-5 5" />
-                </svg>
-              </a>
             </div>
           </article>
         </div>
@@ -399,225 +380,585 @@
         <div class="clh__container">
           <h2 class="catalog__heading" id="catalog-title">Модельный ряд</h2>
 
-          <div class="block_block">
-            <div class="catalog__categories" aria-label="Категории автомобилей">
-              <button type="button" data-category="suv">Внедорожники</button>
-
-              <button
-                class="catalog__category--active"
-                type="button"
-                data-category="crossovers"
-              >
-                Кроссоверы
-              </button>
-
-              <button type="button" data-category="sedans">Седаны</button>
-            </div>
-
-            <div
-              class="catalog__tabs"
-              role="tablist"
-              aria-label="Модели автомобилей"
+          <div class="catalog-lineup">
+            <article
+              class="catalog-lineup__card"
+              data-catalog-card
+              data-catalog-key="crossovers"
             >
-              <button
-                class="catalog__tab catalog__tab--active"
-                type="button"
-                role="tab"
-                aria-selected="true"
-                data-model="0"
-              >
-                CS75 PRO
-              </button>
+              <header class="catalog-lineup__header">
+                <h3>Кроссоверы</h3>
+                <div
+                  class="catalog-lineup__models"
+                  role="tablist"
+                  aria-label="Модели кроссоверов"
+                >
+                  <button
+                    class="catalog-lineup__model catalog-lineup__model--active"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    data-model-index="0"
+                  >
+                    CS75 PRO
+                  </button>
+                  <button
+                    class="catalog-lineup__model"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    data-model-index="1"
+                  >
+                    UNI-S
+                  </button>
+                  <button
+                    class="catalog-lineup__model"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    data-model-index="2"
+                  >
+                    CS35 MAX
+                  </button>
+                  <button
+                    class="catalog-lineup__model-next"
+                    type="button"
+                    aria-label="Следующая модель"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="m9 5 7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+              </header>
+              <div class="catalog-lineup__body">
+                <div class="catalog-lineup__visual">
+                  <div class="catalog-lineup__photo-frame">
+                    <img
+                      class="catalog-lineup__photo"
+                      loading="lazy"
+                      decoding="async"
+                      src="./assets/881c3fa9-a324-4830-bace-687386982736.png"
+                      alt="Changan CS75 PRO"
+                    />
+                    <button
+                      class="catalog__gallery-arrow catalog__gallery-arrow--prev catalog-lineup__arrow catalog-lineup__arrow--prev"
+                      type="button"
+                      aria-label="Предыдущее фото"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m15 5-7 7 7 7" />
+                      </svg>
+                    </button>
+                    <button
+                      class="catalog__gallery-arrow catalog__gallery-arrow--next catalog-lineup__arrow catalog-lineup__arrow--next"
+                      type="button"
+                      aria-label="Следующее фото"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m9 5 7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div
+                    class="catalog-lineup__colors"
+                    aria-label="Цвет автомобиля"
+                  >
+                    <button
+                      class="catalog-lineup__color catalog-lineup__color--active"
+                      type="button"
+                      data-color="Графитовый серый"
+                      aria-label="Графитовый серый"
+                      style="--swatch: #52585c"
+                    ></button>
+                    <button
+                      class="catalog-lineup__color"
+                      type="button"
+                      data-color="Белый"
+                      aria-label="Белый"
+                      style="--swatch: #e7e7e5"
+                    ></button>
+                    <button
+                      class="catalog-lineup__color"
+                      type="button"
+                      data-color="Серебристый"
+                      aria-label="Серебристый"
+                      style="--swatch: #aeb1b3"
+                    ></button>
+                    <button
+                      class="catalog-lineup__color"
+                      type="button"
+                      data-color="Чёрный"
+                      aria-label="Чёрный"
+                      style="--swatch: #202224"
+                    ></button>
+                  </div>
+                  <p class="catalog-lineup__color-name">Графитовый серый</p>
+                  <div
+                    class="catalog-lineup__dots"
+                    aria-label="Фотографии Changan CS75 PRO"
+                  >
+                    <button
+                      class="catalog-lineup__dot catalog-lineup__dot--active"
+                      type="button"
+                      data-photo-src="./assets/881c3fa9-a324-4830-bace-687386982736.png"
+                      aria-label="Фото 1"
+                    ></button>
+                    <button
+                      class="catalog-lineup__dot"
+                      type="button"
+                      data-photo-src="./assets/model-cs75pro.jpg"
+                      aria-label="Фото 2"
+                    ></button>
+                    <button
+                      class="catalog-lineup__dot"
+                      type="button"
+                      data-photo-src="./assets/model-cs75pro-2.jpg"
+                      aria-label="Фото 3"
+                    ></button>
+                    <button
+                      class="catalog-lineup__dot"
+                      type="button"
+                      data-photo-src="./assets/model-cs75pro-3.jpg"
+                      aria-label="Фото 4"
+                    ></button>
+                  </div>
+                </div>
+                <div class="catalog-lineup__info">
+                  <h4>CHANGAN CS75 PRO</h4>
+                  <dl class="catalog-lineup__specs">
+                    <div>
+                      <span aria-hidden="true"></span>
+                      <dt>Объём двигателя</dt>
+                      <dd>1.5T л.</dd>
+                    </div>
+                    <div>
+                      <span aria-hidden="true"></span>
+                      <dt>Коробка передач</dt>
+                      <dd>7DCT</dd>
+                    </div>
+                    <div>
+                      <span aria-hidden="true"></span>
+                      <dt>Крутящий момент</dt>
+                      <dd>300 Н·м</dd>
+                    </div>
+                    <div>
+                      <span aria-hidden="true"></span>
+                      <dt>Мощность</dt>
+                      <dd>188 л.с.</dd>
+                    </div>
+                  </dl>
+                  <div class="catalog-lineup__price">
+                    <small>Кредит от 0,01% на 8 лет</small
+                    ><strong>Цена от 2 500 000 ₽</strong>
+                  </div>
+                  <div class="catalog-lineup__actions">
+                    <a
+                      class="catalog__button catalog__button--primary"
+                      href="#offers"
+                      >Получить предложение</a
+                    >
+                    <a class="catalog__button" href="#test-drive"
+                      >Запись на тест-драйв</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </article>
 
-              <button
-                class="catalog__tab"
-                type="button"
-                role="tab"
-                aria-selected="false"
-                data-model="1"
-              >
-                UNI-S
-              </button>
+            <article
+              class="catalog-lineup__card"
+              data-catalog-card
+              data-catalog-key="suv"
+            >
+              <header class="catalog-lineup__header">
+                <h3>Внедорожники</h3>
+                <div
+                  class="catalog-lineup__models"
+                  role="tablist"
+                  aria-label="Модели внедорожников"
+                >
+                  <button
+                    class="catalog-lineup__model catalog-lineup__model--active"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    data-model-index="0"
+                  >
+                    CS75 PLUS
+                  </button>
+                </div>
+              </header>
+              <div class="catalog-lineup__body">
+                <div class="catalog-lineup__visual">
+                  <div class="catalog-lineup__photo-frame">
+                    <img
+                      class="catalog-lineup__photo"
+                      loading="lazy"
+                      decoding="async"
+                      src="./assets/Стильный Changan CS75 PLUS в синей студии.png"
+                      alt="Changan CS75 PLUS"
+                    />
+                    <button
+                      class="catalog__gallery-arrow catalog__gallery-arrow--prev catalog-lineup__arrow catalog-lineup__arrow--prev"
+                      type="button"
+                      aria-label="Предыдущее фото"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m15 5-7 7 7 7" />
+                      </svg>
+                    </button>
+                    <button
+                      class="catalog__gallery-arrow catalog__gallery-arrow--next catalog-lineup__arrow catalog-lineup__arrow--next"
+                      type="button"
+                      aria-label="Следующее фото"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m9 5 7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div
+                    class="catalog-lineup__colors"
+                    aria-label="Цвет автомобиля"
+                  >
+                    <button
+                      class="catalog-lineup__color catalog-lineup__color--active"
+                      type="button"
+                      data-color="Серебристый"
+                      aria-label="Серебристый"
+                      style="--swatch: #aeb1b3"
+                    ></button>
+                    <button
+                      class="catalog-lineup__color"
+                      type="button"
+                      data-color="Графитовый серый"
+                      aria-label="Графитовый серый"
+                      style="--swatch: #565b60"
+                    ></button>
+                    <button
+                      class="catalog-lineup__color"
+                      type="button"
+                      data-color="Белый"
+                      aria-label="Белый"
+                      style="--swatch: #e7e7e5"
+                    ></button>
+                    <button
+                      class="catalog-lineup__color"
+                      type="button"
+                      data-color="Чёрный"
+                      aria-label="Чёрный"
+                      style="--swatch: #202224"
+                    ></button>
+                  </div>
+                  <p class="catalog-lineup__color-name">Серебристый</p>
+                  <div
+                    class="catalog-lineup__dots"
+                    aria-label="Фотографии Changan CS75 PLUS"
+                  >
+                    <button
+                      class="catalog-lineup__dot catalog-lineup__dot--active"
+                      type="button"
+                      data-photo-src="./assets/Стильный Changan CS75 PLUS в синей студии.png"
+                      aria-label="Фото 1"
+                    ></button>
+                    <button
+                      class="catalog-lineup__dot"
+                      type="button"
+                      data-photo-src="./assets/Серый Changan CS75 PLUS сзади.png"
+                      aria-label="Фото 2"
+                    ></button>
+                    <button
+                      class="catalog-lineup__dot"
+                      type="button"
+                      data-photo-src="./assets/03e583c1-dfc0-49d7-a991-abe183e617b9.png"
+                      aria-label="Фото 3"
+                    ></button>
+                  </div>
+                </div>
+                <div class="catalog-lineup__info">
+                  <h4>CHANGAN CS75 PLUS</h4>
+                  <dl class="catalog-lineup__specs">
+                    <div>
+                      <span aria-hidden="true"></span>
+                      <dt>Объём двигателя</dt>
+                      <dd>2.0T л.</dd>
+                    </div>
+                    <div>
+                      <span aria-hidden="true"></span>
+                      <dt>Коробка передач</dt>
+                      <dd>8AT</dd>
+                    </div>
+                    <div>
+                      <span aria-hidden="true"></span>
+                      <dt>Крутящий момент</dt>
+                      <dd>390 Н·м</dd>
+                    </div>
+                    <div>
+                      <span aria-hidden="true"></span>
+                      <dt>Мощность</dt>
+                      <dd>233 л.с.</dd>
+                    </div>
+                  </dl>
+                  <div class="catalog-lineup__price">
+                    <small>Кредит от 0,01% на 8 лет</small
+                    ><strong>Цена от 3 429 900 ₽</strong>
+                  </div>
+                  <div class="catalog-lineup__actions">
+                    <a
+                      class="catalog__button catalog__button--primary"
+                      href="#offers"
+                      >Получить предложение</a
+                    >
+                    <a class="catalog__button" href="#test-drive"
+                      >Запись на тест-драйв</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </article>
 
-              <button
-                class="catalog__tab"
-                type="button"
-                role="tab"
-                aria-selected="false"
-                data-model="2"
-              >
-                CS35 MAX
-              </button>
-            </div>
+            <article
+              class="catalog-lineup__card"
+              data-catalog-card
+              data-catalog-key="sedans"
+            >
+              <header class="catalog-lineup__header">
+                <h3>Седаны</h3>
+                <div
+                  class="catalog-lineup__models"
+                  role="tablist"
+                  aria-label="Модели седанов"
+                >
+                  <button
+                    class="catalog-lineup__model catalog-lineup__model--active"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    data-model-index="0"
+                  >
+                    UNI-S
+                  </button>
+                </div>
+              </header>
+              <div class="catalog-lineup__body">
+                <div class="catalog-lineup__visual">
+                  <div class="catalog-lineup__photo-frame">
+                    <img
+                      class="catalog-lineup__photo"
+                      loading="lazy"
+                      decoding="async"
+                      src="./assets/model-uni-s.jpg"
+                      alt="Changan UNI-S"
+                    />
+                    <button
+                      class="catalog__gallery-arrow catalog__gallery-arrow--prev catalog-lineup__arrow catalog-lineup__arrow--prev"
+                      type="button"
+                      aria-label="Предыдущее фото"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m15 5-7 7 7 7" />
+                      </svg>
+                    </button>
+                    <button
+                      class="catalog__gallery-arrow catalog__gallery-arrow--next catalog-lineup__arrow catalog-lineup__arrow--next"
+                      type="button"
+                      aria-label="Следующее фото"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m9 5 7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div
+                    class="catalog-lineup__colors"
+                    aria-label="Цвет автомобиля"
+                  >
+                    <button
+                      class="catalog-lineup__color catalog-lineup__color--active"
+                      type="button"
+                      data-color="Звёздный серый"
+                      aria-label="Звёздный серый"
+                      style="--swatch: #6f777d"
+                    ></button>
+                    <button
+                      class="catalog-lineup__color"
+                      type="button"
+                      data-color="Белый"
+                      aria-label="Белый"
+                      style="--swatch: #e7e7e5"
+                    ></button>
+                    <button
+                      class="catalog-lineup__color"
+                      type="button"
+                      data-color="Серебристый"
+                      aria-label="Серебристый"
+                      style="--swatch: #aeb1b3"
+                    ></button>
+                    <button
+                      class="catalog-lineup__color"
+                      type="button"
+                      data-color="Чёрный"
+                      aria-label="Чёрный"
+                      style="--swatch: #202224"
+                    ></button>
+                  </div>
+                  <p class="catalog-lineup__color-name">Звёздный серый</p>
+                  <div
+                    class="catalog-lineup__dots"
+                    aria-label="Фотографии Changan UNI-S"
+                  >
+                    <button
+                      class="catalog-lineup__dot catalog-lineup__dot--active"
+                      type="button"
+                      data-photo-src="./assets/model-uni-s.jpg"
+                      aria-label="Фото 1"
+                    ></button>
+                    <button
+                      class="catalog-lineup__dot"
+                      type="button"
+                      data-photo-src="./assets/model-uni-s-2.jpg"
+                      aria-label="Фото 2"
+                    ></button>
+                    <button
+                      class="catalog-lineup__dot"
+                      type="button"
+                      data-photo-src="./assets/model-uni-s-3.jpg"
+                      aria-label="Фото 3"
+                    ></button>
+                  </div>
+                </div>
+                <div class="catalog-lineup__info">
+                  <h4>CHANGAN UNI-S</h4>
+                  <dl class="catalog-lineup__specs">
+                    <div>
+                      <span aria-hidden="true"></span>
+                      <dt>Объём двигателя</dt>
+                      <dd>1.5T л.</dd>
+                    </div>
+                    <div>
+                      <span aria-hidden="true"></span>
+                      <dt>Коробка передач</dt>
+                      <dd>7DCT</dd>
+                    </div>
+                    <div>
+                      <span aria-hidden="true"></span>
+                      <dt>Крутящий момент</dt>
+                      <dd>280 Н·м</dd>
+                    </div>
+                    <div>
+                      <span aria-hidden="true"></span>
+                      <dt>Мощность</dt>
+                      <dd>181 л.с.</dd>
+                    </div>
+                  </dl>
+                  <div class="catalog-lineup__price">
+                    <small>Кредит от 0,01% на 8 лет</small
+                    ><strong>Цена от 2 640 000 ₽</strong>
+                  </div>
+                  <div class="catalog-lineup__actions">
+                    <a
+                      class="catalog__button catalog__button--primary"
+                      href="#offers"
+                      >Получить предложение</a
+                    >
+                    <a class="catalog__button" href="#test-drive"
+                      >Запись на тест-драйв</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
+        </div>
+      </section>
 
-          <div class="catalog__stage">
-            <div class="catalog__gallery">
-              <div class="catalog__photo-wrap">
-                <img
-                  class="catalog__photo"
-                  src="./assets/model-cs75pro.jpg"
-                  alt="Changan CS75 PRO"
-                />
+      <section class="why-us" aria-labelledby="why-us-title">
+        <div class="clh__container why-us__layout">
+          <h2 class="why-us__title">Почему мы</h2>
+          <div class="why-us__grid">
+            <article class="why-us__item">
+              <span class="why-us__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                  <path
+                    d="M24 5 38 10v11c0 10-5.6 17.4-14 22-8.4-4.6-14-12-14-22V10l14-5Z"
+                  />
+                  <path d="m18 24 4 4 8-9" />
+                </svg>
+              </span>
+              <h3>Официальный дилер</h3>
+              <p>Прямые условия</p>
+            </article>
 
-                <button
-                  class="catalog__gallery-arrow catalog__gallery-arrow--prev"
-                  type="button"
-                  aria-label="Предыдущее фото"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="m15 5-7 7 7 7" />
-                  </svg>
-                </button>
+            <article class="why-us__item">
+              <span class="why-us__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                  <path
+                    d="M10 28 14 17c.8-2.2 2.5-3.4 5-3.4h10c2.5 0 4.2 1.2 5 3.4l4 11"
+                  />
+                  <path d="M8 27h32v10H8zM13 37v4m22-4v4M13 31h5m12 0h5" />
+                </svg>
+              </span>
+              <h3>Автомобили в наличии</h3>
+              <p>Без ожидания</p>
+            </article>
 
-                <button
-                  class="catalog__gallery-arrow catalog__gallery-arrow--next"
-                  type="button"
-                  aria-label="Следующее фото"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="m9 5 7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
+            <article class="why-us__item">
+              <span class="why-us__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                  <path
+                    d="M24 5 38 10v11c0 10-5.6 17.4-14 22-8.4-4.6-14-12-14-22V10l14-5Z"
+                  />
+                  <path
+                    d="m24 15 2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8L24 15Z"
+                  />
+                </svg>
+              </span>
+              <h3>Гарантия производителя</h3>
+              <p>Официальный сервис</p>
+            </article>
 
-              <div class="catalog__gallery-footer">
-                <div class="catalog__colors" aria-label="Цвет автомобиля">
-                  <button
-                    class="catalog__color catalog__color--active"
-                    type="button"
-                    data-color="Графитовый серый"
-                    aria-label="Графитовый серый"
-                    style="--swatch: #4e5458"
-                  ></button>
+            <article class="why-us__item">
+              <span class="why-us__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                  <path d="M38 17a16 16 0 0 0-27-5l-4 5" />
+                  <path d="M7 9v8h8M10 31a16 16 0 0 0 27 5l4-5" />
+                  <path d="M41 39v-8h-8" />
+                </svg>
+              </span>
+              <h3>Выгодный Trade-in</h3>
+              <p>Честная оценка</p>
+            </article>
 
-                  <button
-                    class="catalog__color"
-                    type="button"
-                    data-color="Белый"
-                    aria-label="Белый"
-                    style="--swatch: #f2f2f0"
-                  ></button>
+            <article class="why-us__item">
+              <span class="why-us__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                  <circle cx="24" cy="24" r="17" />
+                  <path d="M18 31 30 17M18.5 18.5h.01M29.5 29.5h.01" />
+                  <circle cx="18.5" cy="18.5" r="2.5" />
+                  <circle cx="29.5" cy="29.5" r="2.5" />
+                </svg>
+              </span>
+              <h3>Кредит за 30 минут</h3>
+              <p>Быстрое решение</p>
+            </article>
 
-                  <button
-                    class="catalog__color"
-                    type="button"
-                    data-color="Серебристый"
-                    aria-label="Серебристый"
-                    style="--swatch: #afb2b3"
-                  ></button>
-
-                  <button
-                    class="catalog__color"
-                    type="button"
-                    data-color="Чёрный"
-                    aria-label="Чёрный"
-                    style="--swatch: #1b1d1f"
-                  ></button>
-                </div>
-
-                <p class="catalog__color-name">Графитовый серый</p>
-
-                <!-- <div
-
-                  class="catalog__photo-dots"
-
-                  aria-label="Выбор фотографии"
-
-                ></div> -->
-              </div>
-            </div>
-
-            <div class="catalog__info" aria-live="polite">
-              <!-- <p class="catalog__counter"><span>01</span> / 03</p> -->
-
-              <h3 class="catalog__model-name">CHANGAN CS75 PRO</h3>
-
-              <dl class="catalog__specs">
-                <div>
-                  <span class="catalog__spec-icon" aria-hidden="true">
-                    <svg viewBox="0 0 48 48">
-                      <path
-                        d="M11 8v31M24 8v31M37 8v31M11 15h13M24 15h13M11 32h13M24 32h13"
-                      />
-                      <circle cx="11" cy="8" r="4" />
-                      <circle cx="24" cy="8" r="4" />
-                      <circle cx="37" cy="8" r="4" />
-                      <circle cx="11" cy="39" r="4" />
-                      <circle cx="24" cy="39" r="4" />
-                      <circle cx="37" cy="39" r="4" />
-                    </svg>
-                  </span>
-
-                  <dt>Объём двигателя</dt>
-
-                  <dd class="catalog__engine">1.5T л.</dd>
-                </div>
-
-                <div>
-                  <span class="catalog__spec-icon" aria-hidden="true">
-                    <svg viewBox="0 0 48 48">
-                      <rect x="10" y="13" width="28" height="23" rx="4" />
-                      <path
-                        d="M16 13V9h16v4M10 19H6v11h4M38 19h4v11h-4M17 36v4M31 36v4"
-                      />
-                    </svg>
-                  </span>
-
-                  <dt>Коробка передач</dt>
-
-                  <dd class="catalog__gearbox">7DCT</dd>
-                </div>
-
-                <div>
-                  <span class="catalog__spec-icon" aria-hidden="true">
-                    <svg viewBox="0 0 48 48">
-                      <path
-                        d="M24 5c0 0-14 15-14 25a14 14 0 0 0 28 0C38 20 24 5 24 5Z"
-                      />
-                      <path d="M17 30c1 5 4 7 9 7" />
-                    </svg>
-                  </span>
-
-                  <dt>Крутящий момент</dt>
-
-                  <dd class="catalog__torque">300 Н·м</dd>
-                </div>
-
-                <div>
-                  <span class="catalog__spec-icon" aria-hidden="true">
-                    <svg viewBox="0 0 48 48">
-                      <path
-                        d="M24 5 38 10v11c0 10-5.6 17.4-14 22-8.4-4.6-14-12-14-22V10l14-5Z"
-                      />
-                      <path d="m18 24 4 4 8-9" />
-                    </svg>
-                  </span>
-
-                  <dt>Мощность</dt>
-
-                  <dd class="catalog__power">188 л.с.</dd>
-                </div>
-              </dl>
-
-              <div class="catalog__price-block">
-                <p>Кредит от 0,01% на 8 лет</p>
-
-                <strong class="catalog__price">Цена от 2 500 000 ₽</strong>
-              </div>
-
-              <div class="catalog__actions">
-                <a
-                  class="catalog__button catalog__button--primary"
-                  href="#offers"
-                  >Получить предложение</a
-                >
-
-                <a class="catalog__button" href="#test-drive"
-                  >Запись на тест-драйв</a
-                >
-              </div>
-            </div>
+            <article class="why-us__item">
+              <span class="why-us__icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                  <ellipse cx="19" cy="30" rx="9" ry="4" />
+                  <path
+                    d="M10 30v8c0 2.2 4 4 9 4s9-1.8 9-4v-8M10 34c0 2.2 4 4 9 4s9-1.8 9-4"
+                  />
+                  <ellipse cx="31" cy="17" rx="9" ry="4" />
+                  <path
+                    d="M22 17v10M40 17v13c0 2.2-4 4-9 4-1 0-2-.1-3-.2M22 21c0 2.2 4 4 9 4s9-1.8 9-4M22 25c0 2.2 4 4 9 4s9-1.8 9-4"
+                  />
+                </svg>
+              </span>
+              <h3>Выкуп автомобиля</h3>
+              <p>Рыночная стоимость</p>
+            </article>
           </div>
         </div>
       </section>
@@ -629,8 +970,6 @@
           </div>
 
           <div class="special-offers__grid">
-            <!-- Trade-in -->
-
             <article class="special-offers__card special-offers__card--trade">
               <img
                 class="special-offers__photo"
@@ -642,8 +981,6 @@
               ></div>
 
               <div class="special-offers__content">
-                <span class="special-offers__icon" aria-hidden="true"> ↻ </span>
-
                 <h3 class="special-offers__card-title">
                   Скидка по<br />
 
@@ -715,7 +1052,15 @@
 
               <div class="special-offers__horizontal">
                 <span class="special-offers__icon special-offers__icon--blue">
-                  ▣
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m11 17 2 2a1.4 1.4 0 0 0 2-2l-1-1" />
+                    <path
+                      d="m14 14 2 2a1.4 1.4 0 0 0 2-2l-4.4-4.4a3 3 0 0 0-4.2 0l-1.1 1.1a1.5 1.5 0 0 1-2.1-2.1l2.6-2.6a5 5 0 0 1 6.1-.7l1.1.7h4"
+                    />
+                    <path
+                      d="M20 5h2v10h-3M4 5H2v10h3l5.5 5.5a1.4 1.4 0 0 0 2-2L9 15"
+                    />
+                  </svg>
                 </span>
 
                 <div>
@@ -830,96 +1175,6 @@
         </div>
       </section>
 
-      <section class="why-us" aria-labelledby="why-us-title">
-        <div class="clh__container why-us__layout">
-          <h2 class="why-us__title">Почему мы</h2>
-          <div class="why-us__grid">
-            <article class="why-us__item">
-              <span class="why-us__icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48">
-                  <path
-                    d="M24 5 38 10v11c0 10-5.6 17.4-14 22-8.4-4.6-14-12-14-22V10l14-5Z"
-                  />
-                  <path d="m18 24 4 4 8-9" />
-                </svg>
-              </span>
-              <h3>Официальный дилер</h3>
-              <p>Прямые условия</p>
-            </article>
-
-            <article class="why-us__item">
-              <span class="why-us__icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48">
-                  <path
-                    d="M10 28 14 17c.8-2.2 2.5-3.4 5-3.4h10c2.5 0 4.2 1.2 5 3.4l4 11"
-                  />
-                  <path d="M8 27h32v10H8zM13 37v4m22-4v4M13 31h5m12 0h5" />
-                </svg>
-              </span>
-              <h3>Автомобили в наличии</h3>
-              <p>Без ожидания</p>
-            </article>
-
-            <article class="why-us__item">
-              <span class="why-us__icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48">
-                  <path
-                    d="M24 5 38 10v11c0 10-5.6 17.4-14 22-8.4-4.6-14-12-14-22V10l14-5Z"
-                  />
-                  <path
-                    d="m24 15 2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8L24 15Z"
-                  />
-                </svg>
-              </span>
-              <h3>Гарантия производителя</h3>
-              <p>Официальный сервис</p>
-            </article>
-
-            <article class="why-us__item">
-              <span class="why-us__icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48">
-                  <path d="M38 17a16 16 0 0 0-27-5l-4 5" />
-                  <path d="M7 9v8h8M10 31a16 16 0 0 0 27 5l4-5" />
-                  <path d="M41 39v-8h-8" />
-                </svg>
-              </span>
-              <h3>Выгодный Trade-in</h3>
-              <p>Честная оценка</p>
-            </article>
-
-            <article class="why-us__item">
-              <span class="why-us__icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48">
-                  <circle cx="24" cy="24" r="17" />
-                  <path d="M18 31 30 17M18.5 18.5h.01M29.5 29.5h.01" />
-                  <circle cx="18.5" cy="18.5" r="2.5" />
-                  <circle cx="29.5" cy="29.5" r="2.5" />
-                </svg>
-              </span>
-              <h3>Кредит за 30 минут</h3>
-              <p>Быстрое решение</p>
-            </article>
-
-            <article class="why-us__item">
-              <span class="why-us__icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48">
-                  <ellipse cx="19" cy="30" rx="9" ry="4" />
-                  <path
-                    d="M10 30v8c0 2.2 4 4 9 4s9-1.8 9-4v-8M10 34c0 2.2 4 4 9 4s9-1.8 9-4"
-                  />
-                  <ellipse cx="31" cy="17" rx="9" ry="4" />
-                  <path
-                    d="M22 17v10M40 17v13c0 2.2-4 4-9 4-1 0-2-.1-3-.2M22 21c0 2.2 4 4 9 4s9-1.8 9-4M22 25c0 2.2 4 4 9 4s9-1.8 9-4"
-                  />
-                </svg>
-              </span>
-              <h3>Выкуп автомобиля</h3>
-              <p>Рыночная стоимость</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section class="why-changan" aria-labelledby="why-changan-title">
         <div class="clh__container why-changan__layout">
           <div class="why-changan__intro">
@@ -1000,6 +1255,44 @@
 
               <h3>Экономичные двигатели</h3>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="personal-cta" aria-labelledby="personal-cta-title">
+        <div class="clh__container personal-cta__inner">
+          <div class="personal-cta__copy">
+            <span class="personal-cta__accent" aria-hidden="true"></span>
+
+            <h2 id="personal-cta-title">
+              Получите<br />персональное<br />предложение уже<br />сегодня
+            </h2>
+
+            <p>
+              Подберём автомобиль, рассчитаем выгоду и подготовим индивидуальные
+              условия покупки.
+            </p>
+
+            <div class="personal-cta__actions">
+              <a
+                class="personal-cta__button personal-cta__button--primary"
+                href="tel:+74912776895"
+                >Получить предложение <span aria-hidden="true">→</span>
+              </a>
+
+              <a class="personal-cta__button" href="tel:+74912776895"
+                >Рассчитать выгоду
+              </a>
+            </div>
+          </div>
+
+          <div class="personal-cta__car" aria-hidden="true">
+            <img
+              class="personal-cta__car-image"
+              src="./assets/03e583c1-dfc0-49d7-a991-abe183e617b9.png"
+              alt=""
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
@@ -1138,50 +1431,12 @@
         </div>
       </section>
 
-      <section class="personal-cta" aria-labelledby="personal-cta-title">
-        <div class="clh__container personal-cta__inner">
-          <div class="personal-cta__copy">
-            <span class="personal-cta__accent" aria-hidden="true"></span>
-
-            <h2 id="personal-cta-title">
-              Получите<br />персональное<br />предложение уже<br />сегодня
-            </h2>
-
-            <p>
-              Подберём автомобиль, рассчитаем выгоду и подготовим индивидуальные
-              условия покупки.
-            </p>
-
-            <div class="personal-cta__actions">
-              <a
-                class="personal-cta__button personal-cta__button--primary"
-                href="tel:+74912776895"
-                >Получить предложение <span aria-hidden="true">→</span>
-              </a>
-
-              <a class="personal-cta__button" href="tel:+74912776895"
-                >Рассчитать выгоду
-              </a>
-            </div>
-          </div>
-
-          <div class="personal-cta__car" aria-hidden="true">
-            <img
-              class="personal-cta__car-image"
-              src="./assets/03e583c1-dfc0-49d7-a991-abe183e617b9.png"
-              alt=""
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
-
       <section class="contacts" id="contacts" aria-labelledby="contacts-title">
-        <div class="clh__container contacts__heading">
+        <!-- <div class="clh__container contacts__heading">
           <span aria-hidden="true"></span>
 
           <h2 id="contacts-title">Контакты</h2>
-        </div>
+        </div> -->
 
         <div class="contacts__map">
           <iframe
