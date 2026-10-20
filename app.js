@@ -840,6 +840,17 @@
     </button>
   `;
 
+  const ensureGallery = (frame) => {
+    let gallery = frame.closest(".catalog-lineup__gallery");
+    if (gallery) return gallery;
+
+    gallery = document.createElement("div");
+    gallery.className = "catalog-lineup__gallery";
+    frame.parentNode?.insertBefore(gallery, frame);
+    gallery.appendChild(frame);
+    return gallery;
+  };
+
   const cards = [...document.querySelectorAll("[data-catalog-card]")];
 
   cards.forEach((card) => {
@@ -863,6 +874,8 @@
       .filter(Boolean);
 
     if (!frame || !dotsRoot) return;
+
+    const gallery = ensureGallery(frame);
 
     let activeModel = 0;
     let photoSwiper = null;
@@ -912,8 +925,15 @@
         .join("");
 
       frame.classList.add("swiper");
-      frame.innerHTML = `<div class="swiper-wrapper">${slides}</div>${arrowMarkup}`;
+      frame.innerHTML = `<div class="swiper-wrapper">${slides}</div>`;
+      gallery
+        .querySelectorAll(".catalog-lineup__arrow")
+        .forEach((arrow) => arrow.remove());
+      gallery.insertAdjacentHTML("beforeend", arrowMarkup);
       dotsRoot.innerHTML = "";
+
+      const nextEl = gallery.querySelector(".catalog-lineup__arrow--next");
+      const prevEl = gallery.querySelector(".catalog-lineup__arrow--prev");
 
       photoSwiper = new window.Swiper(frame, {
         slidesPerView: 1,
@@ -929,8 +949,8 @@
         touchStartPreventDefault: false,
         resistanceRatio: 0.75,
         navigation: {
-          nextEl: frame.querySelector(".catalog-lineup__arrow--next"),
-          prevEl: frame.querySelector(".catalog-lineup__arrow--prev"),
+          nextEl,
+          prevEl,
         },
         pagination: {
           el: dotsRoot,
@@ -941,6 +961,17 @@
             return `<button type="button" class="${className}" aria-label="Фото ${index + 1}"></button>`;
           },
         },
+      });
+
+      nextEl?.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        photoSwiper?.slideNext();
+      });
+      prevEl?.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        photoSwiper?.slidePrev();
       });
     };
 
@@ -1055,4 +1086,20 @@
 
   acceptButton?.addEventListener("click", () => hideBanner("accepted"));
   declineButton?.addEventListener("click", () => hideBanner("declined"));
+})();
+
+(() => {
+  const button = document.querySelector("[data-scroll-top]");
+  if (!button) return;
+
+  const toggle = () => {
+    button.classList.toggle("scroll-top--visible", window.scrollY > 480);
+  };
+
+  button.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  window.addEventListener("scroll", toggle, { passive: true });
+  toggle();
 })();

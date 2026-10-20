@@ -125,6 +125,11 @@
   background: transparent;
 }
 
+.catalog-lineup__gallery {
+  position: relative;
+  width: 100%;
+}
+
 .catalog-lineup__photo-frame {
   position: relative;
   width: 100%;
@@ -155,10 +160,13 @@
   padding: 0;
 }
 
-.catalog-lineup__arrow.catalog__gallery-arrow {
-  z-index: 2;
+.catalog-lineup__gallery > .catalog-lineup__arrow.catalog__gallery-arrow {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
   display: grid !important;
   place-items: center;
+  pointer-events: auto;
 }
 
 .catalog-lineup__photo {
@@ -368,7 +376,9 @@
 }
 
 .catalog-lineup__price .catalog-lineup__currency {
-  font-weight: 400;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  font-feature-settings: normal;
 }
 
 .catalog-lineup__actions {
