@@ -104,6 +104,7 @@ for (const page of pages) {
             <a href="./personal-data-policy.html">Обработка персональных данных</a>
             <a href="./personal-data-consent.html">Согласие на обработку персональных данных</a>
             <a href="./cookie.html">Cookie</a>
+            <a href="./requisites.html">Реквизиты</a>
           </nav>
         </div>
       </div>
