@@ -1767,6 +1767,32 @@
       </footer>
     </section>
 
+    <div
+      class="photo-lightbox"
+      data-photo-lightbox
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Просмотр фото"
+    >
+      <button
+        class="photo-lightbox__close"
+        type="button"
+        data-photo-lightbox-close
+        aria-label="Закрыть"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" />
+        </svg>
+      </button>
+      <div class="photo-lightbox__stage" data-photo-lightbox-stage>
+        <img class="photo-lightbox__image" data-photo-lightbox-image alt="" />
+      </div>
+      <p class="photo-lightbox__hint" data-photo-lightbox-hint>
+        Нажмите, чтобы увеличить
+      </p>
+    </div>
+
     <button
       class="scroll-top"
       type="button"

@@ -973,6 +973,21 @@
         event.stopPropagation();
         photoSwiper?.slidePrev();
       });
+
+      photoSwiper.on("click", (_swiper, event) => {
+        const photo = event.target?.closest?.(".catalog-lineup__photo");
+        if (!photo || !frame.contains(photo)) return;
+        const src = photo.currentSrc || photo.src;
+        if (!src) return;
+        window.dispatchEvent(
+          new CustomEvent("catalog-lineup:open-photo", {
+            detail: {
+              src,
+              alt: photo.alt || modelName?.textContent || "Changan",
+            },
+          }),
+        );
+      });
     };
 
     const showModel = (index) => {
@@ -1086,6 +1101,142 @@
 
   acceptButton?.addEventListener("click", () => hideBanner("accepted"));
   declineButton?.addEventListener("click", () => hideBanner("declined"));
+})();
+
+(() => {
+  const lightbox = document.querySelector("[data-photo-lightbox]");
+  if (!lightbox) return;
+
+  const stage = lightbox.querySelector("[data-photo-lightbox-stage]");
+  const image = lightbox.querySelector("[data-photo-lightbox-image]");
+  const hint = lightbox.querySelector("[data-photo-lightbox-hint]");
+  const closeButtons = lightbox.querySelectorAll("[data-photo-lightbox-close]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  let scale = 1;
+  let offsetX = 0;
+  let offsetY = 0;
+  let dragging = false;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let originX = 0;
+  let originY = 0;
+  let closeTimer = null;
+  let moved = false;
+
+  const applyTransform = () => {
+    image.style.setProperty("--lx", `${offsetX}px`);
+    image.style.setProperty("--ly", `${offsetY}px`);
+    image.style.setProperty("--lz", String(scale));
+  };
+
+  const setZoomed = (isZoomed) => {
+    scale = isZoomed ? 2.2 : 1;
+    if (!isZoomed) {
+      offsetX = 0;
+      offsetY = 0;
+    }
+    lightbox.classList.toggle("photo-lightbox--zoomed", isZoomed);
+    if (hint) {
+      hint.textContent = isZoomed
+        ? "Нажмите, чтобы уменьшить"
+        : "Нажмите, чтобы увеличить";
+    }
+    applyTransform();
+  };
+
+  const openLightbox = ({ src, alt }) => {
+    window.clearTimeout(closeTimer);
+    image.src = src;
+    image.alt = alt || "";
+    setZoomed(false);
+    lightbox.hidden = false;
+    document.documentElement.classList.add("photo-lightbox-open");
+    window.requestAnimationFrame(() => {
+      lightbox.classList.add("photo-lightbox--open");
+    });
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove("photo-lightbox--open", "photo-lightbox--zoomed");
+    document.documentElement.classList.remove("photo-lightbox-open");
+    setZoomed(false);
+    closeTimer = window.setTimeout(
+      () => {
+        lightbox.hidden = true;
+        image.removeAttribute("src");
+      },
+      reduceMotion.matches ? 0 : 240,
+    );
+  };
+
+  window.addEventListener("catalog-lineup:open-photo", (event) => {
+    openLightbox(event.detail || {});
+  });
+
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      closeLightbox();
+    });
+  });
+
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  stage?.addEventListener("click", (event) => {
+    if (moved) return;
+    event.stopPropagation();
+    setZoomed(scale <= 1);
+  });
+
+  stage?.addEventListener("pointerdown", (event) => {
+    if (scale <= 1) return;
+    dragging = true;
+    moved = false;
+    dragStartX = event.clientX;
+    dragStartY = event.clientY;
+    originX = offsetX;
+    originY = offsetY;
+    lightbox.classList.add("photo-lightbox--dragging");
+    stage.setPointerCapture?.(event.pointerId);
+  });
+
+  stage?.addEventListener("pointermove", (event) => {
+    if (!dragging) return;
+    const dx = event.clientX - dragStartX;
+    const dy = event.clientY - dragStartY;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
+    offsetX = originX + dx;
+    offsetY = originY + dy;
+    applyTransform();
+  });
+
+  const endDrag = (event) => {
+    if (!dragging) return;
+    dragging = false;
+    lightbox.classList.remove("photo-lightbox--dragging");
+    try {
+      stage?.releasePointerCapture?.(event.pointerId);
+    } catch {
+      /* ignore */
+    }
+  };
+
+  stage?.addEventListener("pointerup", endDrag);
+  stage?.addEventListener("pointercancel", endDrag);
+
+  stage?.addEventListener("wheel", (event) => {
+    event.preventDefault();
+    if (event.deltaY < 0) setZoomed(true);
+    else setZoomed(false);
+  }, { passive: false });
+
+  document.addEventListener("keydown", (event) => {
+    if (lightbox.hidden) return;
+    if (event.key === "Escape") closeLightbox();
+  });
 })();
 
 (() => {
