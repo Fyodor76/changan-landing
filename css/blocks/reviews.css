@@ -157,15 +157,6 @@
   }
 }
 
-.personal-cta__actions {
-  gap: 12px;
-}
-
-.personal-cta__button {
-  padding: 0 20px;
-  border-radius: 5px;
-}
-
 .personal-cta__car {
   height: auto;
 }

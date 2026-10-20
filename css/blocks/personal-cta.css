@@ -1,46 +1,64 @@
 .personal-cta {
+  position: relative;
   display: flex;
   align-items: center;
+  min-height: clamp(500px, 29vw, 560px);
+  overflow: hidden;
+  color: #fff;
 }
 
 .personal-cta__accent {
+  width: 62px;
+  height: 4px;
   display: block;
+  margin-bottom: 28px;
   background: #ff7417;
 }
 
+.personal-cta h2 {
+  margin: 0;
+  font-size: clamp(36px, 2.5vw, 44px);
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+}
+
 .personal-cta__copy > p {
-  margin: 20px 0 0;
+  max-width: 620px;
+  margin: 22px 0 0;
   color: rgba(255, 255, 255, 0.7);
+  font-size: 17px;
+  line-height: 1.5;
 }
 
 .personal-cta__actions {
   display: flex;
   flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
 }
 
 .personal-cta__button {
+  min-width: 230px;
+  min-height: 56px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 12px;
+  padding: 0 28px;
   border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 48px;
   color: #fff;
-  background: rgba(255, 255, 255, 0.02);
+  background: transparent;
+  font-size: 15px;
   font-weight: 600;
+  line-height: 1;
   text-decoration: none;
   cursor: pointer;
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
     transform 0.2s ease;
-}
-
-.block_block {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 40px;
-  margin: 20px 0;
 }
 
 .personal-cta__button--primary {
@@ -54,17 +72,40 @@
   transform: translateY(-2px);
 }
 
-.personal-cta__car {
-  position: absolute;
+.personal-cta__button--primary::after {
+  margin-left: 2px;
 }
 
-.personal-cta__car::before {
-  inset: 0;
+.personal-cta__car {
+  position: absolute;
+  top: 51%;
+  right: -5.5%;
+  bottom: auto;
+  width: min(54%, 820px);
+  overflow: visible;
+  transform: translateY(-50%);
 }
 
 .personal-cta__car img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
   display: block;
-  margin-top: -115px;
+  margin: 0;
+}
+
+@media (min-width: 901px) {
+  .personal-cta__copy {
+    padding: 72px 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .personal-cta__car {
+    right: -1%;
+    width: min(52%, 720px);
+  }
 }
 
 @media (max-width: 900px) {
@@ -74,20 +115,34 @@
 
   .personal-cta__copy {
     align-self: end;
+    padding: 64px 0 54px;
   }
 
   .personal-cta__car {
+    top: 18px;
+    right: 0;
+    width: min(72%, 620px);
     height: 440px;
+    transform: none;
   }
 
-  .personal-cta__car::before {
-    background: linear-gradient(180deg, transparent 45%, #1d3446 100%);
+  .personal-cta__button {
+    min-width: 0;
   }
 }
 
 @media (max-width: 600px) {
   .personal-cta__accent {
     margin-bottom: 18px;
+  }
+
+  .personal-cta h2 {
+    font-size: 38px;
+    line-height: 1.22;
+  }
+
+  .personal-cta__copy {
+    padding-top: 255px;
   }
 
   .personal-cta__copy > p {
@@ -103,9 +158,12 @@
 
   .personal-cta__button {
     width: 100%;
+    min-height: 52px;
+    padding-inline: 22px;
   }
 
-  .personal-cta__car img {
-    margin-top: -35px;
+  .personal-cta__car {
+    right: -10%;
+    width: 104%;
   }
 }
