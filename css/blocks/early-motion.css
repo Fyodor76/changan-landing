@@ -1,4 +1,5 @@
 .why-us__item,
+.why-us__feature,
 .why-changan__card,
 .review-card {
   transition:
@@ -10,6 +11,10 @@
 .why-changan__card:hover,
 .review-card:hover {
   transform: translateY(-5px);
+}
+
+.why-us__feature:hover {
+  box-shadow: 0 16px 40px rgba(28, 36, 48, 0.12);
 }
 
 .catalog__button,
@@ -91,22 +96,8 @@
   width: min(1185px, calc(100% - 48px));
 }
 
-.special-offers__card,
-.special-offers__card--trade,
-.special-offers__card--credit,
-.special-offers__card--corporate {
-  width: auto;
-  margin: 0;
+.special-offers__card {
   overflow: hidden;
-  border-radius: 10px;
-  clip-path: none;
-  background: #eef2f5;
-}
-
-.special-offers__card--credit,
-.special-offers__card--corporate {
-  min-height: 245px;
-  padding: 0;
 }
 
 .special-offers__photo {
@@ -159,36 +150,6 @@
   margin-top: auto;
 }
 
-@media (max-width: 900px) {
-  .special-offers__card--trade {
-    grid-row: auto;
-  }
-
-  .special-offers__card--credit,
-  .special-offers__card--corporate {
-    grid-column: 1;
-    width: auto;
-    min-height: 220px;
-  }
-}
-
-@media (max-width: 600px) {
-  .special-offers__horizontal {
-    padding: 26px 22px;
-  }
-
-  .special-offers__icon,
-  .special-offers__card--trade
-    > .special-offers__content
-    > .special-offers__icon {
-    width: 56px;
-    height: 56px;
-  }
-
-  .special-offers__card--trade .special-offers__card-title {
-    font-size: 32px;
-  }
-}
 
 .special-offers__card--trade .special-offers__content {
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);

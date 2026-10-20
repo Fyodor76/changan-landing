@@ -647,3 +647,54 @@
 .catalog__actions .catalog__button:not(.catalog__button--primary):hover {
   color: #ff7417;
 }
+
+/* Readable photo overlays — keep diagonal clip-path from the base layout. */
+.special-offers__card--trade {
+  background: #181b1d;
+}
+
+.special-offers__card--trade .special-offers__photo {
+  opacity: 0.3;
+  filter: saturate(0.42) contrast(1.12);
+}
+
+.special-offers__card--trade::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  background: rgba(24, 27, 29, 0.48);
+  content: "";
+}
+
+.special-offers__card--credit .special-offers__photo,
+.special-offers__card--corporate .special-offers__photo {
+  opacity: 1;
+  filter: saturate(0.72) contrast(0.92);
+}
+
+.special-offers__card--credit::after,
+.special-offers__card--corporate::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  background: linear-gradient(
+    90deg,
+    #fff 0%,
+    #fff 72%,
+    #f5f5f5 100%
+  );
+  content: "";
+}
+
+.special-offers__icon--blue,
+.special-offers__card--credit .special-offers__arrow,
+.special-offers__card--corporate .special-offers__arrow {
+  background: #fff;
+}
+
+.special-offers__card--credit .special-offers__card-title,
+.special-offers__card--corporate .special-offers__card-title {
+  color: #24272d;
+}

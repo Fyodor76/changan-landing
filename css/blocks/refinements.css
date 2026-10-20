@@ -525,15 +525,6 @@
     pointer-events: auto;
   }
 
-  .why-us__icon,
-  .why-us__icon svg {
-    color: #173454 !important;
-  }
-
-  .why-us__icon svg,
-  .why-us__icon svg * {
-    stroke: #173454 !important;
-  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -1036,20 +1027,12 @@
 }
 
 /* Keep the two advantage sections visually consistent. */
-.why-us,
 .why-changan {
   --clh-feature-icon-box: 58px;
   --clh-feature-icon-glyph: 46px;
   --clh-feature-heading-gap: 48px;
 }
 
-.why-us {
-  --clh-feature-icon-box: 88px;
-  --clh-feature-icon-glyph: 72px;
-  --clh-feature-heading-gap: 40px;
-}
-
-.why-us__icon,
 .why-changan__icon {
   width: var(--clh-feature-icon-box);
   height: var(--clh-feature-icon-box);
@@ -1061,19 +1044,6 @@
   flex: 0 0 var(--clh-feature-icon-box);
 }
 
-.why-us__icon {
-  margin-inline: auto;
-  border-radius: 28px;
-  color: #173454;
-  background: transparent;
-  box-shadow: none;
-}
-
-body .why-us .why-us__item h3 {
-  margin-top: 18px;
-}
-
-.why-us__icon svg,
 .why-changan__icon svg {
   width: var(--clh-feature-icon-glyph);
   height: var(--clh-feature-icon-glyph);
@@ -1084,10 +1054,6 @@ body .why-us .why-us__item h3 {
   grid-template-columns: var(--clh-feature-icon-box) minmax(0, 1fr);
 }
 
-.why-us__title {
-  margin-bottom: var(--clh-feature-heading-gap);
-}
-
 .why-changan__intro {
   margin-bottom: var(--clh-feature-heading-gap);
 }
@@ -1096,54 +1062,16 @@ body .why-us .why-us__item h3 {
   margin-top: 0;
 }
 
-/* Six fixed-width items overflow the container around tablet landscape sizes. */
-@media (min-width: 901px) and (max-width: 1100px) {
-  .why-us__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    justify-content: stretch;
-    column-gap: 24px;
-    row-gap: 44px;
-  }
-
-  .why-us__grid::before {
-    display: none;
-  }
-
-  .why-us__grid .why-us__item {
-    width: 100%;
-    justify-self: stretch;
-  }
-}
-
 @media (max-width: 900px) {
-  .why-us,
   .why-changan {
     --clh-feature-icon-box: 50px;
     --clh-feature-icon-glyph: 42px;
   }
 
-  .why-us {
-    --clh-feature-icon-box: 72px;
-    --clh-feature-icon-glyph: 58px;
-  }
-
-  .why-us__layout,
   .why-changan__layout {
     width: calc(100% - 48px);
     max-width: 1185px;
     margin-inline: auto;
-  }
-
-  .why-us__grid {
-    width: 100%;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    justify-content: stretch;
-  }
-
-  .why-us__grid .why-us__item {
-    width: 100%;
-    min-width: 0;
-    justify-self: stretch;
   }
 
   .why-changan__icon {
@@ -1159,24 +1087,20 @@ body .why-us .why-us__item h3 {
 }
 
 @media (max-width: 600px) {
-  .why-us,
   .why-changan {
     --clh-feature-icon-box: 48px;
     --clh-feature-icon-glyph: 42px;
     --clh-feature-heading-gap: 20px;
   }
 
-  .why-us__layout,
   .why-changan__layout {
     width: calc(100% - 32px);
   }
 
-  .why-us__title,
   .why-changan__intro {
     margin-bottom: var(--clh-feature-heading-gap);
   }
 
-  .why-us__item h3,
   .why-changan__card h3 {
     font-size: clamp(15px, 4.2vw, 18px);
     line-height: 1.25;
@@ -1201,7 +1125,6 @@ body .why-us .why-us__item h3 {
     padding: 14px 0;
   }
 
-  .why-us__icon,
   .why-changan__icon,
   .why-changan__card:first-child .why-changan__icon {
     width: var(--clh-feature-icon-box);
@@ -1212,7 +1135,6 @@ body .why-us .why-us__item h3 {
     box-shadow: none;
   }
 
-  .why-us__icon svg,
   .why-changan__icon svg,
   .why-changan__card:first-child .why-changan__icon svg {
     width: var(--clh-feature-icon-glyph);
@@ -1238,7 +1160,6 @@ body .why-us .why-us__item h3 {
   letter-spacing: 0;
 }
 
-.why-us__item h3,
 .why-changan__card h3 {
   max-width: 100%;
   font-family: "ChanganUniType", Arial, sans-serif;
@@ -1247,6 +1168,11 @@ body .why-us .why-us__item h3 {
   line-height: var(--clh-feature-label-line);
   letter-spacing: 0;
   overflow-wrap: anywhere;
+}
+
+body .why-us .why-us__item h3,
+body .why-us .why-us__feature-body h3 {
+  font-weight: 700;
 }
 
 /* Desktop hero: keep copy out of the corner, clear of arrows and the car. */
@@ -1485,10 +1411,6 @@ body .catalog-lineup__card:nth-child(even) .catalog-lineup__body {
   background: #fff;
 }
 
-body .why-us {
-  background: #f7f7f6;
-}
-
 body .special-offers,
 body .clh .special-offers {
   background: #fff;
@@ -1523,137 +1445,36 @@ body .reviews {
   opacity: 1;
 }
 
-/* "Почему мы": 3 × 2 on desktop, then a readable adaptive grid. */
-body .why-us .why-us__grid {
-  width: 100%;
-  max-width: none;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-auto-rows: minmax(200px, auto);
-  align-items: stretch;
-  justify-items: stretch;
-  justify-content: stretch;
-  gap: 28px 24px;
-  margin-inline: 0;
-  padding: 0;
-  background: transparent;
-}
-
-body .why-us .why-us__grid::before {
-  display: none;
-}
-
-body .why-us .why-us__grid .why-us__item,
-body .why-us .why-us__grid .why-us__item:nth-child(n) {
-  width: 100%;
-  height: 100%;
-  min-width: 0;
-  min-height: 200px;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 16px;
-  padding: 24px 20px;
-  border: 0;
-  border-radius: 10px;
-  background: #fff;
-  text-align: center;
-  transform: none;
-}
-
-body .why-us .why-us__grid .why-us__icon {
-  width: var(--clh-feature-icon-box);
-  height: var(--clh-feature-icon-box);
-  padding: 0;
-  display: grid;
-  place-items: center;
+/* "Почему мы": board layout lives in why-us.css. */
+body .why-us .why-us__icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  margin: 0;
+  color: #f89435;
   background: transparent;
   box-shadow: none;
 }
 
-body .why-us .why-us__grid .why-us__icon svg {
-  width: var(--clh-feature-icon-glyph);
-  height: var(--clh-feature-icon-glyph);
+body .why-us .why-us__icon svg {
+  width: 34px;
+  height: 34px;
 }
 
-body .why-us .why-us__grid .why-us__item h3 {
+body .why-us .why-us__item h3,
+body .why-us .why-us__feature-body h3 {
   margin: 0;
-  text-align: center;
+  text-align: left;
+  font-weight: 700;
 }
 
-@media (max-width: 900px) {
-  body .why-us .why-us__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: minmax(200px, auto);
-    gap: 18px;
-  }
-
-  body .why-us .why-us__grid .why-us__item,
-  body .why-us .why-us__grid .why-us__item:nth-child(n) {
-    min-height: 200px;
-    padding: 22px 18px;
-  }
+body .why-us .why-us__item p,
+body .why-us .why-us__feature-body p {
+  display: block;
 }
 
-@media (max-width: 600px) {
-  body .why-us {
-    --clh-feature-icon-box: 48px;
-    --clh-feature-icon-glyph: 42px;
-  }
-
-  body .why-us .why-us__title {
-    margin-bottom: 20px;
-  }
-
-  body .why-us .why-us__grid {
-    grid-template-columns: minmax(0, 1fr);
-    grid-auto-rows: auto;
-    gap: 0;
-  }
-
-  body .why-us .why-us__grid .why-us__item,
-  body .why-us .why-us__grid .why-us__item:nth-child(n) {
-    min-height: 0;
-    display: grid;
-    grid-template-columns: 48px minmax(0, 1fr);
-    grid-template-rows: auto;
-    align-items: center;
-    justify-items: start;
-    justify-content: start;
-    column-gap: 16px;
-    row-gap: 0;
-    padding: 14px 0;
-    border-radius: 0;
-    background: transparent;
-    text-align: left;
-  }
-
-  body .why-us .why-us__grid .why-us__icon {
-    grid-row: auto;
-    grid-column: 1;
-    align-self: center;
-    justify-self: start;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    box-shadow: none;
-    place-items: center start;
-  }
-
-  body .why-us .why-us__grid .why-us__icon svg {
-    margin: 0;
-  }
-
-  body .why-us .why-us__grid .why-us__item h3 {
-    grid-column: 2;
-    grid-row: 1;
-    align-self: center;
-    justify-self: start;
-    margin: 0;
-    text-align: left;
-  }
+body .why-us .why-us__feature:hover {
+  transform: none;
 }
 
 /* Corporate offer icon uses the same light outline language as the other icons. */

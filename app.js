@@ -106,6 +106,11 @@
       items: document.querySelectorAll(".special-offers__card"),
     },
     {
+      root: document.querySelector(".why-us"),
+      target: document.querySelector(".why-us__board"),
+      items: document.querySelectorAll(".why-us__feature, .why-us__item"),
+    },
+    {
       root: document.querySelector(".why-changan"),
       target: document.querySelector(".why-changan__grid"),
       items: document.querySelectorAll(".why-changan__card"),

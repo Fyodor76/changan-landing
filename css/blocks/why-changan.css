@@ -303,14 +303,6 @@
     padding: 72px 0;
   }
 
-  .why-us__icon {
-    color: #173454;
-  }
-
-  .why-us__icon svg {
-    margin: auto;
-  }
-
   .why-changan {
     padding: 72px 0;
     color: #24272d;
@@ -395,77 +387,6 @@
   }
 }
 
-@media (min-width: 901px) {
-  .why-us__layout {
-    width: min(1185px, calc(100% - 48px));
-    max-width: 1185px;
-    margin-inline: auto;
-  }
-
-  .why-us__grid {
-    position: relative;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(6, auto);
-    align-items: start;
-    justify-content: space-between;
-    column-gap: 24px;
-    padding: 0;
-    margin: 0;
-  }
-
-  .why-us__item,
-  .why-us__item:nth-child(-n + 3),
-  .why-us__item:nth-child(3n + 1),
-  .why-us__item:nth-child(4),
-  .why-us__item:nth-child(6) {
-    width: 150px;
-    min-width: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-  }
-
-  .why-us__item:first-child {
-    justify-self: start;
-  }
-
-  .why-us__item:last-child {
-    justify-self: end;
-  }
-
-  .why-us__icon {
-    width: 58px;
-    height: 58px;
-    padding: 0 12px;
-    box-sizing: content-box;
-    display: grid;
-    place-items: center;
-  }
-
-  .why-us__icon svg {
-    width: var(--clh-feature-icon-glyph);
-    height: var(--clh-feature-icon-glyph);
-    display: block;
-  }
-
-  .why-us__item h3 {
-    width: 100%;
-    margin-top: 26px;
-    font-size: 18px;
-    line-height: 1.32;
-    text-align: center;
-  }
-
-  .why-us__grid::before {
-    top: 28px;
-    left: 74px;
-    right: 74px;
-  }
-}
 
 .personal-cta::before {
   background-image: url("https://29b48c0d-dfd0-4799-b94a-01381956a4f2.selcdn.net/file/temp/1893049d-ae76-442c-b480-b80a4acc8f7f.jpg?b=cars-main&h=562&m=crop&q=90&w=1024");

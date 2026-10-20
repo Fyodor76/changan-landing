@@ -1,3 +1,32 @@
+.clh__models-toggle {
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.clh__models-toggle:hover,
+.clh__models-toggle[aria-expanded="true"] {
+  color: var(--clh-orange);
+}
+
+.clh__models-toggle svg {
+  width: 12px;
+  height: 8px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease;
+}
+
+.clh__models-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
 .models-menu {
   position: absolute;
   top: 100%;
@@ -464,11 +493,14 @@
 }
 
 .section-reveal--ready.special-offers,
+.section-reveal--ready.why-us,
 .section-reveal--ready.why-changan {
   overflow-x: clip;
 }
 
 .section-reveal--ready .special-offers__card,
+.section-reveal--ready .why-us__feature,
+.section-reveal--ready .why-us__item,
 .section-reveal--ready .why-changan__card {
   opacity: 0;
   transition:
@@ -477,8 +509,13 @@
   will-change: opacity, transform;
 }
 
-.section-reveal--ready .special-offers__card {
+.section-reveal--ready .special-offers__card,
+.section-reveal--ready .why-us__feature {
   transform: translate3d(-46px, 0, 0);
+}
+
+.section-reveal--ready .why-us__item {
+  transform: translate3d(0, 28px, 0);
 }
 
 .section-reveal--ready .why-changan__card {
@@ -486,14 +523,21 @@
 }
 
 .section-reveal--ready.section-reveal--visible .special-offers__card,
+.section-reveal--ready.section-reveal--visible .why-us__feature,
+.section-reveal--ready.section-reveal--visible .why-us__item,
 .section-reveal--ready.section-reveal--visible .why-changan__card {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
 
 @media (max-width: 700px) {
-  .section-reveal--ready .special-offers__card {
+  .section-reveal--ready .special-offers__card,
+  .section-reveal--ready .why-us__feature {
     transform: translate3d(-28px, 0, 0);
+  }
+
+  .section-reveal--ready .why-us__item {
+    transform: translate3d(0, 18px, 0);
   }
 
   .section-reveal--ready .why-changan__card {
@@ -501,6 +545,8 @@
   }
 
   .section-reveal--ready.section-reveal--visible .special-offers__card,
+  .section-reveal--ready.section-reveal--visible .why-us__feature,
+  .section-reveal--ready.section-reveal--visible .why-us__item,
   .section-reveal--ready.section-reveal--visible .why-changan__card {
     transform: translate3d(0, 0, 0);
   }
@@ -508,6 +554,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .section-reveal--ready .special-offers__card,
+  .section-reveal--ready .why-us__feature,
+  .section-reveal--ready .why-us__item,
   .section-reveal--ready .why-changan__card {
     opacity: 1;
     transform: none;
