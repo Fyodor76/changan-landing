@@ -1477,14 +1477,14 @@ body .why-us .why-us__feature:hover {
   transform: none;
 }
 
-/* Corporate offer icon uses the same light outline language as the other icons. */
+/* Corporate offer icon: match the light weight of the "%" glyph next door. */
 .special-offers__card--corporate .special-offers__icon svg {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   display: block;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.6;
+  stroke-width: 1.15;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
