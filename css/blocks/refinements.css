@@ -1,0 +1,2057 @@
+/* Text-link buttons and footer links share the same restrained hover motion. */
+.catalog__actions .catalog__button:not(.catalog__button--primary) {
+  min-height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: #24272d;
+  background: transparent;
+  box-shadow: none;
+  transition: color 0.22s ease;
+}
+
+.catalog__actions .catalog__button:not(.catalog__button--primary)::after {
+  color: inherit;
+  transition:
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.catalog__actions .catalog__button:not(.catalog__button--primary):hover,
+.catalog__actions
+  .catalog__button:not(.catalog__button--primary):focus-visible {
+  color: rgb(248, 148, 53);
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.catalog__actions .catalog__button:not(.catalog__button--primary):hover::after,
+.catalog__actions
+  .catalog__button:not(.catalog__button--primary):focus-visible::after {
+  color: rgb(248, 148, 53);
+  transform: translateX(6px);
+}
+
+.special-offers__proposal-button {
+  width: min(100%, 410px);
+  min-height: 48px;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: #24272d;
+  background: transparent;
+  box-shadow: none;
+  font-weight: 500;
+  transition: color 0.22s ease;
+}
+
+.special-offers__proposal-button > span {
+  color: inherit;
+  font-size: 20px;
+  font-weight: 300;
+  transition:
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.special-offers__proposal-button:hover,
+.special-offers__proposal-button:focus-visible {
+  color: rgb(248, 148, 53);
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.special-offers__proposal-button:hover > span,
+.special-offers__proposal-button:focus-visible > span {
+  color: rgb(248, 148, 53);
+  transform: translateX(6px);
+}
+
+.site-footer__bottom a {
+  display: inline-block;
+  transition:
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.site-footer__bottom a:hover,
+.site-footer__bottom a:focus-visible {
+  color: rgb(248, 148, 53);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catalog__actions .catalog__button:not(.catalog__button--primary),
+  .catalog__actions .catalog__button:not(.catalog__button--primary)::after,
+  .special-offers__proposal-button,
+  .special-offers__proposal-button > span,
+  .site-footer__bottom a {
+    transition: none;
+  }
+}
+
+/* Keep mobile hero copy above the vehicle instead of vertically centering it. */
+@media (max-width: 768px) {
+  .clh__slide-container {
+    align-items: flex-start;
+    padding-top: clamp(76px, 13svh, 122px);
+    padding-bottom: 96px;
+  }
+
+  .clh__content,
+  .clh__content--offer {
+    width: min(100%, 390px);
+    align-items: flex-start;
+  }
+
+  .clh__content--offer {
+    gap: 10px;
+  }
+
+  .clh__title {
+    font-size: clamp(28px, 8vw, 38px);
+  }
+
+  .clh__lead {
+    font-size: clamp(18px, 5vw, 24px);
+  }
+}
+
+@media (max-width: 768px) and (max-height: 700px) {
+  .clh__slide-container {
+    padding-top: 42px;
+    padding-bottom: 80px;
+  }
+
+  .clh__content--offer {
+    gap: 7px;
+  }
+
+  .clh__primary-button {
+    min-height: 44px;
+    margin-top: 10px;
+  }
+}
+
+/* Secondary actions match the outlined "Calculate benefit" button. */
+.catalog__actions .catalog__button:not(.catalog__button--primary) {
+  min-height: 60px;
+  padding: 0 20px;
+  border: 1px solid rgba(36, 39, 45, 0.58);
+  border-radius: 48px;
+  color: #24272d;
+  background: transparent;
+}
+
+.catalog__actions .catalog__button:not(.catalog__button--primary):hover,
+.catalog__actions
+  .catalog__button:not(.catalog__button--primary):focus-visible {
+  border-color: rgb(248, 148, 53);
+  color: rgb(248, 148, 53);
+}
+
+.special-offers__proposal-button {
+  width: min(100%, 410px);
+  min-height: 56px;
+  flex: 0 1 410px;
+  padding: 0 24px;
+  border: 1px solid rgba(36, 39, 45, 0.58);
+  border-radius: 48px;
+  color: #24272d;
+  background: transparent;
+}
+
+.special-offers__proposal-button > span {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.special-offers__proposal-button:hover,
+.special-offers__proposal-button:focus-visible {
+  border-color: rgb(248, 148, 53);
+  color: rgb(248, 148, 53);
+}
+
+.special-offers__cta .special-offers__proposal-button {
+  margin-inline: auto;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .special-offers__head {
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .special-offers__proposal-button {
+    width: min(100%, 370px);
+    flex-basis: 370px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .special-offers__head {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .special-offers__proposal-button {
+    width: 100%;
+    max-width: none;
+    min-height: 54px;
+    flex: 0 0 auto;
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  .catalog__actions .catalog__button:not(.catalog__button--primary) {
+    min-height: 60px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .special-offers__proposal-button {
+    min-height: 52px;
+    padding-inline: 18px;
+    font-size: 13px;
+  }
+}
+
+/* The dark offer uses the exact same arrow treatment as the white cards. */
+@media (max-width: 1024px) {
+  .special-offers__card--trade .special-offers__arrow--dark {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #d7d7d7;
+    border-radius: 50%;
+    color: #173454;
+    background: #fff;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .special-offers__card--trade .special-offers__arrow--dark,
+  .special-offers__card--credit .special-offers__arrow,
+  .special-offers__card--corporate .special-offers__arrow {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #d7d7d7;
+    color: #173454;
+    background: #fff;
+  }
+}
+
+/* Keep the dark-card arrow identical to desktop on tablets and phones. */
+@media (max-width: 1024px) {
+  .special-offers__card--trade .special-offers__content {
+    position: relative;
+  }
+
+  .special-offers__card--trade .special-offers__card-title,
+  .special-offers__card--trade .special-offers__description {
+    max-width: calc(100% - 64px);
+  }
+
+  .special-offers__card--trade .special-offers__arrow--dark {
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: -17px;
+    left: auto;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+    color: #fff;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .special-offers__card--trade:hover .special-offers__arrow--dark {
+    transform: translateX(3px);
+  }
+}
+
+/* Mobile hero: keep copy in the sky area and vehicles unobstructed. */
+.clh__award-cta {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .clh__slide-container {
+    align-items: flex-start;
+    padding-top: clamp(112px, 16svh, 150px);
+    padding-bottom: 88px;
+  }
+
+  .clh__content,
+  .clh__content--offer {
+    width: min(100%, 340px);
+    max-width: 100%;
+    align-items: flex-start;
+    margin-inline: auto;
+  }
+
+  .clh__title {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(27px, 7.5vw, 34px);
+    line-height: 1.08;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .clh__lead {
+    max-width: 100%;
+    margin-top: 12px;
+    font-size: clamp(17px, 4.8vw, 21px);
+    line-height: 1.18;
+    overflow-wrap: anywhere;
+  }
+
+  .clh__eyebrow {
+    max-width: 100%;
+    font-size: clamp(14px, 4vw, 17px);
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .clh__content--offer {
+    gap: 8px;
+  }
+
+  .clh__content--offer .clh__lead,
+  .clh__content--offer .clh__primary-button {
+    margin-top: 4px;
+  }
+
+  .clh__benefits {
+    gap: 5px;
+    margin-top: 14px;
+    font-size: clamp(14px, 4vw, 17px);
+    line-height: 1.2;
+  }
+
+  .clh__primary-button {
+    width: 100%;
+    max-width: 100%;
+    min-height: 52px;
+    margin-top: 16px;
+    padding: 10px 20px;
+    font-size: clamp(14px, 4vw, 17px);
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .clh__content > .clh__primary-button {
+    position: absolute;
+    left: 50%;
+    bottom: 68px;
+    margin: 0;
+    text-align: center;
+    transform: translateX(-50%);
+  }
+
+  .clh__slide--award {
+    background: #111923;
+  }
+
+  .clh__slide--award .clh__picture img {
+    object-fit: contain;
+    object-position: center top;
+  }
+
+  .clh__slide-container.clh__slide-container--award {
+    align-items: flex-end;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 68px;
+    pointer-events: none;
+  }
+
+  .clh__award-cta {
+    display: inline-flex;
+    margin: 0;
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 768px) and (max-height: 700px) {
+  .clh__slide-container {
+    padding-top: clamp(72px, 13svh, 92px);
+    padding-bottom: 56px;
+  }
+
+  .clh__title {
+    font-size: clamp(24px, 6.8vw, 30px);
+  }
+
+  .clh__lead {
+    font-size: clamp(15px, 4.4vw, 19px);
+  }
+
+  .clh__benefits {
+    gap: 3px;
+    margin-top: 10px;
+    font-size: clamp(13px, 3.8vw, 15px);
+  }
+
+  .clh__primary-button {
+    min-height: 46px;
+    margin-top: 10px;
+  }
+
+  .clh__content > .clh__primary-button {
+    bottom: 52px;
+    margin: 0;
+  }
+
+  .clh__slide-container.clh__slide-container--award {
+    padding-bottom: 52px;
+  }
+}
+
+/* Fluid mobile typography: headings and catalog labels must fit their cells. */
+@media (max-width: 768px) {
+  .catalog__heading,
+  .benefits__heading,
+  .special-offers__title,
+  .why-us__title,
+  .why-changan__intro h2,
+  .reviews h2,
+  .personal-cta h2,
+  .contacts h2 {
+    max-width: 100%;
+    font-size: clamp(27px, 7vw, 32px);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  .catalog__categories,
+  .catalog__tabs {
+    gap: 6px;
+  }
+
+  .catalog__categories button,
+  .catalog__tab {
+    flex-basis: calc((100% - 12px) / 3);
+    padding-inline: 2px;
+    line-height: 1.15;
+  }
+
+  .catalog__categories button {
+    font-size: clamp(12px, 3.1vw, 14px);
+  }
+
+  .catalog__tab {
+    font-size: clamp(13px, 3.4vw, 15px);
+  }
+}
+
+@media (max-width: 380px) {
+  .catalog__categories button {
+    font-size: 11px;
+  }
+
+  .catalog__tab {
+    font-size: 12px;
+  }
+}
+
+/* Final responsive hero alignment and consistent icon colour. */
+@media (max-width: 1024px) {
+  .clh__content,
+  .clh__content--offer {
+    align-items: center;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .clh__title,
+  .clh__lead,
+  .clh__eyebrow {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .clh__benefits {
+    width: max-content;
+    max-width: 100%;
+    margin-inline: auto;
+    text-align: left;
+  }
+
+  .clh__benefits li {
+    justify-content: flex-start;
+  }
+
+  .clh__content > .clh__primary-button,
+  .clh__award-cta {
+    width: 100%;
+    max-width: none;
+    border-radius: 48px;
+  }
+
+  .clh__slide--award .clh__picture img {
+    object-fit: fill;
+    object-position: center;
+  }
+
+  .clh__slide-container.clh__slide-container--award {
+    align-items: flex-end;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 68px;
+    pointer-events: none;
+  }
+
+  .clh__award-cta {
+    display: inline-flex;
+    margin: 0;
+    pointer-events: auto;
+  }
+
+  .why-us__icon,
+  .why-us__icon svg {
+    color: #173454 !important;
+  }
+
+  .why-us__icon svg,
+  .why-us__icon svg * {
+    stroke: #173454 !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .clh__content > .clh__primary-button {
+    position: absolute;
+    right: 0;
+    bottom: 52px;
+    left: 0;
+    margin: 0;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .clh__content,
+  .clh__content--offer {
+    width: 100%;
+  }
+
+  .clh__content > .clh__primary-button,
+  .clh__award-cta {
+    width: 100%;
+  }
+
+  .clh__content > .clh__primary-button {
+    right: 0;
+    left: 0;
+    transform: none;
+  }
+}
+
+/* One interaction pattern for every primary and outlined action. */
+.offers__button,
+.clh__primary-button,
+.catalog__button--primary,
+.personal-cta__button--primary,
+.contacts__card .contacts__route,
+.offer-modal__submit {
+  transition:
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
+}
+
+.offers__button:hover,
+.offers__button:focus-visible,
+.clh__primary-button:hover,
+.clh__primary-button:focus-visible,
+.catalog__button--primary:hover,
+.catalog__button--primary:focus-visible,
+.personal-cta__button--primary:hover,
+.personal-cta__button--primary:focus-visible,
+.contacts__card .contacts__route:hover,
+.contacts__card .contacts__route:focus-visible,
+.offer-modal__submit:hover,
+.offer-modal__submit:focus-visible {
+  box-shadow: 0 10px 24px rgba(248, 148, 53, 0.22);
+  transform: translateY(-2px);
+}
+
+.catalog__actions .catalog__button:not(.catalog__button--primary),
+.personal-cta__button:not(.personal-cta__button--primary),
+.contacts__card .contacts__call,
+.reviews__arrow,
+.special-offers__arrow {
+  transition:
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
+}
+
+.special-offers__arrow > span {
+  display: inline-block;
+  transition: transform 0.22s ease;
+}
+
+.catalog__actions .catalog__button:not(.catalog__button--primary):hover,
+.catalog__actions .catalog__button:not(.catalog__button--primary):focus-visible,
+.personal-cta__button:not(.personal-cta__button--primary):hover,
+.personal-cta__button:not(.personal-cta__button--primary):focus-visible,
+.contacts__card .contacts__call:hover,
+.contacts__card .contacts__call:focus-visible,
+.reviews__arrow:not(:disabled):hover,
+.reviews__arrow:not(:disabled):focus-visible,
+.special-offers__arrow:hover,
+.special-offers__arrow:focus-visible {
+  border-color: rgb(248, 148, 53);
+  color: rgb(248, 148, 53);
+  background: transparent;
+  transform: translateY(-2px);
+}
+
+.special-offers__arrow:hover > span,
+.special-offers__arrow:focus-visible > span {
+  transform: translateX(3px);
+}
+
+/* Phones and tablets have no hover feedback; desktop behaviour starts at 1025px. */
+@media (max-width: 1024px) {
+  .offers__button,
+  .clh__primary-button,
+  .catalog__button,
+  .personal-cta__button,
+  .contacts__card a,
+  .offer-modal__submit,
+  .reviews__arrow,
+  .special-offers__arrow,
+  .special-offers__arrow > span,
+  .special-offers__proposal-button,
+  .special-offers__proposal-button > span,
+  .special-offers__all span,
+  .offers__button span,
+  .site-footer__bottom a,
+  .clh__models-toggle,
+  .models-menu__image img {
+    transition: none !important;
+  }
+
+  .benefit-card:hover img,
+  .models-menu__image:hover img,
+  .why-us__item:hover,
+  .why-changan__card:hover,
+  .review-card:hover,
+  .offer-option:hover,
+  .special-offers__card:hover,
+  .offers__button:hover,
+  .clh__primary-button:hover,
+  .catalog__button:hover,
+  .personal-cta__button:hover,
+  .contacts__card a:hover,
+  .offer-modal__submit:hover,
+  .reviews__arrow:hover,
+  .special-offers__arrow:hover,
+  .special-offers__arrow:hover > span,
+  .special-offers__proposal-button:hover,
+  .special-offers__proposal-button:hover > span,
+  .special-offers__all:hover span,
+  .offers__button:hover span,
+  .site-footer__bottom a:hover {
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .offers__button:hover,
+  .clh__primary-button:hover,
+  .catalog__button--primary:hover,
+  .personal-cta__button--primary:hover,
+  .contacts__card .contacts__route:hover,
+  .offer-modal__submit:hover {
+    border-color: rgb(248, 148, 53) !important;
+    color: #fff !important;
+    background: rgb(248, 148, 53) !important;
+  }
+
+  .catalog__actions .catalog__button:not(.catalog__button--primary):hover {
+    border-color: rgba(36, 39, 45, 0.58) !important;
+    color: #24272d !important;
+    background: transparent !important;
+  }
+
+  .catalog__actions
+    .catalog__button:not(.catalog__button--primary):hover::after {
+    color: inherit !important;
+    transform: none !important;
+  }
+
+  .personal-cta__button:not(.personal-cta__button--primary):hover,
+  .contacts__card .contacts__call:hover {
+    border-color: rgba(255, 255, 255, 0.62) !important;
+    color: #fff !important;
+    background: transparent !important;
+  }
+
+  .reviews__arrow:not(:disabled):hover {
+    border-color: rgba(16, 39, 70, 0.42) !important;
+    color: #24272d !important;
+    background: transparent !important;
+  }
+
+  .special-offers__card--credit:hover .special-offers__arrow,
+  .special-offers__card--corporate:hover .special-offers__arrow,
+  .special-offers__card--credit .special-offers__arrow:hover,
+  .special-offers__card--corporate .special-offers__arrow:hover {
+    border-color: #d7d7d7 !important;
+    color: #173454 !important;
+    background: #fff !important;
+    transform: none !important;
+  }
+
+  .special-offers__card--trade:hover .special-offers__arrow--dark,
+  .special-offers__card--trade .special-offers__arrow--dark:hover {
+    border-color: rgba(255, 255, 255, 0.45) !important;
+    color: #fff !important;
+    background: transparent !important;
+    transform: none !important;
+  }
+
+  .special-offers__proposal-button:hover {
+    border-color: rgba(36, 39, 45, 0.58) !important;
+    color: #24272d !important;
+    background: transparent !important;
+  }
+
+  .special-offers__proposal-button:hover > span,
+  .site-footer__bottom a:hover {
+    color: inherit !important;
+  }
+
+  .offer-option:hover {
+    background: rgba(255, 255, 255, 0.91) !important;
+  }
+
+  .models-menu__category:hover:not(.models-menu__category--active) {
+    color: rgba(255, 255, 255, 0.84) !important;
+    background: transparent !important;
+  }
+
+  .clh__models-toggle:hover:not([aria-expanded="true"]) {
+    color: inherit !important;
+  }
+
+  .models-menu__category--all:hover {
+    color: rgba(255, 255, 255, 0.84) !important;
+    background: transparent !important;
+  }
+
+  .models-menu__all-row:hover {
+    color: rgba(255, 255, 255, 0.82) !important;
+    background: transparent !important;
+  }
+}
+
+/* Primary orange actions match the restrained hero CTA without a glow. */
+.offers__button,
+.clh__primary-button,
+.catalog__button--primary,
+.personal-cta__button--primary,
+.contacts__card .contacts__route,
+.offer-modal__submit,
+.offers__button:hover,
+.offers__button:focus-visible,
+.clh__primary-button:hover,
+.clh__primary-button:focus-visible,
+.catalog__button--primary:hover,
+.catalog__button--primary:focus-visible,
+.personal-cta__button--primary:hover,
+.personal-cta__button--primary:focus-visible,
+.contacts__card .contacts__route:hover,
+.contacts__card .contacts__route:focus-visible,
+.offer-modal__submit:hover,
+.offer-modal__submit:focus-visible {
+  box-shadow: none !important;
+}
+
+.catalog__button--primary,
+.catalog__button--primary:hover,
+.catalog__button--primary:focus-visible {
+  border-color: rgb(248, 148, 53) !important;
+  background: rgb(248, 148, 53) !important;
+}
+
+/* Tablet and phone sliders: top-aligned hero copy and touch-first controls. */
+@media (min-width: 1025px) {
+  .clh__slide-container:not(.clh__slide-container--award) {
+    align-items: flex-start;
+    padding-top: clamp(82px, 10svh, 118px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .clh__slide-container {
+    align-items: flex-start;
+    padding-top: clamp(56px, 8svh, 84px);
+  }
+
+  .clh__arrow,
+  .catalog__gallery-arrow,
+  .catalog-lineup__arrow {
+    display: none !important;
+  }
+
+  .clh__hero,
+  .catalog__photo-wrap {
+    touch-action: pan-y;
+  }
+
+  .clh__picture img,
+  .catalog__photo {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+}
+
+/* Under 900px categories and models form two equal, independently scrollable rows. */
+@media (max-width: 900px) {
+  .catalog .block_block {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .catalog__categories,
+  .catalog__tabs {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-right: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .catalog__categories::-webkit-scrollbar,
+  .catalog__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .catalog__categories button,
+  .catalog__tab {
+    flex: 0 0 calc((100% - 16px) / 3);
+    min-width: 0;
+    padding-inline: 4px;
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+    scroll-snap-align: start;
+  }
+
+  .catalog__gallery {
+    width: 100%;
+    display: block;
+    padding-right: 0;
+  }
+
+  .catalog__photo-wrap {
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .catalog__photo {
+    object-position: 50% 50%;
+  }
+}
+
+/* Special offers already sit inside .clh__container: avoid a second gutter. */
+.special-offers__head,
+.special-offers__grid {
+  width: 100%;
+  max-width: none;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* Vertically centre white-card content and scale type before it can overflow. */
+.special-offers__card--credit,
+.special-offers__card--corporate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.special-offers__card--credit .special-offers__horizontal,
+.special-offers__card--corporate .special-offers__horizontal {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 1.7vw, 24px);
+  padding: 0;
+}
+
+.special-offers__card--credit .special-offers__horizontal > div,
+.special-offers__card--corporate .special-offers__horizontal > div {
+  min-width: 0;
+  display: flex;
+  flex: 0 1 520px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.special-offers__card--credit .special-offers__card-title,
+.special-offers__card--corporate .special-offers__card-title {
+  max-width: 100%;
+  margin-bottom: clamp(5px, 0.6vw, 8px);
+  font-size: clamp(18px, 1.8vw, 27px);
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.special-offers__card--credit .special-offers__description,
+.special-offers__card--corporate .special-offers__description {
+  max-width: 100%;
+  font-size: clamp(13px, 1.2vw, 17px);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+@media (max-width: 768px) {
+  .special-offers__card--credit .special-offers__horizontal,
+  .special-offers__card--corporate .special-offers__horizontal {
+    height: auto;
+    justify-content: flex-start;
+  }
+}
+
+/* Shared vertical rhythm for every main page section. */
+.clh {
+  --clh-section-space: 72px;
+}
+
+.catalog,
+.benefits,
+.offers,
+.special-offers,
+.why-us,
+.why-changan,
+.reviews {
+  padding-top: var(--clh-section-space);
+  padding-bottom: var(--clh-section-space);
+}
+
+.personal-cta__inner {
+  padding-top: var(--clh-section-space);
+  padding-bottom: var(--clh-section-space);
+}
+
+.contacts {
+  padding-top: 0;
+}
+
+@media (max-width: 1024px) {
+  .clh {
+    --clh-section-space: 56px;
+  }
+}
+
+@media (max-width: 768px) {
+  .clh {
+    --clh-section-space: 44px;
+  }
+}
+
+/* Trade-in card follows the same centred, fluid content rules as white cards. */
+.special-offers__card--trade {
+  display: flex;
+  container-type: inline-size;
+}
+
+.special-offers__card--trade .special-offers__content {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.special-offers__card--trade .special-offers__card-title {
+  max-width: 100%;
+  font-size: clamp(18px, 7cqi, 27px);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.special-offers__card--trade .special-offers__description {
+  max-width: 100%;
+  font-size: clamp(13px, 4.2cqi, 16px);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+@supports not (font-size: 1cqi) {
+  .special-offers__card--trade .special-offers__card-title {
+    font-size: clamp(18px, 2.1vw, 27px);
+  }
+
+  .special-offers__card--trade .special-offers__description {
+    font-size: clamp(13px, 1.25vw, 16px);
+  }
+}
+
+/* Keep the two advantage sections visually consistent. */
+.why-us,
+.why-changan {
+  --clh-feature-icon-box: 58px;
+  --clh-feature-icon-glyph: 46px;
+  --clh-feature-heading-gap: 48px;
+}
+
+.why-us__icon,
+.why-changan__icon {
+  width: var(--clh-feature-icon-box);
+  height: var(--clh-feature-icon-box);
+  min-width: var(--clh-feature-icon-box);
+  padding: 0;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  flex: 0 0 var(--clh-feature-icon-box);
+}
+
+.why-us__icon {
+  box-shadow: 0 0 0 12px #fff;
+}
+
+.why-us__icon svg,
+.why-changan__icon svg {
+  width: var(--clh-feature-icon-glyph);
+  height: var(--clh-feature-icon-glyph);
+}
+
+.why-changan__card,
+.why-changan__card:hover {
+  grid-template-columns: var(--clh-feature-icon-box) minmax(0, 1fr);
+}
+
+.why-us__title {
+  margin-bottom: var(--clh-feature-heading-gap);
+}
+
+.why-changan__intro {
+  margin-bottom: var(--clh-feature-heading-gap);
+}
+
+.why-changan__grid {
+  margin-top: 0;
+}
+
+/* Six fixed-width items overflow the container around tablet landscape sizes. */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .why-us__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: stretch;
+    column-gap: 24px;
+    row-gap: 44px;
+  }
+
+  .why-us__grid::before {
+    display: none;
+  }
+
+  .why-us__grid .why-us__item {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 900px) {
+  .why-us,
+  .why-changan {
+    --clh-feature-icon-box: 50px;
+    --clh-feature-icon-glyph: 42px;
+  }
+
+  .why-us__layout,
+  .why-changan__layout {
+    width: calc(100% - 48px);
+    max-width: 1185px;
+    margin-inline: auto;
+  }
+
+  .why-us__grid {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: stretch;
+  }
+
+  .why-us__grid .why-us__item {
+    width: 100%;
+    min-width: 0;
+    justify-self: stretch;
+  }
+
+  .why-changan__icon {
+    align-self: center;
+    justify-self: center;
+  }
+
+  .why-changan__icon svg {
+    display: block;
+    margin: auto;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 600px) {
+  .why-us,
+  .why-changan {
+    --clh-feature-icon-box: 48px;
+    --clh-feature-icon-glyph: 42px;
+    --clh-feature-heading-gap: 20px;
+  }
+
+  .why-us__layout,
+  .why-changan__layout {
+    width: calc(100% - 32px);
+  }
+
+  .why-us__title,
+  .why-changan__intro {
+    margin-bottom: var(--clh-feature-heading-gap);
+  }
+
+  .why-us__item h3,
+  .why-changan__card h3 {
+    font-size: clamp(15px, 4.2vw, 18px);
+    line-height: 1.25;
+    text-align: left;
+  }
+
+  .why-changan__grid {
+    margin-top: 0;
+  }
+
+  .why-changan__card,
+  .why-changan__card:hover,
+  .why-changan__card:nth-child(1),
+  .why-changan__card:nth-child(2),
+  .why-changan__card:nth-child(3),
+  .why-changan__card:nth-child(4),
+  .why-changan__card:nth-child(5),
+  .why-changan__card:nth-child(6) {
+    grid-template-columns: var(--clh-feature-icon-box) minmax(0, 1fr);
+    justify-items: start;
+    column-gap: 16px;
+    padding: 14px 0;
+  }
+
+  .why-us__icon,
+  .why-changan__icon,
+  .why-changan__card:first-child .why-changan__icon {
+    width: var(--clh-feature-icon-box);
+    height: var(--clh-feature-icon-box);
+    min-width: var(--clh-feature-icon-box);
+    justify-self: start;
+    place-items: center start;
+    box-shadow: none;
+  }
+
+  .why-us__icon svg,
+  .why-changan__icon svg,
+  .why-changan__card:first-child .why-changan__icon svg {
+    width: var(--clh-feature-icon-glyph);
+    height: var(--clh-feature-icon-glyph);
+    margin: 0;
+  }
+}
+
+/* One responsive type scale for both advantage sections. */
+.why-us,
+.why-changan {
+  --clh-feature-title-size: clamp(34px, 4.2vw, 48px);
+  --clh-feature-label-size: clamp(14px, 1.8vw, 18px);
+  --clh-feature-label-line: 1.32;
+}
+
+.why-us__title,
+.why-changan__intro h2 {
+  font-family: "ChanganUniType", Arial, sans-serif;
+  font-size: var(--clh-feature-title-size);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.why-us__item h3,
+.why-changan__card h3 {
+  max-width: 100%;
+  font-family: "ChanganUniType", Arial, sans-serif;
+  font-size: var(--clh-feature-label-size);
+  font-weight: 400;
+  line-height: var(--clh-feature-label-line);
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Desktop hero: keep copy out of the corner, clear of arrows and the car. */
+@media (min-width: 1025px) {
+  .clh__slide-container:not(.clh__slide-container--award) {
+    width: min(1185px, calc(100% - 48px));
+    margin-inline: auto;
+    align-items: flex-start;
+    padding-top: clamp(148px, 17svh, 200px);
+    padding-bottom: 56px;
+    padding-inline: 156px 24px;
+    box-sizing: border-box;
+  }
+
+  .clh__content {
+    width: min(480px, 100%);
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .clh__title {
+    font-size: clamp(30px, 2.7vw, 36px);
+  }
+
+  .clh__lead {
+    margin-top: 14px;
+    font-size: clamp(18px, 1.7vw, 22px);
+  }
+
+  .clh__benefits {
+    gap: 8px 16px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+
+  .clh__primary-button {
+    margin-top: 18px;
+  }
+}
+
+@media (min-width: 1701px) {
+  .clh__slide-container:not(.clh__slide-container--award) {
+    padding-top: clamp(180px, 19svh, 240px);
+    padding-inline: 176px 24px;
+  }
+}
+
+/* Legal documents can wrap without overflowing the footer. */
+.site-footer__bottom nav {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  row-gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .site-footer__bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-footer__bottom nav {
+    justify-content: flex-start;
+  }
+}
+
+/* Unified advantage-icon colour on every viewport. */
+
+
+/* Every action uses the same arrow geometry instead of a font glyph. */
+.clh__primary-button > svg,
+.personal-cta__button--primary > span,
+.special-offers__proposal-button > span,
+.special-offers__arrow > span,
+.offer-modal__submit > span {
+  display: none;
+}
+
+.clh__primary-button::after,
+.catalog__button::after,
+.personal-cta__button--primary::after,
+.special-offers__proposal-button::after,
+.special-offers__arrow::after,
+.offer-modal__submit::after {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: block;
+  background-color: currentColor;
+  content: "";
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h14M14 7l5 5-5 5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h14M14 7l5 5-5 5' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.catalog__button::after,
+.special-offers__proposal-button::after,
+.offer-modal__submit::after {
+  margin-left: auto;
+}
+
+/* Model-menu categories filter in place instead of closing the curtain. */
+.models-menu__empty {
+  min-height: 142px;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 16px;
+  text-align: center;
+}
+
+.models-menu__empty[hidden] {
+  display: none;
+}
+
+/* Preserve the current catalog tabs and add a plain overflow arrow. */
+.catalog__models-nav {
+  min-width: 0;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.catalog__models-nav .catalog__tabs {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.catalog__model-next {
+  width: 34px;
+  height: 48px;
+  flex: 0 0 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: #24272d;
+  background: transparent;
+  cursor: pointer;
+}
+
+.catalog__model-next[hidden] {
+  display: none;
+}
+
+.catalog__model-next svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.catalog__empty {
+  min-height: 320px;
+  margin: 18px 0 0;
+  border-top: 1px solid #dfe0e1;
+  color: #8a8d91;
+  font-size: 18px;
+  text-align: center;
+}
+
+.catalog__empty:not([hidden]) {
+  display: grid;
+  place-items: center;
+}
+
+/* Photo pagination always sits directly below the colour controls. */
+.catalog__gallery-footer {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  padding-top: 14px;
+}
+
+.catalog__colors {
+  order: 1;
+}
+
+.catalog__color-name {
+  order: 2;
+  margin: 6px 0 0;
+}
+
+.catalog__photo-dots {
+  position: static;
+  order: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.catalog__photo-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .catalog__models-nav {
+    width: 100%;
+  }
+
+  .catalog__empty {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .models-menu__empty {
+    min-height: 156px;
+  }
+
+  .catalog__model-next {
+    width: 28px;
+    flex-basis: 28px;
+  }
+
+  .catalog__model-next svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+body .catalog-lineup__card:nth-child(even),
+body .catalog-lineup__card:nth-child(even) .catalog-lineup__body {
+  background: #fff;
+}
+
+body .why-us {
+  background: #fff;
+}
+
+body .special-offers,
+body .clh .special-offers {
+  background: #f7f7f6;
+}
+
+body .why-changan {
+  background: #fff;
+}
+
+body .reviews {
+  background: #fff;
+}
+
+/* Keep the large model gallery cheap to scroll: no motion or off-screen paint. */
+.catalog-lineup__card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
+}
+
+.catalog-lineup,
+.catalog-lineup * {
+  animation: none !important;
+  transition: none !important;
+}
+
+.catalog-lineup__photo--changing {
+  opacity: 1;
+}
+
+/* "Почему мы": 3 × 2 on desktop, then a readable adaptive grid. */
+body .why-us .why-us__grid {
+  width: 100%;
+  max-width: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: minmax(190px, auto);
+  align-items: stretch;
+  justify-items: stretch;
+  justify-content: stretch;
+  gap: 28px 24px;
+  margin-inline: 0;
+  padding: 0;
+  background: transparent;
+}
+
+body .why-us .why-us__grid::before {
+  display: none;
+}
+
+body .why-us .why-us__grid .why-us__item,
+body .why-us .why-us__grid .why-us__item:nth-child(n) {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 190px;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  transform: none;
+}
+
+body .why-us .why-us__grid .why-us__icon {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+}
+
+body .why-us .why-us__grid .why-us__icon svg {
+  width: 42px;
+  height: 42px;
+}
+
+body .why-us .why-us__grid .why-us__item h3 {
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  body .why-us .why-us__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(170px, auto);
+    gap: 18px;
+  }
+
+  body .why-us .why-us__grid .why-us__item,
+  body .why-us .why-us__grid .why-us__item:nth-child(n) {
+    min-height: 170px;
+    padding: 22px 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  body .why-us .why-us__title {
+    margin-bottom: 20px;
+  }
+
+  body .why-us .why-us__grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: auto;
+    gap: 0;
+  }
+
+  body .why-us .why-us__grid .why-us__item,
+  body .why-us .why-us__grid .why-us__item:nth-child(n) {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    grid-template-rows: auto;
+    align-items: center;
+    justify-items: start;
+    justify-content: start;
+    column-gap: 16px;
+    row-gap: 0;
+    padding: 14px 0;
+    border-radius: 0;
+    text-align: left;
+  }
+
+  body .why-us .why-us__grid .why-us__icon {
+    grid-row: auto;
+    grid-column: 1;
+    align-self: center;
+    justify-self: start;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    box-shadow: none;
+    place-items: center start;
+  }
+
+  body .why-us .why-us__grid .why-us__icon svg {
+    margin: 0;
+  }
+
+  body .why-us .why-us__grid .why-us__item h3 {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: start;
+    margin: 0;
+    text-align: left;
+  }
+}
+
+/* Corporate offer icon uses the same light outline language as the other icons. */
+.special-offers__card--corporate .special-offers__icon svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Each special-offer row is 40px taller than the original layout. */
+@media (min-width: 901px) {
+  .special-offers__grid {
+    grid-template-rows: repeat(2, 216px);
+  }
+
+  .special-offers__card--trade {
+    min-height: 440px;
+  }
+
+  .special-offers__card--credit,
+  .special-offers__card--corporate {
+    min-height: 216px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .special-offers__grid {
+    grid-template-rows: repeat(2, 200px);
+  }
+
+  .special-offers__card--trade {
+    min-height: 408px;
+  }
+
+  .special-offers__card--credit,
+  .special-offers__card--corporate {
+    min-height: 200px;
+  }
+}
+
+/* More breathing room above the footer content. */
+.site-footer {
+  padding-top: 24px;
+}
+
+/* Desktop hero: even rhythm between copy blocks and a clearer car silhouette. */
+@media (min-width: 1025px) {
+  .clh__slide-container:not(.clh__slide-container--award) .clh__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    transform: translate(
+      clamp(-120px, -6vw, -60px),
+      clamp(-96px, -5vw, -56px)
+    );
+  }
+
+  .clh__slide-container:not(.clh__slide-container--award)
+    .clh__content
+    > .clh__title,
+  .clh__slide-container:not(.clh__slide-container--award)
+    .clh__content
+    > .clh__lead,
+  .clh__slide-container:not(.clh__slide-container--award)
+    .clh__content
+    > .clh__eyebrow,
+  .clh__slide-container:not(.clh__slide-container--award)
+    .clh__content
+    > .clh__benefits,
+  .clh__slide-container:not(.clh__slide-container--award)
+    .clh__content
+    > .clh__primary-button {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* Personal offer: one full-bleed image with a seamless readability gradient. */
+@media (min-width: 901px) {
+  .personal-cta::before {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    opacity: 0.64 !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.98) 0%,
+      rgba(35, 44, 53, 0.95) 24%,
+      rgba(35, 44, 53, 0.8) 40%,
+      rgba(35, 44, 53, 0.5) 56%,
+      rgba(35, 44, 53, 0.2) 74%,
+      rgba(35, 44, 53, 0.06) 100%
+    ) !important;
+  }
+}
+
+/* From tablet landscape upward, keep the vehicle strictly to the right of copy. */
+@media (min-width: 769px) {
+  .personal-cta__inner {
+    grid-template-columns: minmax(0, 48%) minmax(0, 52%) !important;
+  }
+
+  .personal-cta__copy {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .personal-cta::before {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-position:
+      calc(100% + clamp(220px, calc(420px - 10vw), 300px)) center !important;
+    background-size: auto 100% !important;
+    background-repeat: no-repeat !important;
+    opacity: 0.7 !important;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 34%,
+      rgba(0, 0, 0, 0.2) 39%,
+      rgba(0, 0, 0, 0.78) 46%,
+      #000 53%,
+      #000 100%
+    ) !important;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 34%,
+      rgba(0, 0, 0, 0.2) 39%,
+      rgba(0, 0, 0, 0.78) 46%,
+      #000 53%,
+      #000 100%
+    ) !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.99) 0%,
+      rgba(35, 44, 53, 0.96) 30%,
+      rgba(35, 44, 53, 0.7) 38%,
+      rgba(35, 44, 53, 0.28) 47%,
+      rgba(35, 44, 53, 0.05) 58%,
+      transparent 70%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .personal-cta__inner {
+    min-height: 520px;
+  }
+
+  .personal-cta__copy {
+    max-width: 430px;
+    padding: 52px 0;
+  }
+
+  .personal-cta::before {
+    background-size: auto 100% !important;
+    background-position: calc(100% + 240px) center !important;
+    opacity: 0.8 !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.99) 0%,
+      rgba(35, 44, 53, 0.94) 34%,
+      rgba(35, 44, 53, 0.5) 45%,
+      rgba(35, 44, 53, 0.12) 57%,
+      transparent 68%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Compact desktop: preserve a clear gap between copy and the complete bonnet. */
+@media (min-width: 901px) and (max-width: 1119px) {
+  .personal-cta__inner {
+    grid-template-columns: minmax(0, 44%) minmax(0, 56%) !important;
+  }
+
+  .personal-cta__copy {
+    max-width: 430px;
+    padding-right: 20px;
+  }
+
+  .personal-cta::before {
+    background-size: auto 100% !important;
+    background-position: calc(100% + 320px) center !important;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(0, 0, 0, 0.3) 41%,
+      rgba(0, 0, 0, 0.9) 47%,
+      #000 52%,
+      #000 100%
+    ) !important;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(0, 0, 0, 0.3) 41%,
+      rgba(0, 0, 0, 0.9) 47%,
+      #000 52%,
+      #000 100%
+    ) !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.99) 0%,
+      rgba(35, 44, 53, 0.96) 32%,
+      rgba(35, 44, 53, 0.62) 39%,
+      rgba(35, 44, 53, 0.2) 46%,
+      rgba(35, 44, 53, 0.04) 53%,
+      transparent 62%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Large phones / portrait tablets: reveal the vehicle without changing <=600px. */
+@media (min-width: 601px) and (max-width: 768px) {
+  .personal-cta::before {
+    background-size: auto 100% !important;
+    background-position: calc(100% + 220px) center !important;
+    background-repeat: no-repeat !important;
+    opacity: 0.82 !important;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.18) 30%,
+      rgba(0, 0, 0, 0.82) 44%,
+      #000 53%,
+      #000 100%
+    ) !important;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.18) 30%,
+      rgba(0, 0, 0, 0.82) 44%,
+      #000 53%,
+      #000 100%
+    ) !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.99) 0%,
+      rgba(35, 44, 53, 0.92) 37%,
+      rgba(35, 44, 53, 0.46) 49%,
+      rgba(35, 44, 53, 0.1) 61%,
+      transparent 72%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Wide desktop composition from the approved reference. */
+@media (min-width: 1400px) {
+  .personal-cta::before {
+    background-size: auto 100% !important;
+    background-position: right center !important;
+    opacity: 0.72 !important;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 25%,
+      rgba(0, 0, 0, 0.2) 32%,
+      rgba(0, 0, 0, 0.75) 40%,
+      #000 48%,
+      #000 100%
+    ) !important;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 25%,
+      rgba(0, 0, 0, 0.2) 32%,
+      rgba(0, 0, 0, 0.75) 40%,
+      #000 48%,
+      #000 100%
+    ) !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.99) 0%,
+      rgba(35, 44, 53, 0.96) 28%,
+      rgba(35, 44, 53, 0.7) 37%,
+      rgba(35, 44, 53, 0.28) 46%,
+      rgba(35, 44, 53, 0.05) 56%,
+      transparent 66%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Smaller tablets need a wider dark field beneath all copy and actions. */
+@media (min-width: 769px) and (max-width: 899px) {
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.995) 0%,
+      rgba(35, 44, 53, 0.97) 45%,
+      rgba(35, 44, 53, 0.78) 58%,
+      rgba(35, 44, 53, 0.35) 70%,
+      rgba(35, 44, 53, 0.08) 84%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Phone / portrait-tablet copy remains readable across the full text width. */
+@media (max-width: 768px) {
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.995) 0%,
+      rgba(35, 44, 53, 0.98) 50%,
+      rgba(35, 44, 53, 0.85) 64%,
+      rgba(35, 44, 53, 0.5) 76%,
+      rgba(35, 44, 53, 0.18) 88%,
+      rgba(35, 44, 53, 0.05) 100%
+    ) !important;
+  }
+}
+
+/* Blend the solid copy background into the photo without a vertical seam. */
+@media (min-width: 901px) {
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 0.995) 0%,
+      rgba(35, 44, 53, 0.98) 32%,
+      rgba(35, 44, 53, 0.9) 42%,
+      rgba(35, 44, 53, 0.68) 50%,
+      rgba(35, 44, 53, 0.4) 58%,
+      rgba(35, 44, 53, 0.18) 66%,
+      rgba(35, 44, 53, 0.05) 74%,
+      transparent 82%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Ultra-wide screens: keep the image edge covered, then reveal it gradually. */
+@media (min-width: 2201px) {
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 1) 0%,
+      rgba(35, 44, 53, 0.995) 38%,
+      rgba(35, 44, 53, 0.96) 48%,
+      rgba(35, 44, 53, 0.82) 55%,
+      rgba(35, 44, 53, 0.56) 63%,
+      rgba(35, 44, 53, 0.3) 71%,
+      rgba(35, 44, 53, 0.12) 79%,
+      rgba(35, 44, 53, 0.03) 87%,
+      transparent 94%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* Mid-size desktop: crop the empty right side and conceal the shifted photo edge. */
+@media (min-width: 1400px) and (max-width: 1700px) {
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 1) 0%,
+      rgba(35, 44, 53, 0.995) 40%,
+      rgba(35, 44, 53, 0.97) 49%,
+      rgba(35, 44, 53, 0.8) 57%,
+      rgba(35, 44, 53, 0.5) 66%,
+      rgba(35, 44, 53, 0.22) 75%,
+      rgba(35, 44, 53, 0.06) 85%,
+      transparent 94%,
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* From desktop upward, crop the unused right side of the source photo. */
+@media (min-width: 1400px) {
+  .personal-cta::before {
+    background-position: calc(100% + 240px) center !important;
+  }
+}
+
+/* Wide desktop: tie the fade to the photo edge instead of viewport percentages. */
+@media (min-width: 1700px) {
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 1) 0%,
+      rgba(35, 44, 53, 1) calc(100% - 940px),
+      rgba(35, 44, 53, 0.96) calc(100% - 860px),
+      rgba(35, 44, 53, 0.8) calc(100% - 760px),
+      rgba(35, 44, 53, 0.55) calc(100% - 650px),
+      rgba(35, 44, 53, 0.28) calc(100% - 520px),
+      rgba(35, 44, 53, 0.1) calc(100% - 380px),
+      rgba(35, 44, 53, 0.02) calc(100% - 240px),
+      transparent 100%
+    ) !important;
+  }
+}
+
+/* No hard stroke between catalog and advantages — background contrast is enough. */
+.why-us {
+  border-top: 0;
+}

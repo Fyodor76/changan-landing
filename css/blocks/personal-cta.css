@@ -1,0 +1,111 @@
+.personal-cta {
+  display: flex;
+  align-items: center;
+}
+
+.personal-cta__accent {
+  display: block;
+  background: #ff7417;
+}
+
+.personal-cta__copy > p {
+  margin: 20px 0 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.personal-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.personal-cta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.02);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.block_block {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 20px 0;
+}
+
+.personal-cta__button--primary {
+  border-color: #ff7417;
+  background: #ff7417;
+}
+
+.personal-cta__button:hover {
+  border-color: #ff7417;
+  background: #ff7417;
+  transform: translateY(-2px);
+}
+
+.personal-cta__car {
+  position: absolute;
+}
+
+.personal-cta__car::before {
+  inset: 0;
+}
+
+.personal-cta__car img {
+  display: block;
+  margin-top: -115px;
+}
+
+@media (max-width: 900px) {
+  .personal-cta__inner {
+    align-items: flex-end;
+  }
+
+  .personal-cta__copy {
+    align-self: end;
+  }
+
+  .personal-cta__car {
+    height: 440px;
+  }
+
+  .personal-cta__car::before {
+    background: linear-gradient(180deg, transparent 45%, #1d3446 100%);
+  }
+}
+
+@media (max-width: 600px) {
+  .personal-cta__accent {
+    margin-bottom: 18px;
+  }
+
+  .personal-cta__copy > p {
+    font-size: 15px;
+  }
+
+  .personal-cta__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .personal-cta__button {
+    width: 100%;
+  }
+
+  .personal-cta__car img {
+    margin-top: -35px;
+  }
+}

@@ -1,0 +1,150 @@
+:root {
+  --brand-orange: rgb(248, 148, 53);
+  --brand-orange-hover: #e07a18;
+  --ink: #24272d;
+  --ink-muted: #6f767d;
+  --surface: #fff;
+  --surface-soft: #f7f7f6;
+  --chrome: rgb(60, 70, 80);
+  --page-dark: #181b1d;
+  --radius-button: 48px;
+  --radius-card: 16px;
+  --container: 1185px;
+  --font-brand: "ChanganUniType", Arial, sans-serif;
+}
+
+html {
+  min-width: 320px;
+  background: var(--page-dark);
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-brand);
+}
+
+button,
+a {
+  font: inherit;
+}
+
+.clh {
+  --clh-background: var(--page-dark);
+  --clh-surface-dark: rgba(60, 70, 80, 0.8);
+  --clh-white: #fff;
+  --clh-orange: var(--brand-orange);
+  min-height: 100vh;
+  color: var(--clh-white);
+  background: var(--clh-background);
+  font-family: var(--font-brand);
+  -webkit-font-smoothing: antialiased;
+}
+
+.clh__container {
+  width: min(1185px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.clh__header {
+  color: var(--clh-white);
+  background: var(--clh-background);
+}
+
+.clh__top {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.clh__brand,
+.clh__contacts,
+.clh__contact,
+.clh__nav,
+.clh__nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.clh__brand {
+  min-width: 0;
+  gap: 11px;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.clh__brand-mark {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  display: grid;
+  place-items: center;
+}
+
+.clh__brand-mark svg {
+  width: 38px;
+  height: 31px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.clh__brand-name {
+  font-size: 25px;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.clh__dealer-name {
+  margin-left: 10px;
+  padding-left: 20px;
+  border-left: 1px solid var(--clh-orange);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.clh__contacts {
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.clh__contact {
+  gap: 7px;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.clh__contact svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.clh__nav {
+  min-height: 54px;
+  justify-content: flex-end;
+  gap: clamp(28px, 4.2vw, 58px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}

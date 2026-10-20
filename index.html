@@ -6,8 +6,16 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="./css/style.css" />
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      defer
+    ></script>
     <script src="./app.js" defer></script>
 
     <title>Changan — модельный ряд 2026</title>
@@ -81,13 +89,19 @@
               </svg>
             </button>
 
-            <a class="clh__nav-item" href="#brand">О бренде</a>
+            <a class="clh__nav-item" href="#why-changan">О бренде</a>
 
             <a class="clh__nav-item" href="#offers">Спецпредложения</a>
 
             <a class="clh__nav-item" href="#contacts">Контакты</a>
 
-            <a class="clh__header-button" href="#callback">Заказать звонок</a>
+            <button
+              class="clh__header-button"
+              type="button"
+              data-callback-modal-open
+            >
+              Заказать звонок
+            </button>
           </nav>
         </div>
 
@@ -191,13 +205,16 @@
       </header>
 
       <main
-        class="clh__hero"
+        class="clh__hero swiper"
         id="models"
         aria-roledescription="карусель"
         tabindex="0"
       >
-        <div class="clh__track">
-          <article class="clh__slide clh__slide--active" aria-label="1 из 3">
+        <div class="clh__track swiper-wrapper">
+          <article
+            class="clh__slide swiper-slide clh__slide--active"
+            aria-label="1 из 3"
+          >
             <picture class="clh__picture">
               <source
                 media="(max-width: 768px)"
@@ -235,18 +252,26 @@
                   <li>Автомобили в наличии</li>
                 </ul>
 
-                <a class="clh__primary-button" href="#offers">
+                <button
+                  class="clh__primary-button"
+                  type="button"
+                  data-offer-modal-open
+                >
                   Получить предложение
 
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M5 12h14M14 7l5 5-5 5" />
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
           </article>
 
-          <article class="clh__slide" aria-label="2 из 3" aria-hidden="true">
+          <article
+            class="clh__slide swiper-slide"
+            aria-label="2 из 3"
+            aria-hidden="true"
+          >
             <picture class="clh__picture">
               <source
                 media="(max-width: 768px)"
@@ -274,18 +299,26 @@
 
                 <p class="clh__lead">По цене от 6 490 000 ₽</p>
 
-                <a class="clh__primary-button" href="#offers">
+                <button
+                  class="clh__primary-button"
+                  type="button"
+                  data-offer-modal-open
+                >
                   Подробнее
 
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M5 12h14M14 7l5 5-5 5" />
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
           </article>
 
-          <article class="clh__slide" aria-label="3 из 3" aria-hidden="true">
+          <article
+            class="clh__slide swiper-slide"
+            aria-label="3 из 3"
+            aria-hidden="true"
+          >
             <picture class="clh__picture">
               <source
                 media="(max-width: 768px)"
@@ -311,13 +344,17 @@
 
                 <p class="clh__lead">По цене от 2 490 000 ₽</p>
 
-                <a class="clh__primary-button" href="#offers">
+                <button
+                  class="clh__primary-button"
+                  type="button"
+                  data-offer-modal-open
+                >
                   Подробнее
 
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M5 12h14M14 7l5 5-5 5" />
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
           </article>
@@ -346,13 +383,13 @@
         <div class="clh__dots" aria-label="Выбор слайда"></div>
 
         <div class="clh__quick" aria-label="Быстрые действия">
-          <a href="#calculator" aria-label="Рассчитать стоимость">
+          <button type="button" data-offer-modal-open aria-label="Рассчитать стоимость">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <rect x="5" y="3" width="14" height="18" rx="2" />
 
               <path d="M8 7h8M8 11h2m4 0h2M8 15h2m4 0h2M8 18h8" />
             </svg>
-          </a>
+          </button>
 
           <a href="#contacts" aria-label="Посмотреть адрес">
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -388,38 +425,40 @@
             >
               <header class="catalog-lineup__header">
                 <h3>Кроссоверы</h3>
-                <div
-                  class="catalog-lineup__models"
-                  role="tablist"
-                  aria-label="Модели кроссоверов"
-                >
-                  <button
-                    class="catalog-lineup__model catalog-lineup__model--active"
-                    type="button"
-                    role="tab"
-                    aria-selected="true"
-                    data-model-index="0"
+                <div class="catalog-lineup__models-bar">
+                  <div
+                    class="catalog-lineup__models"
+                    role="tablist"
+                    aria-label="Модели кроссоверов"
                   >
-                    CS75 PRO
-                  </button>
-                  <button
-                    class="catalog-lineup__model"
-                    type="button"
-                    role="tab"
-                    aria-selected="false"
-                    data-model-index="1"
-                  >
-                    UNI-S
-                  </button>
-                  <button
-                    class="catalog-lineup__model"
-                    type="button"
-                    role="tab"
-                    aria-selected="false"
-                    data-model-index="2"
-                  >
-                    CS35 MAX
-                  </button>
+                    <button
+                      class="catalog-lineup__model catalog-lineup__model--active"
+                      type="button"
+                      role="tab"
+                      aria-selected="true"
+                      data-model-index="0"
+                    >
+                      CS75 PRO
+                    </button>
+                    <button
+                      class="catalog-lineup__model"
+                      type="button"
+                      role="tab"
+                      aria-selected="false"
+                      data-model-index="1"
+                    >
+                      UNI-S
+                    </button>
+                    <button
+                      class="catalog-lineup__model"
+                      type="button"
+                      role="tab"
+                      aria-selected="false"
+                      data-model-index="2"
+                    >
+                      CS35 MAX
+                    </button>
+                  </div>
                   <button
                     class="catalog-lineup__model-next"
                     type="button"
@@ -550,17 +589,26 @@
                   </dl>
                   <div class="catalog-lineup__price">
                     <small>Кредит от 0,01% на 8 лет</small
-                    ><strong>Цена от 2 500 000 ₽</strong>
+                    ><strong
+                      >Цена от 2 500 000
+                      <span class="catalog-lineup__currency">₽</span></strong
+                    >
                   </div>
                   <div class="catalog-lineup__actions">
-                    <a
+                    <button
                       class="catalog__button catalog__button--primary"
-                      href="#offers"
-                      >Получить предложение</a
+                      type="button"
+                      data-offer-modal-open
                     >
-                    <a class="catalog__button" href="#test-drive"
-                      >Запись на тест-драйв</a
+                      Получить предложение
+                    </button>
+                    <button
+                      class="catalog__button"
+                      type="button"
+                      data-testdrive-modal-open
                     >
+                      Запись на тест-драйв
+                    </button>
                   </div>
                 </div>
               </div>
@@ -702,17 +750,26 @@
                   </dl>
                   <div class="catalog-lineup__price">
                     <small>Кредит от 0,01% на 8 лет</small
-                    ><strong>Цена от 3 429 900 ₽</strong>
+                    ><strong
+                      >Цена от 3 429 900
+                      <span class="catalog-lineup__currency">₽</span></strong
+                    >
                   </div>
                   <div class="catalog-lineup__actions">
-                    <a
+                    <button
                       class="catalog__button catalog__button--primary"
-                      href="#offers"
-                      >Получить предложение</a
+                      type="button"
+                      data-offer-modal-open
                     >
-                    <a class="catalog__button" href="#test-drive"
-                      >Запись на тест-драйв</a
+                      Получить предложение
+                    </button>
+                    <button
+                      class="catalog__button"
+                      type="button"
+                      data-testdrive-modal-open
                     >
+                      Запись на тест-драйв
+                    </button>
                   </div>
                 </div>
               </div>
@@ -854,17 +911,26 @@
                   </dl>
                   <div class="catalog-lineup__price">
                     <small>Кредит от 0,01% на 8 лет</small
-                    ><strong>Цена от 2 640 000 ₽</strong>
+                    ><strong
+                      >Цена от 2 640 000
+                      <span class="catalog-lineup__currency">₽</span></strong
+                    >
                   </div>
                   <div class="catalog-lineup__actions">
-                    <a
+                    <button
                       class="catalog__button catalog__button--primary"
-                      href="#offers"
-                      >Получить предложение</a
+                      type="button"
+                      data-offer-modal-open
                     >
-                    <a class="catalog__button" href="#test-drive"
-                      >Запись на тест-драйв</a
+                      Получить предложение
+                    </button>
+                    <button
+                      class="catalog__button"
+                      type="button"
+                      data-testdrive-modal-open
                     >
+                      Запись на тест-драйв
+                    </button>
                   </div>
                 </div>
               </div>
@@ -963,7 +1029,7 @@
         </div>
       </section>
 
-      <section class="special-offers">
+      <section class="special-offers" id="offers">
         <div class="clh__container">
           <div class="special-offers__head">
             <h2 class="special-offers__title">Спецпредложения</h2>
@@ -1122,6 +1188,7 @@
               </p>
 
               <form class="offer-modal__form" data-offer-form>
+                <input type="hidden" name="form_type" value="offer" />
                 <label
                   ><span>Как к вам обращаться</span
                   ><input
@@ -1159,8 +1226,15 @@
                 <label class="offer-modal__consent">
                   <input type="checkbox" name="consent" required />
                   <span
-                    >Даю согласие на обработку моих персональных данных для
-                    ответа на заявку.</span
+                    >Даю
+                    <a
+                      href="./personal-data-consent.html"
+                      target="_blank"
+                      rel="noopener"
+                      onclick="event.stopPropagation()"
+                      >согласие на обработку персональных данных</a
+                    >
+                    для ответа на заявку.</span
                   >
                 </label>
                 <button class="offer-modal__submit" type="submit">
@@ -1173,9 +1247,197 @@
             </div>
           </section>
         </div>
+
+        <div class="offer-modal" data-testdrive-modal hidden>
+          <div class="offer-modal__backdrop" data-testdrive-modal-close></div>
+          <section
+            class="offer-modal__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="testdrive-modal-title"
+            tabindex="-1"
+          >
+            <aside class="offer-modal__aside">
+              <div class="offer-modal__aside-copy">
+                <span class="offer-modal__accent"></span>
+                <p>Тест-драйв</p>
+                <h3>Почувствуйте<br />CHANGAN<br />за рулём.</h3>
+                <small
+                  >Запишитесь на тест-драйв — подберём удобное время и
+                  подготовим автомобиль к поездке.</small
+                >
+              </div>
+            </aside>
+
+            <div class="offer-modal__form-panel">
+              <button
+                class="offer-modal__close"
+                type="button"
+                aria-label="Закрыть окно"
+                data-testdrive-modal-close
+              >
+                ×
+              </button>
+              <h2 id="testdrive-modal-title">Запись на тест-драйв</h2>
+              <p class="offer-modal__lead">
+                Оставьте контакты — согласуем удобное время для тест-драйва.
+              </p>
+
+              <form class="offer-modal__form" data-testdrive-form>
+                <input type="hidden" name="form_type" value="testdrive" />
+                <label
+                  ><span>Как к вам обращаться</span
+                  ><input
+                    type="text"
+                    name="name"
+                    placeholder="Ваше имя"
+                    autocomplete="name"
+                    required
+                /></label>
+                <label
+                  ><span>Номер телефона</span
+                  ><input
+                    type="tel"
+                    name="phone"
+                    placeholder="+7 (999) 000-00-00"
+                    autocomplete="tel"
+                    required
+                /></label>
+                <label
+                  ><span>Интересующая модель</span
+                  ><input
+                    type="text"
+                    name="model"
+                    placeholder="Например, CS75 PRO"
+                    autocomplete="off"
+                /></label>
+                <label
+                  ><span>Удобная дата</span
+                  ><input
+                    type="text"
+                    name="preferred_date"
+                    placeholder="Например, завтра после 15:00"
+                    autocomplete="off"
+                /></label>
+                <label class="offer-modal__consent">
+                  <input type="checkbox" name="consent" required />
+                  <span
+                    >Даю
+                    <a
+                      href="./personal-data-consent.html"
+                      target="_blank"
+                      rel="noopener"
+                      onclick="event.stopPropagation()"
+                      >согласие на обработку персональных данных</a
+                    >
+                    для записи на тест-драйв.</span
+                  >
+                </label>
+                <button class="offer-modal__submit" type="submit">
+                  Записаться на тест-драйв <span aria-hidden="true">→</span>
+                </button>
+                <p class="offer-modal__status" role="status" hidden>
+                  Спасибо! Заявка на тест-драйв принята, мы свяжемся с вами.
+                </p>
+              </form>
+            </div>
+          </section>
+        </div>
+
+        <div class="offer-modal" data-callback-modal hidden>
+          <div class="offer-modal__backdrop" data-callback-modal-close></div>
+          <section
+            class="offer-modal__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="callback-modal-title"
+            tabindex="-1"
+          >
+            <aside class="offer-modal__aside">
+              <div class="offer-modal__aside-copy">
+                <span class="offer-modal__accent"></span>
+                <p>Обратный звонок</p>
+                <h3>Мы перезвоним<br />в удобное<br />для вас время.</h3>
+                <small
+                  >Оставьте имя и телефон — менеджер свяжется с вами и ответит
+                  на вопросы.</small
+                >
+              </div>
+            </aside>
+
+            <div class="offer-modal__form-panel">
+              <button
+                class="offer-modal__close"
+                type="button"
+                aria-label="Закрыть окно"
+                data-callback-modal-close
+              >
+                ×
+              </button>
+              <h2 id="callback-modal-title">Заказать звонок</h2>
+              <p class="offer-modal__lead">
+                Укажите контакты — перезвоним в ближайшее время.
+              </p>
+
+              <form class="offer-modal__form" data-callback-form>
+                <input type="hidden" name="form_type" value="callback" />
+                <label
+                  ><span>Как к вам обращаться</span
+                  ><input
+                    type="text"
+                    name="name"
+                    placeholder="Ваше имя"
+                    autocomplete="name"
+                    required
+                /></label>
+                <label
+                  ><span>Номер телефона</span
+                  ><input
+                    type="tel"
+                    name="phone"
+                    placeholder="+7 (999) 000-00-00"
+                    autocomplete="tel"
+                    required
+                /></label>
+                <label
+                  ><span>Удобное время для звонка</span
+                  ><input
+                    type="text"
+                    name="preferred_time"
+                    placeholder="Например, сегодня после 14:00"
+                    autocomplete="off"
+                /></label>
+                <label class="offer-modal__consent">
+                  <input type="checkbox" name="consent" required />
+                  <span
+                    >Даю
+                    <a
+                      href="./personal-data-consent.html"
+                      target="_blank"
+                      rel="noopener"
+                      onclick="event.stopPropagation()"
+                      >согласие на обработку персональных данных</a
+                    >
+                    для обратного звонка.</span
+                  >
+                </label>
+                <button class="offer-modal__submit" type="submit">
+                  Жду звонка <span aria-hidden="true">→</span>
+                </button>
+                <p class="offer-modal__status" role="status" hidden>
+                  Спасибо! Заявка принята, мы скоро перезвоним.
+                </p>
+              </form>
+            </div>
+          </section>
+        </div>
       </section>
 
-      <section class="why-changan" aria-labelledby="why-changan-title">
+      <section
+        class="why-changan"
+        id="why-changan"
+        aria-labelledby="why-changan-title"
+      >
         <div class="clh__container why-changan__layout">
           <div class="why-changan__intro">
             <span class="why-changan__accent" aria-hidden="true"></span>
@@ -1274,15 +1536,21 @@
             </p>
 
             <div class="personal-cta__actions">
-              <a
+              <button
                 class="personal-cta__button personal-cta__button--primary"
-                href="tel:+74912776895"
-                >Получить предложение <span aria-hidden="true">→</span>
-              </a>
+                type="button"
+                data-offer-modal-open
+              >
+                Получить предложение <span aria-hidden="true">→</span>
+              </button>
 
-              <a class="personal-cta__button" href="tel:+74912776895"
-                >Рассчитать выгоду
-              </a>
+              <button
+                class="personal-cta__button"
+                type="button"
+                data-offer-modal-open
+              >
+                Рассчитать выгоду
+              </button>
             </div>
           </div>
 
@@ -1490,37 +1758,72 @@
             <span>© Changan Automobile Group, 2026</span>
 
             <nav aria-label="Юридическая информация">
-              <a
-                href="./assets/documents/privacy-policy.docx"
-                target="_blank"
-                rel="noopener"
-                >Политика конфиденциальности</a
-              >
+              <a href="./privacy-policy.html">Политика конфиденциальности</a>
 
-              <a
-                href="./assets/documents/personal-data-policy.docx"
-                target="_blank"
-                rel="noopener"
+              <a href="./personal-data-policy.html"
                 >Обработка персональных данных</a
               >
 
-              <a
-                href="./assets/documents/personal-data-consent.docx"
-                target="_blank"
-                rel="noopener"
+              <a href="./personal-data-consent.html"
                 >Согласие на обработку персональных данных</a
               >
 
-              <a
-                href="./assets/documents/cookie-agreement.docx"
-                target="_blank"
-                rel="noopener"
-                >Cookie</a
-              >
+              <a href="./cookie.html">Cookie</a>
             </nav>
           </div>
         </div>
       </footer>
     </section>
+
+    <div
+      class="cookie-banner"
+      data-cookie-banner
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="cookie-banner-title"
+      aria-describedby="cookie-banner-text"
+      hidden
+    >
+      <div class="cookie-banner__panel">
+        <div class="cookie-banner__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 3a9 9 0 1 0 9 9 3.2 3.2 0 0 1-3.2-3.2A3.2 3.2 0 0 1 12 3Z"
+            />
+            <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none" />
+            <circle cx="13.5" cy="14" r="1" fill="currentColor" stroke="none" />
+            <circle cx="8.5" cy="15.5" r="0.8" fill="currentColor" stroke="none" />
+          </svg>
+        </div>
+
+        <p class="cookie-banner__copy" id="cookie-banner-text">
+          <span id="cookie-banner-title" class="visually-hidden"
+            >Уведомление о cookie</span
+          >
+          Мы используем файлы cookie, чтобы сайт работал стабильнее и был
+          удобнее для вас. Подробнее — в
+          <a class="cookie-banner__link" href="./cookie.html"
+            >Политике cookie ›</a
+          >
+        </p>
+
+        <div class="cookie-banner__actions">
+          <button
+            class="cookie-banner__button cookie-banner__button--accept"
+            type="button"
+            data-cookie-accept
+          >
+            Принять
+          </button>
+          <button
+            class="cookie-banner__button cookie-banner__button--decline"
+            type="button"
+            data-cookie-decline
+          >
+            Отказаться
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

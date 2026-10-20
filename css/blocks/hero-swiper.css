@@ -1,0 +1,76 @@
+/* Swiper integration for the hero carousel. */
+.clh__hero.swiper {
+  touch-action: pan-y;
+}
+
+.clh__hero.swiper .clh__track.swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.clh__hero.swiper:not(.swiper-initialized) .clh__track {
+  transform: none;
+}
+
+.clh__hero.swiper .clh__slide {
+  height: auto;
+  min-height: inherit;
+  box-sizing: border-box;
+}
+
+/* Beat Swiper's horizontal pagination rules (left:0; width:100%) that shove dashes off-screen. */
+.clh__hero.swiper .clh__dots.swiper-pagination,
+.clh__hero.swiper .clh__dots.swiper-pagination-bullets,
+.clh__hero.swiper .clh__dots.swiper-pagination-horizontal {
+  position: absolute;
+  left: 50%;
+  right: auto;
+  bottom: 24px;
+  top: auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+.clh__hero.swiper .clh__dot {
+  display: block;
+  flex: 0 0 auto;
+  width: 64px;
+  height: 4px;
+  margin: 0;
+  opacity: 1;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.4);
+  vertical-align: middle;
+}
+
+.clh__hero.swiper .clh__dot--active {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.clh__hero.swiper .clh__arrow {
+  z-index: 6;
+}
+
+.clh__hero.swiper .clh__quick {
+  z-index: 7;
+}
+
+@media (max-width: 1024px) {
+  .clh__hero.swiper .clh__dots.swiper-pagination {
+    display: flex;
+  }
+
+  .clh__hero.swiper .clh__dot {
+    width: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .clh__hero.swiper .clh__dots.swiper-pagination {
+    bottom: 16px;
+  }
+}

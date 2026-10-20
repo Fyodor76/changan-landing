@@ -1,0 +1,261 @@
+.offers {
+  padding: 72px 0;
+}
+
+.benefits__heading,
+.offers__heading {
+  margin: 0;
+  color: #24272d;
+  font-size: clamp(38px, 3.8vw, 56px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-align: left;
+  text-transform: none;
+}
+
+.benefits__heading {
+  margin-bottom: 38px;
+}
+
+.benefit-card {
+  grid-template-rows: 205px auto;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.benefit-card::after,
+.benefit-card h3::after {
+  display: none;
+}
+
+.benefit-card img {
+  width: 100%;
+  height: 205px;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.benefit-card__body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 14px;
+  padding: 22px;
+}
+
+.benefit-card__body span {
+  color: #ff7417;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.offers__header {
+  margin-bottom: 38px;
+}
+
+.offers__all {
+  color: #315f8d;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.offers__copy {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 54px 48px;
+  color: #fff;
+}
+
+.offers__eyebrow {
+  margin: 0 0 20px;
+  color: #ff8a36;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.offers__copy h3 {
+  max-width: 500px;
+  margin: 0;
+  font-size: clamp(31px, 3vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.offers__lead {
+  max-width: 470px;
+  margin: 20px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.offers__features {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin: 30px 0 34px;
+  padding: 0;
+  list-style: none;
+}
+
+.offers__features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+}
+
+.offers__features li:last-child {
+  border-bottom: 0;
+}
+
+.offers__features li span {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 50%;
+  font-size: 16px;
+}
+
+.offers__button {
+  width: 100%;
+  min-height: 58px;
+  gap: 14px;
+  margin-top: auto;
+  padding: 0 24px;
+  border-radius: 8px;
+  background: #ff7417;
+  font-size: 14px;
+}
+
+.offers__button span {
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.offers__button:hover span {
+  transform: translateX(4px);
+}
+
+.offers__media {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.offers__media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 900px) {
+  .benefits,
+  .offers {
+    padding: 56px 0;
+  }
+
+  .offers__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .offers__copy {
+    padding: 42px;
+  }
+
+  .offers__media {
+    height: 390px;
+    grid-row: 1;
+  }
+
+  .offers__button {
+    width: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .benefits,
+  .offers {
+    padding: 48px 0;
+  }
+
+  .benefits__heading,
+  .offers__heading {
+    max-width: 340px;
+    font-size: 32px;
+  }
+
+  .benefits__heading,
+  .offers__header {
+    margin-bottom: 26px;
+  }
+
+  .benefits__list {
+    margin: 0;
+    padding: 0;
+  }
+
+  .benefit-card {
+    grid-template-columns: 42% 1fr;
+    grid-template-rows: 138px;
+  }
+
+  .benefit-card img {
+    height: 138px;
+  }
+
+  .benefit-card__body {
+    display: block;
+    align-self: center;
+    padding: 18px;
+  }
+
+  .offers__all {
+    margin-top: 14px;
+  }
+
+  .offers__panel {
+    border-radius: 14px;
+  }
+
+  .offers__media {
+    height: 230px;
+  }
+
+  .offers__copy {
+    padding: 28px 22px 24px;
+  }
+
+  .offers__copy h3 {
+    font-size: 28px;
+  }
+
+  .offers__lead {
+    font-size: 15px;
+  }
+
+  .offers__features {
+    margin: 22px 0 26px;
+  }
+
+  .offers__button {
+    width: 100%;
+    min-height: 60px;
+    padding-inline: 14px;
+    font-size: 12px;
+  }
+}

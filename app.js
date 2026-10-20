@@ -1,185 +1,100 @@
 (() => {
   const carousel = document.querySelector(".clh__hero");
+  if (!carousel || typeof window.Swiper !== "function") return;
 
-  if (!carousel) return;
-
-  const track = carousel.querySelector(".clh__track");
   const slides = [...carousel.querySelectorAll(".clh__slide")];
-  const dotsRoot = carousel.querySelector(".clh__dots");
-  const previousButton = carousel.querySelector(".clh__arrow--left");
-  const nextButton = carousel.querySelector(".clh__arrow--right");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const delay = 6000;
-  const canLoop = slides.length > 1;
+  if (slides.length < 2) return;
 
-  let activeIndex = 0;
-  let visualIndex = canLoop ? 1 : 0;
-  let timer = null;
-  let pointerStartX = null;
-  let paused = false;
-  let carouselVisible = true;
-  let isTransitioning = false;
-
-  if (canLoop) {
-    const firstClone = slides[0].cloneNode(true);
-    const lastClone = slides.at(-1).cloneNode(true);
-
-    [firstClone, lastClone].forEach((clone) => {
-      clone.classList.remove("clh__slide--active");
-      clone.classList.add("clh__slide--clone");
-      clone.setAttribute("aria-hidden", "true");
-      clone.inert = true;
-    });
-
-    track.prepend(lastClone);
-    track.append(firstClone);
-  }
-
-  const dots = slides.map((_, index) => {
-    const dot = document.createElement("button");
-    dot.className = "clh__dot";
-    dot.type = "button";
-    dot.setAttribute("aria-label", `Показать слайд ${index + 1}`);
-    dot.addEventListener("click", () => showSlide(index));
-    dotsRoot.append(dot);
-    return dot;
-  });
-
-  const stopAutoplay = () => {
-    window.clearTimeout(timer);
-    timer = null;
-    dots.forEach((dot) => dot.classList.remove("clh__dot--running"));
-  };
-
-  const startAutoplay = () => {
-    stopAutoplay();
-
-    if (paused || !carouselVisible || reduceMotion.matches || document.hidden)
-      return;
-
-    const activeDot = dots[activeIndex];
-    void activeDot.offsetWidth;
-    activeDot.classList.add("clh__dot--running");
-    timer = window.setTimeout(() => showSlide(activeIndex + 1), delay);
-  };
-
-  const setTrackPosition = (index, animate = true) => {
-    if (animate) {
-      track.style.transform = `translate3d(-${index * 100}%, 0, 0)`;
-      return;
-    }
-
-    const previousTransition = track.style.transition;
-    track.style.transition = "none";
-    track.style.transform = `translate3d(-${index * 100}%, 0, 0)`;
-    void track.offsetWidth;
-    track.style.transition = previousTransition;
-  };
-
-  const render = (animate = true) => {
-    setTrackPosition(visualIndex, animate);
-
+  const syncSlides = (swiper) => {
     slides.forEach((slide, index) => {
-      const isActive = index === activeIndex;
+      const isActive = index === swiper.realIndex;
       slide.classList.toggle("clh__slide--active", isActive);
       slide.setAttribute("aria-hidden", String(!isActive));
       slide.inert = !isActive;
     });
-
-    dots.forEach((dot, index) => {
-      const isActive = index === activeIndex;
-      dot.classList.toggle("clh__dot--active", isActive);
-      dot.setAttribute("aria-current", isActive ? "true" : "false");
-    });
   };
 
-  function showSlide(index) {
-    if (isTransitioning || !slides.length) return;
+  const restartProgress = (swiper) => {
+    const bullets = swiper.pagination?.bullets || [];
+    bullets.forEach((bullet) => bullet.classList.remove("clh__dot--running"));
 
-    if (index >= slides.length) {
-      activeIndex = 0;
-      visualIndex = canLoop ? slides.length + 1 : 0;
-    } else if (index < 0) {
-      activeIndex = slides.length - 1;
-      visualIndex = canLoop ? 0 : activeIndex;
-    } else {
-      activeIndex = index;
-      visualIndex = canLoop ? index + 1 : index;
-    }
+    if (reduceMotion.matches || !swiper.autoplay?.running) return;
 
-    const animate = !reduceMotion.matches;
-    isTransitioning = animate;
-    render(animate);
-    startAutoplay();
-  }
+    const activeBullet = bullets[swiper.realIndex];
+    if (!activeBullet) return;
+    void activeBullet.offsetWidth;
+    activeBullet.classList.add("clh__dot--running");
+  };
 
-  track.addEventListener("transitionend", (event) => {
-    if (event.target !== track || event.propertyName !== "transform") return;
-
-    if (canLoop && visualIndex === 0) {
-      visualIndex = slides.length;
-      setTrackPosition(visualIndex, false);
-    } else if (canLoop && visualIndex === slides.length + 1) {
-      visualIndex = 1;
-      setTrackPosition(visualIndex, false);
-    }
-
-    isTransitioning = false;
-  });
-
-  previousButton.addEventListener("click", () => showSlide(activeIndex - 1));
-  nextButton.addEventListener("click", () => showSlide(activeIndex + 1));
-
-  carousel.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") showSlide(activeIndex - 1);
-    if (event.key === "ArrowRight") showSlide(activeIndex + 1);
-  });
-
-  carousel.addEventListener("pointerdown", (event) => {
-    pointerStartX = event.clientX;
-  });
-
-  carousel.addEventListener("pointerup", (event) => {
-    if (pointerStartX === null) return;
-
-    const distance = event.clientX - pointerStartX;
-    pointerStartX = null;
-
-    if (Math.abs(distance) < 45) return;
-    showSlide(activeIndex + (distance < 0 ? 1 : -1));
-  });
-
-  carousel.addEventListener("pointercancel", () => {
-    pointerStartX = null;
-  });
-
-  carousel.addEventListener("mouseenter", () => {
-    paused = true;
-    stopAutoplay();
-  });
-
-  carousel.addEventListener("mouseleave", () => {
-    paused = false;
-    startAutoplay();
-  });
-
-  document.addEventListener("visibilitychange", startAutoplay);
-  reduceMotion.addEventListener("change", startAutoplay);
-
-  if ("IntersectionObserver" in window) {
-    const visibilityObserver = new IntersectionObserver(
-      ([entry]) => {
-        carouselVisible = entry.isIntersecting;
-        if (carouselVisible) startAutoplay();
-        else stopAutoplay();
+  const swiper = new window.Swiper(carousel, {
+    slidesPerView: 1,
+    speed: reduceMotion.matches ? 0 : 800,
+    loop: true,
+    grabCursor: true,
+    watchOverflow: true,
+    resistanceRatio: 0.65,
+    threshold: 8,
+    longSwipesRatio: 0.25,
+    followFinger: true,
+    allowTouchMove: true,
+    touchStartPreventDefault: false,
+    noSwipingSelector: "a, button, input, label, .clh__quick",
+    autoplay: reduceMotion.matches
+      ? false
+      : {
+          delay: 6000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+    navigation: {
+      nextEl: carousel.querySelector(".clh__arrow--right"),
+      prevEl: carousel.querySelector(".clh__arrow--left"),
+    },
+    pagination: {
+      el: carousel.querySelector(".clh__dots"),
+      clickable: true,
+      bulletClass: "clh__dot",
+      bulletActiveClass: "clh__dot--active",
+      renderBullet(index, className) {
+        return `<button type="button" class="${className}" aria-label="Показать слайд ${index + 1}"></button>`;
       },
-      { threshold: 0.01 },
-    );
-    visibilityObserver.observe(carousel);
-  }
+    },
+    a11y: {
+      enabled: true,
+      prevSlideMessage: "Предыдущий слайд",
+      nextSlideMessage: "Следующий слайд",
+      paginationBulletMessage: "Перейти к слайду {{index}}",
+    },
+    on: {
+      init(instance) {
+        syncSlides(instance);
+        restartProgress(instance);
+      },
+      slideChange(instance) {
+        syncSlides(instance);
+      },
+      slideChangeTransitionStart(instance) {
+        restartProgress(instance);
+      },
+      autoplayStart(instance) {
+        restartProgress(instance);
+      },
+    },
+  });
 
-  render(false);
-  startAutoplay();
+  document.addEventListener("visibilitychange", () => {
+    if (!swiper.autoplay) return;
+    if (document.hidden) swiper.autoplay.stop();
+    else swiper.autoplay.start();
+  });
+
+  reduceMotion.addEventListener("change", () => {
+    swiper.params.speed = reduceMotion.matches ? 0 : 650;
+    if (!swiper.autoplay) return;
+    if (reduceMotion.matches) swiper.autoplay.stop();
+    else swiper.autoplay.start();
+  });
 })();
 
 (() => {
@@ -287,7 +202,36 @@
   });
 
   nav.addEventListener("click", (event) => {
-    if (event.target.closest("a")) setOpen(false);
+    if (
+      event.target.closest(
+        "a, [data-offer-modal-open], [data-testdrive-modal-open], [data-callback-modal-open]",
+      )
+    ) {
+      setOpen(false);
+    }
+  });
+
+  const scrollToHashTarget = (href) => {
+    if (!href || !href.startsWith("#") || href === "#") return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
+  modelsMenu?.addEventListener("click", (event) => {
+    if (event.target.closest("[data-menu-category]")) return;
+
+    const link = event.target.closest(
+      ".models-menu__image, .models-menu__all-row",
+    );
+    if (!link) return;
+
+    const href = link.getAttribute("href");
+    const wasLocked = pageLocked;
+    setOpen(false);
+    if (wasLocked) scrollToHashTarget(href);
   });
 
   document.addEventListener("click", (event) => {
@@ -384,90 +328,129 @@
 })();
 
 (() => {
-  const modal = document.querySelector("[data-offer-modal]");
-  const openButtons = document.querySelectorAll("[data-offer-modal-open]");
+  const bindLeadModal = ({
+    modalSelector,
+    openSelector,
+    closeSelector,
+    formSelector,
+    submitLabel,
+    successLabel,
+  }) => {
+    const modal = document.querySelector(modalSelector);
+    const openButtons = document.querySelectorAll(openSelector);
+    if (!modal || !openButtons.length) return null;
 
-  if (!modal || !openButtons.length) return;
+    const dialog = modal.querySelector(".offer-modal__dialog");
+    const closeButtons = modal.querySelectorAll(closeSelector);
+    const form = modal.querySelector(formSelector);
+    const status = modal.querySelector(".offer-modal__status");
+    const submit = modal.querySelector(".offer-modal__submit");
+    let lastFocused = null;
+    let closeTimer = null;
 
-  const dialog = modal.querySelector(".offer-modal__dialog");
-  const closeButtons = modal.querySelectorAll("[data-offer-modal-close]");
-  const form = modal.querySelector("[data-offer-form]");
-  const status = modal.querySelector(".offer-modal__status");
-  const submit = modal.querySelector(".offer-modal__submit");
-  let lastFocused = null;
-  let closeTimer = null;
+    const getFocusable = () => [
+      ...modal.querySelectorAll(
+        "button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]",
+      ),
+    ];
 
-  const getFocusable = () => [
-    ...modal.querySelectorAll(
-      "button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]",
-    ),
-  ];
+    const openModal = (trigger) => {
+      window.clearTimeout(closeTimer);
+      lastFocused = trigger;
+      if (status) status.hidden = true;
+      if (submit) {
+        submit.innerHTML = `${submitLabel} <span aria-hidden="true">→</span>`;
+      }
+      modal.hidden = false;
+      document.documentElement.classList.add("offer-modal-open");
 
-  const openModal = (trigger) => {
-    window.clearTimeout(closeTimer);
-    lastFocused = trigger;
-    if (status) status.hidden = true;
-    if (submit) submit.textContent = "Получить предложение";
-    modal.hidden = false;
-    document.documentElement.classList.add("offer-modal-open");
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          modal.classList.add("offer-modal--open");
+          dialog?.focus();
+        });
+      });
+    };
 
-    window.requestAnimationFrame(() => {
-      modal.classList.add("offer-modal--open");
-      dialog.focus();
+    const closeModal = () => {
+      modal.classList.remove("offer-modal--open");
+      document.documentElement.classList.remove("offer-modal-open");
+
+      closeTimer = window.setTimeout(() => {
+        modal.hidden = true;
+        if (lastFocused) lastFocused.focus();
+      }, 360);
+    };
+
+    openButtons.forEach((button) => {
+      button.addEventListener("click", () => openModal(button));
     });
-  };
 
-  const closeModal = () => {
-    modal.classList.remove("offer-modal--open");
-    document.documentElement.classList.remove("offer-modal-open");
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", closeModal);
+    });
 
-    closeTimer = window.setTimeout(() => {
-      modal.hidden = true;
-      if (lastFocused) lastFocused.focus();
-    }, 220);
-  };
+    document.addEventListener("keydown", (event) => {
+      if (modal.hidden) return;
 
-  openButtons.forEach((button) => {
-    button.addEventListener("click", () => openModal(button));
-  });
+      if (event.key === "Escape") {
+        closeModal();
+        return;
+      }
 
-  closeButtons.forEach((button) => {
-    button.addEventListener("click", closeModal);
-  });
+      if (event.key !== "Tab") return;
 
-  document.addEventListener("keydown", (event) => {
-    if (modal.hidden) return;
+      const focusable = getFocusable();
+      if (!focusable.length) return;
 
-    if (event.key === "Escape") {
-      closeModal();
-      return;
-    }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
 
-    if (event.key !== "Tab") return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
 
-    const focusable = getFocusable();
-    if (!focusable.length) return;
-
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  });
-
-  if (form) {
-    form.addEventListener("submit", (event) => {
+    form?.addEventListener("submit", (event) => {
       event.preventDefault();
       form.reset();
       if (status) status.hidden = false;
-      if (submit) submit.textContent = "Заявка принята";
+      if (submit) submit.textContent = successLabel;
     });
-  }
+
+    return { modal, closeModal };
+  };
+
+  bindLeadModal({
+    modalSelector: "[data-offer-modal]",
+    openSelector: "[data-offer-modal-open]",
+    closeSelector: "[data-offer-modal-close]",
+    formSelector: "[data-offer-form]",
+    submitLabel: "Получить предложение",
+    successLabel: "Заявка принята",
+  });
+
+  bindLeadModal({
+    modalSelector: "[data-testdrive-modal]",
+    openSelector: "[data-testdrive-modal-open]",
+    closeSelector: "[data-testdrive-modal-close]",
+    formSelector: "[data-testdrive-form]",
+    submitLabel: "Записаться на тест-драйв",
+    successLabel: "Запись принята",
+  });
+
+  bindLeadModal({
+    modalSelector: "[data-callback-modal]",
+    openSelector: "[data-callback-modal-open]",
+    closeSelector: "[data-callback-modal-close]",
+    formSelector: "[data-callback-form]",
+    submitLabel: "Жду звонка",
+    successLabel: "Заявка принята",
+  });
 })();
 
 (() => {
@@ -793,6 +776,8 @@
 })();
 
 (() => {
+  if (typeof window.Swiper !== "function") return;
+
   const modelGroups = {
     crossovers: [
       {
@@ -838,62 +823,139 @@
     ],
   };
 
+  const arrowMarkup = `
+    <button
+      class="catalog__gallery-arrow catalog__gallery-arrow--prev catalog-lineup__arrow catalog-lineup__arrow--prev"
+      type="button"
+      aria-label="Предыдущее фото"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" /></svg>
+    </button>
+    <button
+      class="catalog__gallery-arrow catalog__gallery-arrow--next catalog-lineup__arrow catalog-lineup__arrow--next"
+      type="button"
+      aria-label="Следующее фото"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
+    </button>
+  `;
+
   const cards = [...document.querySelectorAll("[data-catalog-card]")];
 
   cards.forEach((card) => {
-    const photo = card.querySelector(".catalog-lineup__photo");
-    const dots = [...card.querySelectorAll(".catalog-lineup__dot")];
+    const frame = card.querySelector(".catalog-lineup__photo-frame");
+    const dotsRoot = card.querySelector(".catalog-lineup__dots");
     const colors = [...card.querySelectorAll(".catalog-lineup__color")];
     const colorName = card.querySelector(".catalog-lineup__color-name");
-    const previousPhoto = card.querySelector(".catalog-lineup__arrow--prev");
-    const nextPhoto = card.querySelector(".catalog-lineup__arrow--next");
     const modelButtons = [
       ...card.querySelectorAll(".catalog-lineup__model"),
     ];
+    const modelsScroller = card.querySelector(".catalog-lineup__models");
     const nextModel = card.querySelector(".catalog-lineup__model-next");
     const modelName = card.querySelector(".catalog-lineup__info h4");
     const specValues = [...card.querySelectorAll(".catalog-lineup__specs dd")];
     const price = card.querySelector(".catalog-lineup__price strong");
     const models = modelGroups[card.dataset.catalogKey] || [];
-    let activePhoto = 0;
+    const initialPhotos = [
+      ...card.querySelectorAll(".catalog-lineup__dot[data-photo-src]"),
+    ]
+      .map((dot) => dot.dataset.photoSrc)
+      .filter(Boolean);
+
+    if (!frame || !dotsRoot) return;
+
     let activeModel = 0;
-    let photos = dots.map((dot) => dot.dataset.photoSrc).filter(Boolean);
-    let pointerStartX = null;
+    let photoSwiper = null;
+    let photos = models[0]?.photos?.slice() || initialPhotos;
 
-    if (!photo || !dots.length) return;
+    const scrollActiveModelIntoView = () => {
+      const activeButton = modelButtons[activeModel];
+      if (!activeButton || !modelsScroller) return;
 
-    const showPhoto = (index) => {
-      activePhoto = (index + photos.length) % photos.length;
-      const nextDot = dots[activePhoto];
-      const nextSource = photos[activePhoto];
-      if (!nextSource) return;
+      const scrollerRect = modelsScroller.getBoundingClientRect();
+      const buttonRect = activeButton.getBoundingClientRect();
+      const pad = 12;
+      let delta = 0;
 
-      photo.src = nextSource;
-      dots.forEach((dot, dotIndex) => {
-        const isActive = dotIndex === activePhoto && dotIndex < photos.length;
-        dot.classList.toggle("catalog-lineup__dot--active", isActive);
-        dot.setAttribute("aria-current", isActive ? "true" : "false");
-      });
+      if (buttonRect.left < scrollerRect.left + pad) {
+        delta = buttonRect.left - scrollerRect.left - pad;
+      } else if (buttonRect.right > scrollerRect.right - pad) {
+        delta = buttonRect.right - scrollerRect.right + pad;
+      }
 
+      if (delta) {
+        modelsScroller.scrollBy({ left: delta, behavior: "smooth" });
+      }
     };
 
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", () => {
-        if (index < photos.length) showPhoto(index);
+    const mountPhotoSwiper = (photoList, altText) => {
+      if (!photoList.length) return;
+
+      photoSwiper?.destroy(true, true);
+      photoSwiper = null;
+
+      const slides = photoList
+        .map(
+          (src) => `
+            <div class="swiper-slide">
+              <img
+                class="catalog-lineup__photo"
+                src="${src}"
+                alt="${altText}"
+                loading="lazy"
+                decoding="async"
+                draggable="false"
+              />
+            </div>
+          `,
+        )
+        .join("");
+
+      frame.classList.add("swiper");
+      frame.innerHTML = `<div class="swiper-wrapper">${slides}</div>${arrowMarkup}`;
+      dotsRoot.innerHTML = "";
+
+      photoSwiper = new window.Swiper(frame, {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        speed: 750,
+        loop: photoList.length > 1,
+        grabCursor: true,
+        watchOverflow: true,
+        threshold: 8,
+        longSwipesRatio: 0.3,
+        followFinger: true,
+        allowTouchMove: true,
+        touchStartPreventDefault: false,
+        resistanceRatio: 0.75,
+        navigation: {
+          nextEl: frame.querySelector(".catalog-lineup__arrow--next"),
+          prevEl: frame.querySelector(".catalog-lineup__arrow--prev"),
+        },
+        pagination: {
+          el: dotsRoot,
+          clickable: true,
+          bulletClass: "catalog-lineup__dot",
+          bulletActiveClass: "catalog-lineup__dot--active",
+          renderBullet(index, className) {
+            return `<button type="button" class="${className}" aria-label="Фото ${index + 1}"></button>`;
+          },
+        },
       });
-    });
+    };
 
     const showModel = (index) => {
       if (!models.length) return;
       activeModel = (index + models.length) % models.length;
       const model = models[activeModel];
-      photos = model.photos;
+      photos = model.photos.slice();
 
       modelButtons.forEach((button, buttonIndex) => {
         const isActive = buttonIndex === activeModel;
         button.classList.toggle("catalog-lineup__model--active", isActive);
         button.setAttribute("aria-selected", String(isActive));
       });
+      scrollActiveModelIntoView();
 
       if (modelName) modelName.textContent = model.name;
       [model.engine, model.gearbox, model.torque, model.power].forEach(
@@ -901,17 +963,14 @@
           if (specValues[valueIndex]) specValues[valueIndex].textContent = value;
         },
       );
-      if (price) price.textContent = model.price;
-      photo.alt = model.name;
+      if (price) {
+        price.innerHTML = model.price.replace(
+          /₽/g,
+          '<span class="catalog-lineup__currency">₽</span>',
+        );
+      }
 
-      dots.forEach((dot, dotIndex) => {
-        const source = photos[dotIndex];
-        dot.hidden = !source;
-        if (source) dot.dataset.photoSrc = source;
-      });
-
-      activePhoto = 0;
-      showPhoto(0);
+      mountPhotoSwiper(photos, model.name);
     };
 
     modelButtons.forEach((button, index) => {
@@ -919,11 +978,6 @@
     });
 
     nextModel?.addEventListener("click", () => showModel(activeModel + 1));
-
-    previousPhoto?.addEventListener("click", () =>
-      showPhoto(activePhoto - 1),
-    );
-    nextPhoto?.addEventListener("click", () => showPhoto(activePhoto + 1));
 
     colors.forEach((color) => {
       color.addEventListener("click", () => {
@@ -935,25 +989,70 @@
       });
     });
 
-    photo.addEventListener("pointerdown", (event) => {
-      pointerStartX = event.clientX;
-      photo.setPointerCapture?.(event.pointerId);
-    });
-
-    photo.addEventListener("pointerup", (event) => {
-      if (pointerStartX === null) return;
-      const distance = event.clientX - pointerStartX;
-      pointerStartX = null;
-      if (Math.abs(distance) >= 45) {
-        showPhoto(activePhoto + (distance < 0 ? 1 : -1));
-      }
-    });
-
-    photo.addEventListener("pointercancel", () => {
-      pointerStartX = null;
-    });
-
     if (models.length) showModel(0);
-    else showPhoto(0);
+    else {
+      const alt =
+        card.querySelector(".catalog-lineup__photo")?.alt ||
+        modelName?.textContent ||
+        "Changan";
+      mountPhotoSwiper(photos, alt);
+    }
   });
+})();
+
+(() => {
+  const banner = document.querySelector("[data-cookie-banner]");
+  if (!banner) return;
+
+  const storageKey = "changan-cookie-consent";
+  const acceptButton = banner.querySelector("[data-cookie-accept]");
+  const declineButton = banner.querySelector("[data-cookie-decline]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let hideTimer = null;
+
+  const hasChoice = () => {
+    try {
+      return Boolean(window.localStorage.getItem(storageKey));
+    } catch {
+      return false;
+    }
+  };
+
+  const saveChoice = (value) => {
+    try {
+      window.localStorage.setItem(storageKey, value);
+    } catch {
+      /* ignore quota / private mode */
+    }
+  };
+
+  const showBanner = () => {
+    banner.hidden = false;
+    banner.classList.remove("cookie-banner--leaving");
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        banner.classList.add("cookie-banner--visible");
+      });
+    });
+  };
+
+  const hideBanner = (choice) => {
+    saveChoice(choice);
+    banner.classList.remove("cookie-banner--visible");
+    banner.classList.add("cookie-banner--leaving");
+
+    const delay = reduceMotion.matches ? 0 : 380;
+    window.clearTimeout(hideTimer);
+    hideTimer = window.setTimeout(() => {
+      banner.hidden = true;
+      banner.classList.remove("cookie-banner--leaving");
+    }, delay);
+  };
+
+  if (!hasChoice()) {
+    window.setTimeout(showBanner, reduceMotion.matches ? 0 : 600);
+  }
+
+  acceptButton?.addEventListener("click", () => hideBanner("accepted"));
+  declineButton?.addEventListener("click", () => hideBanner("declined"));
 })();

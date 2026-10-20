@@ -1,0 +1,189 @@
+.benefits {
+  background: #fff;
+}
+
+.benefits__list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+.benefits__list::before {
+  position: absolute;
+  top: 40px;
+  right: 7%;
+  left: 7%;
+  height: 1px;
+  display: block;
+  background: #cbd2d8;
+  content: "";
+}
+
+.benefit-card {
+  position: relative;
+  z-index: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+}
+
+.benefit-card:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.benefit-card__icon {
+  width: 82px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  padding: 13px;
+  color: #102b48;
+  background: #fff;
+}
+
+.benefit-card__icon svg {
+  width: 56px;
+  height: 56px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.benefit-card__icon--percent {
+  font-size: 52px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.benefit-card h3 {
+  position: static;
+  margin: 16px 0 0;
+  color: #24272d;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.32;
+}
+
+.offers__panel {
+  position: relative;
+  min-height: 628px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 148px 480px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
+}
+
+.offers__car-shot {
+  height: 480px;
+  overflow: hidden;
+}
+
+.offers__car-shot img {
+  width: min(90%, 1220px);
+  max-width: none;
+  display: block;
+  margin: 0 auto;
+  transform: translateY(-235px);
+}
+
+@media (max-width: 900px) {
+  .benefits__heading {
+    margin-bottom: 38px;
+  }
+
+  .benefits__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 34px 18px;
+  }
+
+  .benefits__list::before {
+    display: none;
+  }
+
+  .offers__panel {
+    min-height: 450px;
+    grid-template-rows: 138px 312px;
+  }
+
+  .offers__car-shot {
+    height: 312px;
+  }
+
+  .offers__car-shot img {
+    width: 105%;
+    margin-left: -2.5%;
+    transform: translateY(-150px);
+  }
+}
+
+@media (max-width: 600px) {
+  .benefits__heading {
+    max-width: 330px;
+    margin: 0 auto 32px;
+  }
+
+  .benefits__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 12px;
+  }
+
+  .benefit-card {
+    min-height: 0;
+  }
+
+  .benefit-card__icon {
+    width: 68px;
+    height: 68px;
+    padding: 10px;
+  }
+
+  .benefit-card__icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .benefit-card__icon--percent {
+    font-size: 43px;
+  }
+
+  .benefit-card h3 {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+
+  .offers__panel {
+    min-height: 0;
+    display: block;
+    padding: 0;
+    background: #fff;
+  }
+
+  .offers__car-shot {
+    height: 240px;
+  }
+
+  .offers__car-shot img {
+    width: 125%;
+    margin-left: -12.5%;
+    transform: translateY(-48px);
+  }
+}
