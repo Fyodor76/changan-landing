@@ -1,6 +1,7 @@
 .why-us__item,
 .why-us__feature,
 .why-changan__card,
+.why-changan__media,
 .review-card {
   transition:
     transform 0.28s ease,
@@ -13,7 +14,8 @@
   transform: translateY(-5px);
 }
 
-.why-us__feature:hover {
+.why-us__feature:hover,
+.why-changan__media:hover {
   box-shadow: 0 16px 40px rgba(28, 36, 48, 0.12);
 }
 

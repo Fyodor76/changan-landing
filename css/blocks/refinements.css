@@ -430,7 +430,7 @@
   .benefits__heading,
   .special-offers__title,
   .why-us__title,
-  .why-changan__intro h2,
+  .why-changan__title,
   .reviews h2,
   .personal-cta h2,
   .contacts h2 {
@@ -1026,153 +1026,36 @@
   }
 }
 
-/* Keep the two advantage sections visually consistent. */
-.why-changan {
-  --clh-feature-icon-box: 58px;
-  --clh-feature-icon-glyph: 46px;
-  --clh-feature-heading-gap: 48px;
-}
-
-.why-changan__icon {
-  width: var(--clh-feature-icon-box);
-  height: var(--clh-feature-icon-box);
-  min-width: var(--clh-feature-icon-box);
-  padding: 0;
-  box-sizing: border-box;
-  display: grid;
-  place-items: center;
-  flex: 0 0 var(--clh-feature-icon-box);
-}
-
-.why-changan__icon svg {
-  width: var(--clh-feature-icon-glyph);
-  height: var(--clh-feature-icon-glyph);
-}
-
-.why-changan__card,
-.why-changan__card:hover {
-  grid-template-columns: var(--clh-feature-icon-box) minmax(0, 1fr);
-}
-
-.why-changan__intro {
-  margin-bottom: var(--clh-feature-heading-gap);
-}
-
-.why-changan__grid {
-  margin-top: 0;
-}
-
-@media (max-width: 900px) {
-  .why-changan {
-    --clh-feature-icon-box: 50px;
-    --clh-feature-icon-glyph: 42px;
-  }
-
-  .why-changan__layout {
-    width: calc(100% - 48px);
-    max-width: 1185px;
-    margin-inline: auto;
-  }
-
-  .why-changan__icon {
-    align-self: center;
-    justify-self: center;
-  }
-
-  .why-changan__icon svg {
-    display: block;
-    margin: auto;
-    overflow: visible;
-  }
-}
-
-@media (max-width: 600px) {
-  .why-changan {
-    --clh-feature-icon-box: 48px;
-    --clh-feature-icon-glyph: 42px;
-    --clh-feature-heading-gap: 20px;
-  }
-
-  .why-changan__layout {
-    width: calc(100% - 32px);
-  }
-
-  .why-changan__intro {
-    margin-bottom: var(--clh-feature-heading-gap);
-  }
-
-  .why-changan__card h3 {
-    font-size: clamp(15px, 4.2vw, 18px);
-    line-height: 1.25;
-    text-align: left;
-  }
-
-  .why-changan__grid {
-    margin-top: 0;
-  }
-
-  .why-changan__card,
-  .why-changan__card:hover,
-  .why-changan__card:nth-child(1),
-  .why-changan__card:nth-child(2),
-  .why-changan__card:nth-child(3),
-  .why-changan__card:nth-child(4),
-  .why-changan__card:nth-child(5),
-  .why-changan__card:nth-child(6) {
-    grid-template-columns: var(--clh-feature-icon-box) minmax(0, 1fr);
-    justify-items: start;
-    column-gap: 16px;
-    padding: 14px 0;
-  }
-
-  .why-changan__icon,
-  .why-changan__card:first-child .why-changan__icon {
-    width: var(--clh-feature-icon-box);
-    height: var(--clh-feature-icon-box);
-    min-width: var(--clh-feature-icon-box);
-    justify-self: start;
-    place-items: center start;
-    box-shadow: none;
-  }
-
-  .why-changan__icon svg,
-  .why-changan__card:first-child .why-changan__icon svg {
-    width: var(--clh-feature-icon-glyph);
-    height: var(--clh-feature-icon-glyph);
-    margin: 0;
-  }
-}
-
-/* One responsive type scale for both advantage sections. */
-.why-us,
-.why-changan {
-  --clh-feature-title-size: clamp(34px, 4.2vw, 48px);
-  --clh-feature-label-size: clamp(14px, 1.8vw, 18px);
-  --clh-feature-label-line: 1.32;
-}
-
-.why-us__title,
-.why-changan__intro h2 {
-  font-family: "ChanganUniType", Arial, sans-serif;
-  font-size: var(--clh-feature-title-size);
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: 0;
-}
-
-.why-changan__card h3 {
-  max-width: 100%;
-  font-family: "ChanganUniType", Arial, sans-serif;
-  font-size: var(--clh-feature-label-size);
-  font-weight: 400;
-  line-height: var(--clh-feature-label-line);
-  letter-spacing: 0;
-  overflow-wrap: anywhere;
-}
-
+/* Advantage sections share the same card/icon language. */
 body .why-us .why-us__item h3,
-body .why-us .why-us__feature-body h3 {
+body .why-us .why-us__feature-body h3,
+body .why-changan .why-changan__card h3 {
   font-weight: 700;
+}
+
+body .why-changan .why-changan__icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  margin: 0;
+  color: #f89435;
+  background: transparent;
+  box-shadow: none;
+}
+
+body .why-changan .why-changan__icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+body .why-changan .why-changan__layout {
+  display: grid;
+}
+
+body .why-changan .why-changan__card {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: none;
 }
 
 /* Desktop hero: keep copy out of the corner, clear of arrows and the car. */
@@ -1417,7 +1300,7 @@ body .clh .special-offers {
 }
 
 body .why-changan {
-  background: #f7f7f6;
+  background: #fff;
 }
 
 body .reviews {

@@ -112,8 +112,10 @@
     },
     {
       root: document.querySelector(".why-changan"),
-      target: document.querySelector(".why-changan__grid"),
-      items: document.querySelectorAll(".why-changan__card"),
+      target: document.querySelector(".why-changan__layout"),
+      items: document.querySelectorAll(
+        ".why-changan__card, .why-changan__media",
+      ),
     },
   ].filter(({ root, target, items }) => root && target && items.length);
 

@@ -428,94 +428,6 @@
   }
 }
 
-.why-changan__layout {
-  grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1.7fr);
-  align-items: center;
-  gap: 66px;
-}
-
-.why-changan__accent {
-  margin-bottom: 26px;
-}
-
-.why-changan__intro p {
-  max-width: 290px;
-  margin: 30px 0 0;
-  font-size: 15px;
-  line-height: 1.55;
-}
-
-.why-changan__card {
-  position: relative;
-  min-height: 156px;
-  display: grid;
-  grid-template-columns: 58px 1fr;
-  align-items: center;
-  gap: 18px;
-  padding: 24px 34px 24px 22px;
-  border: 1px solid rgba(255, 255, 255, 0.17);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
-}
-
-.why-changan__card p {
-  margin: 10px 0 0;
-  font-size: 13px;
-  line-height: 1.42;
-}
-
-.why-changan__card small {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 10px;
-}
-
-@media (max-width: 1000px) {
-  .why-changan__layout {
-    grid-template-columns: 1fr;
-    gap: 42px;
-  }
-
-  .why-changan__intro h2 br {
-    display: none;
-  }
-
-  .why-changan__intro p {
-    max-width: 520px;
-  }
-}
-
-@media (max-width: 700px) {
-  .why-changan {
-    background:
-      radial-gradient(
-        circle at 70% 5%,
-        rgba(66, 94, 113, 0.36),
-        transparent 42%
-      ),
-      linear-gradient(145deg, #242526 0%, #183248 100%);
-  }
-
-  .why-changan__layout {
-    gap: 32px;
-  }
-
-  .why-changan__accent {
-    margin-bottom: 20px;
-  }
-
-  .why-changan__intro p {
-    margin-top: 20px;
-  }
-
-  .why-changan__card {
-    min-height: 136px;
-    grid-template-columns: 50px 1fr;
-    gap: 14px;
-    padding: 20px 28px 20px 18px;
-  }
-}
-
 .catalog__gallery {
   min-width: 0;
   padding-right: 32px;
@@ -697,4 +609,39 @@
 .special-offers__card--credit .special-offers__card-title,
 .special-offers__card--corporate .special-offers__card-title {
   color: #24272d;
+}
+
+/* Credit/corporate accents (moved from why-changan.css) */
+.special-offers__card--credit,
+.special-offers__card--corporate {
+  border-color: #dedede !important;
+  background: #ffffff !important;
+}
+
+.special-offers__card--credit::after,
+.special-offers__card--corporate::after {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 72%,
+    #f5f5f5 100%
+  ) !important;
+}
+
+.special-offers__icon--blue {
+  color: #173454 !important;
+  /* border-color: #d7d7d7 !important; */
+  /* background: #ffffff !important; */
+}
+
+.special-offers__card--credit .special-offers__arrow,
+.special-offers__card--corporate .special-offers__arrow {
+  color: #173454 !important;
+  border-color: #d7d7d7 !important;
+  background: #ffffff !important;
+}
+
+.special-offers__card--credit .special-offers__description,
+.special-offers__card--corporate .special-offers__description {
+  color: #697078 !important;
 }

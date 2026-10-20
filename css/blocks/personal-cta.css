@@ -167,3 +167,229 @@
     width: 104%;
   }
 }
+
+/* Background / gradient layer (moved from why-changan.css) */
+.personal-cta::before {
+  background-image: url("https://29b48c0d-dfd0-4799-b94a-01381956a4f2.selcdn.net/file/temp/1893049d-ae76-442c-b480-b80a4acc8f7f.jpg?b=cars-main&h=562&m=crop&q=90&w=1024");
+  background-repeat: no-repeat;
+}
+
+.personal-cta__car {
+  z-index: 3;
+}
+
+.personal-cta::before {
+  top: 42px;
+  right: max(28px, calc((100vw - 1185px) / 2));
+  bottom: 42px;
+}
+
+.personal-cta__car,
+.personal-cta__car-image,
+.personal-cta__reflection {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .personal-cta::before {
+    top: 28px;
+    right: 20px;
+    bottom: 28px;
+    width: 62%;
+  }
+}
+
+.personal-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff;
+  background: #2f3943 !important;
+}
+
+.personal-cta::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  clip-path: none !important;
+  background: url("https://29b48c0d-dfd0-4799-b94a-01381956a4f2.selcdn.net/file/temp/1893049d-ae76-442c-b480-b80a4acc8f7f.jpg?b=cars-main&h=562&m=crop&q=90&w=1024")
+    right center / cover no-repeat !important;
+  opacity: 0.5 !important;
+  filter: saturate(0.72) contrast(1.02) brightness(0.78) !important;
+  transform: none !important;
+  pointer-events: none;
+}
+
+.personal-cta::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  display: block !important;
+  pointer-events: none;
+}
+
+.personal-cta__inner {
+  position: relative !important;
+  z-index: 2 !important;
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: minmax(420px, 590px) 1fr;
+  align-items: center;
+}
+
+.personal-cta__copy {
+  position: relative !important;
+  z-index: 3 !important;
+  padding: 64px 0;
+}
+
+.personal-cta h2,
+.personal-cta__copy > p,
+.personal-cta__actions,
+.personal-cta__button,
+.personal-cta__accent {
+  position: relative;
+  z-index: 3;
+  opacity: 1 !important;
+}
+
+.personal-cta__car,
+.personal-cta__car-image,
+.personal-cta__reflection,
+.personal-cta__car::before,
+.personal-cta__car::after {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .personal-cta::before {
+    opacity: 0.42 !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      180deg,
+      rgba(35, 44, 53, 0.9) 0%,
+      rgba(35, 44, 53, 0.8) 38%,
+      rgba(35, 44, 53, 0.58) 72%,
+      rgba(35, 44, 53, 0.38) 100%
+    ) !important;
+  }
+
+  .personal-cta__inner {
+    min-height: 620px;
+    grid-template-columns: 1fr;
+  }
+
+  .personal-cta__copy {
+    padding: 64px 0 54px;
+  }
+}
+
+@media (max-width: 900px) {
+  .personal-cta::before {
+    background-position: 72% center !important;
+  }
+}
+
+.personal-cta::before {
+  background-position: right center !important;
+  background-size: cover !important;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 38%,
+    rgba(0, 0, 0, 0.18) 43%,
+    rgba(0, 0, 0, 0.58) 49%,
+    #000 57%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 38%,
+    rgba(0, 0, 0, 0.18) 43%,
+    rgba(0, 0, 0, 0.58) 49%,
+    #000 57%,
+    #000 100%
+  );
+}
+
+.personal-cta::after {
+  background: linear-gradient(
+    90deg,
+    rgba(35, 44, 53, 1) 0%,
+    rgba(35, 44, 53, 1) 30%,
+    rgba(35, 44, 53, 0.96) 39%,
+    rgba(35, 44, 53, 0.76) 48%,
+    rgba(35, 44, 53, 0.32) 63%,
+    rgba(35, 44, 53, 0.08) 84%,
+    rgba(35, 44, 53, 0.02) 100%
+  ) !important;
+}
+
+@media (max-width: 900px) {
+  .personal-cta::before {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+@media (min-width: 901px) {
+  .personal-cta::before {
+    background-position: right center !important;
+    background-size: cover !important;
+  }
+}
+
+@media (min-width: 901px) {
+  .personal-cta::before {
+    inset: 0 0 0 43% !important;
+    width: auto !important;
+    height: auto !important;
+    background: url("https://29b48c0d-dfd0-4799-b94a-01381956a4f2.selcdn.net/file/temp/1893049d-ae76-442c-b480-b80a4acc8f7f.jpg?b=cars-main&h=562&m=crop&q=90&w=1024")
+      center center / cover no-repeat !important;
+    opacity: 0.58 !important;
+    filter: saturate(0.72) contrast(1.03) brightness(0.78) !important;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.28) 7%,
+      rgba(0, 0, 0, 0.72) 15%,
+      #000 24%,
+      #000 100%
+    ) !important;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.28) 7%,
+      rgba(0, 0, 0, 0.72) 15%,
+      #000 24%,
+      #000 100%
+    ) !important;
+    transform: none !important;
+  }
+
+  .personal-cta::after {
+    background: linear-gradient(
+      90deg,
+      rgba(35, 44, 53, 1) 0%,
+      rgba(35, 44, 53, 1) 34%,
+      rgba(35, 44, 53, 0.97) 41%,
+      rgba(35, 44, 53, 0.78) 48%,
+      rgba(35, 44, 53, 0.4) 57%,
+      rgba(35, 44, 53, 0.14) 70%,
+      rgba(35, 44, 53, 0.04) 100%
+    ) !important;
+  }
+
+  .personal-cta__copy {
+    max-width: 650px;
+  }
+}
