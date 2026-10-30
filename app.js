@@ -520,7 +520,7 @@
     {
       category: "crossovers",
       tab: "CS75 PRO",
-      name: "Чанган CS75 PRO",
+      name: "CHANGAN CS75 PRO",
       engine: "1.5T л.",
       gearbox: "7DCT",
       torque: "300 Н·м",
@@ -536,7 +536,7 @@
     {
       category: "crossovers",
       tab: "UNI-S",
-      name: "Чанган UNI-S 4×4",
+      name: "CHANGAN UNI-S 4×4",
       engine: "1.5T л.",
       gearbox: "7DCT",
       torque: "280 Н·м",
@@ -552,7 +552,7 @@
     {
       category: "crossovers",
       tab: "CS35 MAX",
-      name: "Чанган CS35 MAX",
+      name: "CHANGAN CS35 MAX",
       engine: "1.5T л.",
       gearbox: "7DCT",
       torque: "280 Н·м",
@@ -810,58 +810,6 @@
 
   const cards = [...document.querySelectorAll("[data-catalog-card]")];
   const cardControllers = new Map();
-  const lineupRoot = document.querySelector(".catalog-lineup");
-
-  if (lineupRoot && cards.length) {
-    const mobileNav = document.createElement("div");
-    mobileNav.className = "catalog-lineup__mobile-nav";
-    mobileNav.setAttribute("aria-label", "Выбор модели");
-
-    const navButtons = cards.map((card) => {
-      const title =
-        card.querySelector(".catalog-lineup__header h3")?.textContent?.trim() ||
-        "Модель";
-      const shortTitle = title.replace(/^Чанган\s+/i, "");
-      const button = document.createElement("button");
-      button.type = "button";
-      button.textContent = shortTitle;
-      button.dataset.catalogKey = card.dataset.catalogKey || "";
-      button.addEventListener("click", () => {
-        card.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-      mobileNav.append(button);
-      return { card, button };
-    });
-
-    lineupRoot.parentNode?.insertBefore(mobileNav, lineupRoot);
-
-    const syncActive = () => {
-      let current = navButtons[0];
-      const marker = window.scrollY + 160;
-      for (const item of navButtons) {
-        if (item.card.offsetTop <= marker) current = item;
-      }
-      navButtons.forEach(({ button }) => {
-        button.classList.toggle("is-active", button === current.button);
-      });
-      current.button.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
-    };
-
-    let syncTimer = 0;
-    window.addEventListener(
-      "scroll",
-      () => {
-        window.clearTimeout(syncTimer);
-        syncTimer = window.setTimeout(syncActive, 80);
-      },
-      { passive: true },
-    );
-    syncActive();
-  }
 
   cards.forEach((card) => {
     const frame = card.querySelector(".catalog-lineup__photo-frame");
@@ -965,7 +913,7 @@
           new CustomEvent("catalog-lineup:open-photo", {
             detail: {
               src,
-              alt: photo.alt || modelTitle || "Чанган",
+              alt: photo.alt || modelTitle || "CHANGAN",
             },
           }),
         );

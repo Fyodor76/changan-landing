@@ -215,14 +215,13 @@
   .models-menu__grid {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
     padding: 0;
     overflow: visible;
   }
 
   .models-menu__card {
-    display: flex;
-    flex-direction: column;
+    display: block;
     width: 100%;
     min-width: 0;
     margin: 0;
@@ -237,29 +236,32 @@
     padding-bottom: 0;
   }
 
+  /* iOS Safari: avoid absolute img inside aspect-ratio box (leaves huge empty gaps) */
   .models-menu__image {
-    position: relative;
+    position: static;
     display: block;
-    order: 1;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: auto;
+    aspect-ratio: auto;
     overflow: hidden;
     border-radius: 8px;
     background: rgba(20, 24, 28, 0.55);
+    line-height: 0;
   }
 
   .models-menu__image img {
-    position: absolute;
-    inset: 0;
+    position: static;
+    inset: auto;
+    display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     object-position: center;
   }
 
   .models-menu__card h3 {
-    order: 2;
-    margin: 12px 0 0;
+    margin: 10px 0 0;
     color: #fff;
     font-size: 17px;
     font-weight: 600;
@@ -267,7 +269,6 @@
   }
 
   .models-menu__card p {
-    order: 3;
     margin: 4px 0 0;
     color: rgba(255, 255, 255, 0.62);
     font-size: 14px;
