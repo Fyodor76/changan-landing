@@ -284,8 +284,34 @@
   if (!toggle || !menu) return;
 
   let closeTimer = 0;
+  const images = menu.querySelectorAll(".models-menu__image img");
+
+  const markImageLoaded = (img) => {
+    const wrap = img.closest(".models-menu__image");
+    if (wrap) wrap.classList.add("is-loaded");
+  };
+
+  images.forEach((img) => {
+    if (img.complete && img.naturalWidth > 0) {
+      markImageLoaded(img);
+      return;
+    }
+    img.addEventListener("load", () => markImageLoaded(img), { once: true });
+    img.addEventListener("error", () => markImageLoaded(img), { once: true });
+  });
+
+  const warmImages = () => {
+    images.forEach((img) => {
+      if (img.complete) return;
+      // Kick decode as soon as the accordion opens — menu was [hidden] so browsers deferred fetch.
+      if (typeof img.decode === "function") {
+        img.decode().then(() => markImageLoaded(img)).catch(() => {});
+      }
+    });
+  };
 
   const isOpen = () => toggle.getAttribute("aria-expanded") === "true";
+  const isMobile = () => window.innerWidth <= 768;
 
   const setOpen = (open) => {
     window.clearTimeout(closeTimer);
@@ -294,17 +320,25 @@
     if (open) {
       menu.hidden = false;
       menu.setAttribute("aria-hidden", "false");
-      // Force reflow so the open transition always runs.
+      // Force reflow so the desktop open transition always runs.
       void menu.offsetHeight;
       menu.classList.add("is-open");
+      warmImages();
       return;
     }
 
     menu.classList.remove("is-open");
     menu.setAttribute("aria-hidden", "true");
+
+    // Mobile has no fade — hide immediately. Desktop waits for opacity transition.
+    if (isMobile()) {
+      menu.hidden = true;
+      return;
+    }
+
     closeTimer = window.setTimeout(() => {
       if (!isOpen()) menu.hidden = true;
-    }, 340);
+    }, 280);
   };
 
   toggle.addEventListener("click", () => {
@@ -317,7 +351,7 @@
     }
     // Mobile accordion: keep open while tapping inside the burger header.
     if (
-      window.innerWidth <= 768 &&
+      isMobile() &&
       event.target.closest(".clh__header--menu-open")
     ) {
       return;
@@ -330,7 +364,6 @@
     setOpen(false);
     toggle.focus();
   });
-
 })();
 
 (() => {
