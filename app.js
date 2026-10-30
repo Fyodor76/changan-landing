@@ -284,28 +284,54 @@
   if (!toggle || !menu) return;
 
   let closeTimer = 0;
-  const images = menu.querySelectorAll(".models-menu__image img");
+  const frames = menu.querySelectorAll(".models-menu__image");
 
-  const markImageLoaded = (img) => {
-    const wrap = img.closest(".models-menu__image");
-    if (wrap) wrap.classList.add("is-loaded");
+  const markLoaded = (wrap) => {
+    wrap.classList.add("is-loaded");
   };
 
-  images.forEach((img) => {
-    if (img.complete && img.naturalWidth > 0) {
-      markImageLoaded(img);
+  const bindFrame = (wrap) => {
+    const img = wrap.querySelector("img");
+    if (!img) {
+      markLoaded(wrap);
       return;
     }
-    img.addEventListener("load", () => markImageLoaded(img), { once: true });
-    img.addEventListener("error", () => markImageLoaded(img), { once: true });
-  });
+
+    if (!wrap.querySelector(".models-menu__skeleton")) {
+      const skeleton = document.createElement("span");
+      skeleton.className = "models-menu__skeleton";
+      skeleton.setAttribute("aria-hidden", "true");
+      wrap.insertBefore(skeleton, img);
+    }
+
+    const finish = () => {
+      const reveal = () => markLoaded(wrap);
+      if (typeof img.decode === "function") {
+        img.decode().then(reveal).catch(reveal);
+        return;
+      }
+      reveal();
+    };
+
+    if (img.complete && img.naturalWidth > 0) {
+      finish();
+      return;
+    }
+
+    img.addEventListener("load", finish, { once: true });
+    img.addEventListener("error", () => markLoaded(wrap), { once: true });
+  };
+
+  frames.forEach(bindFrame);
 
   const warmImages = () => {
-    images.forEach((img) => {
-      if (img.complete) return;
-      // Kick decode as soon as the accordion opens — menu was [hidden] so browsers deferred fetch.
+    frames.forEach((wrap) => {
+      const img = wrap.querySelector("img");
+      if (!img || wrap.classList.contains("is-loaded")) return;
+      // Force network start after [hidden] is cleared.
+      if (img.loading === "lazy") img.loading = "eager";
       if (typeof img.decode === "function") {
-        img.decode().then(() => markImageLoaded(img)).catch(() => {});
+        img.decode().then(() => markLoaded(wrap)).catch(() => {});
       }
     });
   };
