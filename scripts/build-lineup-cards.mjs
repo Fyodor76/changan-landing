@@ -201,7 +201,7 @@ const models = [
     name: "Чанган CS75 PLUS",
     engine: "2,0 / 1,5Т",
     gearbox: "8АТ",
-    power: "380 / 280 Н·м / 226 / 181 л.с.",
+    power: ["380 Н·м / 226 л.с.", "280 Н·м / 181 л.с."],
     fuel: "7,0 л / 100 км",
     warranty: "5 лет / 150 000 км",
     price: "2 599 000",
@@ -317,11 +317,20 @@ const models = [
   },
 ];
 
-const formatPower = (text) =>
+const formatPowerLine = (text) =>
   text.replace(
     /(\d[\d,]*(?:\s*\/\s*\d[\d,]*)*)\s+(Н·м|л\.с\.)/g,
     '<span class="catalog-lineup__nowrap">$1\u00A0$2</span>',
   );
+
+const formatPower = (text) => {
+  if (Array.isArray(text)) {
+    return text
+      .map((line) => `<span class="catalog-lineup__nowrap">${line}</span>`)
+      .join("\n                        ");
+  }
+  return formatPowerLine(text);
+};
 
 const formatFuel = (text) =>
   text.replace(
@@ -423,7 +432,7 @@ const cardHtml = (model) => {
                     <div>
                       <span aria-hidden="true"></span>
                       <dt>Мощность</dt>
-                      <dd>${formatPower(model.power)}</dd>
+                      <dd${Array.isArray(model.power) ? ' class="catalog-lineup__power-stack"' : ""}>${formatPower(model.power)}</dd>
                     </div>
                     <div>
                       <span aria-hidden="true"></span>
