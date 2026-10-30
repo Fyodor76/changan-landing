@@ -172,7 +172,9 @@
 
   const closeModels = () => {
     if (modelsToggle) modelsToggle.setAttribute("aria-expanded", "false");
-    if (modelsMenu) modelsMenu.hidden = true;
+    if (!modelsMenu) return;
+    modelsMenu.classList.remove("is-open");
+    modelsMenu.hidden = true;
   };
 
   const setPageLock = (shouldLock) => {
@@ -271,13 +273,32 @@
 
   if (!toggle || !menu) return;
 
-  const setOpen = (isOpen) => {
-    toggle.setAttribute("aria-expanded", String(isOpen));
-    menu.hidden = !isOpen;
+  let closeTimer = 0;
+
+  const isOpen = () => toggle.getAttribute("aria-expanded") === "true";
+
+  const setOpen = (open) => {
+    window.clearTimeout(closeTimer);
+    toggle.setAttribute("aria-expanded", String(open));
+
+    if (open) {
+      menu.hidden = false;
+      menu.setAttribute("aria-hidden", "false");
+      // Force reflow so the open transition always runs.
+      void menu.offsetHeight;
+      menu.classList.add("is-open");
+      return;
+    }
+
+    menu.classList.remove("is-open");
+    menu.setAttribute("aria-hidden", "true");
+    closeTimer = window.setTimeout(() => {
+      if (!isOpen()) menu.hidden = true;
+    }, 340);
   };
 
   toggle.addEventListener("click", () => {
-    setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    setOpen(!isOpen());
   });
 
   menu.addEventListener("click", (event) => {
@@ -287,12 +308,14 @@
   });
 
   document.addEventListener("click", (event) => {
-    if (menu.hidden || event.target === toggle || toggle.contains(event.target)) return;
+    if (!isOpen() || event.target === toggle || toggle.contains(event.target)) {
+      return;
+    }
     if (!menu.contains(event.target)) setOpen(false);
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape" || menu.hidden) return;
+    if (event.key !== "Escape" || !isOpen()) return;
     setOpen(false);
     toggle.focus();
   });

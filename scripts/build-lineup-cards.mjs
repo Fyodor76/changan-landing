@@ -317,6 +317,18 @@ const models = [
   },
 ];
 
+const formatPower = (text) =>
+  text.replace(
+    /(\d[\d,]*(?:\s*\/\s*\d[\d,]*)*)\s+(Н·м|л\.с\.)/g,
+    '<span class="catalog-lineup__nowrap">$1\u00A0$2</span>',
+  );
+
+const formatFuel = (text) =>
+  text.replace(
+    /(\d[\d,]*)\s+(л|км)/g,
+    '<span class="catalog-lineup__nowrap">$1\u00A0$2</span>',
+  );
+
 const cardHtml = (model) => {
   const swatches = model.swatches
     .map(
@@ -411,12 +423,12 @@ const cardHtml = (model) => {
                     <div>
                       <span aria-hidden="true"></span>
                       <dt>Мощность</dt>
-                      <dd>${model.power}</dd>
+                      <dd>${formatPower(model.power)}</dd>
                     </div>
                     <div>
                       <span aria-hidden="true"></span>
                       <dt>Расход топлива</dt>
-                      <dd>${model.fuel}</dd>
+                      <dd>${formatFuel(model.fuel)}</dd>
                     </div>
                   </dl>
                   <div class="catalog-lineup__price">
