@@ -1058,6 +1058,52 @@ body .why-changan .why-changan__card {
   grid-template-columns: none;
 }
 
+@media (max-width: 768px) {
+  body .why-changan .why-changan__layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  body .why-changan .why-changan__main {
+    display: contents;
+  }
+
+  body .why-changan .why-changan__card {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    flex-direction: unset;
+    column-gap: 12px;
+    align-items: center;
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  body .why-us .why-us__item,
+  body .why-us .why-us__item--wide {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 4px 12px;
+    align-items: start;
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  body .why-us .why-us__icon {
+    grid-row: 1 / span 2;
+  }
+
+  body .why-changan .why-changan__media {
+    order: 2;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  body .why-changan .why-changan__grid {
+    order: 3;
+    flex: none;
+  }
+}
+
 /* Desktop hero: keep copy out of the corner, clear of arrows and the car. */
 @media (min-width: 1025px) {
   .clh__slide-container:not(.clh__slide-container--award) {

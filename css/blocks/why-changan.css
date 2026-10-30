@@ -140,7 +140,7 @@
 @media (max-width: 900px) {
   .why-changan__layout {
     grid-template-columns: minmax(0, 1fr);
-    gap: 22px;
+    gap: 18px;
   }
 
   .why-changan__media {
@@ -149,26 +149,64 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .why-changan {
-    padding: 48px 0 56px;
+    padding: 44px 0 48px;
   }
 
-  .why-changan__layout {
+  body .why-changan .why-changan__layout {
     width: min(1185px, calc(100% - 32px));
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  body .why-changan .why-changan__main {
+    display: contents;
   }
 
   .why-changan__title {
-    margin-bottom: 20px;
-    font-size: 34px;
+    order: 0;
+    margin-bottom: 16px;
+    font-size: 32px;
+  }
+
+  .why-changan__lead {
+    order: 1;
+    margin-bottom: 18px;
+  }
+
+  body .why-changan .why-changan__media {
+    order: 2;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
   }
 
   .why-changan__grid {
+    order: 3;
     grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+    gap: 10px;
+    flex: none;
+  }
+
+  body .why-changan .why-changan__card {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    flex-direction: unset;
+    column-gap: 12px;
+    align-items: center;
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  .why-changan__icon {
+    grid-row: 1;
   }
 
   .why-changan__card h3 {
-    font-size: 17px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.3;
   }
 }

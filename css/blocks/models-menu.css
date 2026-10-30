@@ -544,6 +544,18 @@
   }
 }
 
+@media (max-width: 768px) {
+  .section-reveal--ready .special-offers__card,
+  .section-reveal--ready .why-us__feature,
+  .section-reveal--ready .why-us__item,
+  .section-reveal--ready .why-changan__card,
+  .section-reveal--ready .why-changan__media {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .section-reveal--ready .special-offers__card,
   .section-reveal--ready .why-us__feature,

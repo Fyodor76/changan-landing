@@ -140,7 +140,7 @@
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting || entry.intersectionRatio < 0.5) return;
+        if (!entry.isIntersecting) return;
 
         const group = groupByTarget.get(entry.target);
         if (!group) return;
@@ -150,8 +150,9 @@
       });
     },
     {
-      threshold: 0.5,
-      rootMargin: `-${document.querySelector(".clh__header")?.offsetHeight || 0}px 0px 0px`,
+      // Mobile sections are tall — 0.5 never fired and left invisible cards taking space.
+      threshold: 0.12,
+      rootMargin: "0px 0px -8% 0px",
     },
   );
 

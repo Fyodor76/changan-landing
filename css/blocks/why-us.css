@@ -235,9 +235,9 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .why-us {
-    padding: 48px 0 56px;
+    padding: 44px 0 48px;
   }
 
   .why-us__layout {
@@ -245,22 +245,65 @@
   }
 
   .why-us__title {
-    margin-bottom: 22px;
-    font-size: 34px;
+    margin-bottom: 18px;
+    font-size: 32px;
   }
 
   .why-us__board {
     grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+    gap: 10px;
   }
 
   .why-us__feature,
   .why-us__item,
   .why-us__item--wide {
     grid-column: 1;
+    height: auto;
+  }
+
+  .why-us__feature {
+    border-radius: 14px;
+  }
+
+  .why-us__feature-media {
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+
+  .why-us__feature-body {
+    padding: 14px 16px 16px;
   }
 
   .why-us__feature-body h3 {
-    font-size: 22px;
+    font-size: 18px;
+  }
+
+  .why-us__item,
+  .why-us__item--wide {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 4px 12px;
+    align-items: start;
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  .why-us__icon {
+    grid-row: 1 / span 2;
+    align-self: start;
+  }
+
+  .why-us__item h3,
+  .why-us__item--wide h3 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .why-us__item p,
+  .why-us__item--wide p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
   }
 }
