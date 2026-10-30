@@ -34,17 +34,18 @@
 
 .site-footer {
   position: static !important;
-  padding: 14px 0 10px;
+  padding: 22px 0 12px;
   color: rgba(255, 255, 255, 0.68);
   background: var(--clh-chrome-color);
   box-shadow: none;
 }
 
 .site-footer__logo {
-  width: 132px;
+  width: 168px;
   height: auto;
   display: block;
-  margin-bottom: 6px;
+  margin-top: -2px;
+  margin-bottom: 10px;
   opacity: 1;
 }
 
@@ -97,8 +98,8 @@
   }
 
   .site-footer__logo {
-    width: 122px;
-    margin-bottom: 10px;
+    width: 148px;
+    margin-bottom: 12px;
   }
 
   .site-footer > .clh__container > p {
