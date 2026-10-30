@@ -185,97 +185,120 @@
 
 /* Phone: accordion under «Модели» inside burger */
 @media (max-width: 768px) {
-  .models-menu {
+  .clh__header .models-menu {
     position: static !important;
     inset: auto !important;
     z-index: auto;
     display: block;
-    height: auto;
-    max-height: none;
-    overflow: visible;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
     visibility: visible !important;
     pointer-events: auto !important;
     opacity: 1 !important;
     transform: none !important;
-    transition: none;
+    transition: none !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: none !important;
   }
 
-  .models-menu:not([hidden]) {
+  .clh__header .models-menu[hidden] {
+    display: none !important;
+  }
+
+  .clh__header .models-menu:not([hidden]) {
     display: block !important;
   }
 
-  .models-menu__inner.clh__container,
-  .models-menu__inner {
-    width: 100%;
-    margin: 0;
-    padding: 8px 0 16px;
+  .clh__header .models-menu__inner.clh__container,
+  .clh__header .models-menu__inner {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 8px 0 12px !important;
   }
 
-  .models-menu__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 0;
-    overflow: visible;
+  .clh__header .models-menu__showcase {
+    display: block !important;
+    width: 100% !important;
   }
 
-  .models-menu__card {
-    display: block;
-    width: 100%;
-    min-width: 0;
-    margin: 0;
-    padding: 0 0 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 0;
-    background: transparent;
+  .clh__header .models-menu__grid {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 14px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
   }
 
-  .models-menu__card:last-of-type {
-    border-bottom: 0;
-    padding-bottom: 0;
+  .clh__header .models-menu__card {
+    display: block !important;
+    flex: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 0 14px !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
   }
 
-  /* iOS Safari: avoid absolute img inside aspect-ratio box (leaves huge empty gaps) */
-  .models-menu__image {
-    position: static;
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: auto;
-    overflow: hidden;
-    border-radius: 8px;
-    background: rgba(20, 24, 28, 0.55);
-    line-height: 0;
+  .clh__header .models-menu__card:last-of-type {
+    border-bottom: 0 !important;
+    padding-bottom: 0 !important;
   }
 
-  .models-menu__image img {
-    position: static;
-    inset: auto;
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    object-position: center;
+  /* Fixed height — stable on iOS Safari, no giant empty gaps */
+  .clh__header .models-menu__image {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 190px !important;
+    max-height: 190px !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    border-radius: 8px !important;
+    background: rgba(20, 24, 28, 0.55) !important;
+    line-height: 0 !important;
+    aspect-ratio: auto !important;
   }
 
-  .models-menu__card h3 {
-    margin: 10px 0 0;
-    color: #fff;
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 1.25;
+  .clh__header .models-menu__image img {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    aspect-ratio: auto !important;
   }
 
-  .models-menu__card p {
-    margin: 4px 0 0;
-    color: rgba(255, 255, 255, 0.62);
-    font-size: 14px;
+  .clh__header .models-menu__card h3 {
+    margin: 10px 0 0 !important;
+    color: #fff !important;
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
   }
 
-  .models-menu__all-row {
-    display: flex;
+  .clh__header .models-menu__card p {
+    margin: 4px 0 0 !important;
+    color: rgba(255, 255, 255, 0.62) !important;
+    font-size: 14px !important;
+  }
+
+  .clh__header .models-menu__all-row {
+    display: flex !important;
     align-items: center;
     justify-content: center;
     gap: 8px;

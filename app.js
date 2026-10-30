@@ -177,7 +177,7 @@
     modelsMenu.hidden = true;
   };
 
-  const setPageLock = (shouldLock) => {
+  const setPageLock = (shouldLock, { restoreScroll = true } = {}) => {
     if (shouldLock === pageLocked) return;
 
     if (shouldLock) {
@@ -194,14 +194,15 @@
     document.documentElement.classList.remove("clh-mobile-menu-open");
     document.documentElement.style.removeProperty("--clh-menu-scroll-y");
     pageLocked = false;
-    window.scrollTo(0, lockedScrollY);
+    // Restoring the pre-menu scroll fights with "go to model" and jerks the page on iOS.
+    if (restoreScroll) window.scrollTo(0, lockedScrollY);
   };
 
-  const setOpen = (isOpen) => {
+  const setOpen = (isOpen, lockOptions) => {
     header.classList.toggle("clh__header--menu-open", isOpen);
     toggle.setAttribute("aria-expanded", String(isOpen));
     toggle.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
-    setPageLock(isOpen && window.innerWidth <= 768);
+    setPageLock(isOpen && window.innerWidth <= 768, lockOptions);
 
     if (!isOpen) closeModels();
   };
@@ -220,9 +221,7 @@
     }
   });
 
-  const scrollToHashTarget = (href) => {
-    if (!href || !href.startsWith("#") || href === "#") return;
-    const target = document.querySelector(href);
+  const scrollToTarget = (target) => {
     if (!target) return;
     window.requestAnimationFrame(() => {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -235,13 +234,23 @@
     );
     if (!link) return;
 
-    const href = link.getAttribute("href");
-    const wasLocked = pageLocked;
-    setOpen(false);
-    // Model cards select themselves via catalog-lineup; only "all models" needs hash scroll.
-    if (wasLocked && !link.hasAttribute("data-lineup-key")) {
-      scrollToHashTarget(href);
+    event.preventDefault();
+    const href = link.getAttribute("href") || "";
+    const key = link.dataset.lineupKey;
+    const target = key
+      ? document.querySelector(`[data-catalog-key="${key}"]`)
+      : href.startsWith("#")
+        ? document.querySelector(href)
+        : null;
+
+    // Unlock without jumping back to the old scroll position.
+    setOpen(false, { restoreScroll: false });
+
+    if (href.startsWith("#")) {
+      history.replaceState(null, "", href);
     }
+
+    scrollToTarget(target);
   });
 
   document.addEventListener("click", (event) => {
@@ -299,12 +308,6 @@
 
   toggle.addEventListener("click", () => {
     setOpen(!isOpen());
-  });
-
-  menu.addEventListener("click", (event) => {
-    if (event.target.closest(".models-menu__image, .models-menu__all-row")) {
-      setOpen(false);
-    }
   });
 
   document.addEventListener("click", (event) => {
@@ -953,20 +956,6 @@
   window.addEventListener("catalog-lineup:select-model", (event) => {
     openLineupModel(event.detail || {});
   });
-
-  document
-    .querySelector(".models-menu")
-    ?.addEventListener("click", (event) => {
-      const link = event.target.closest(
-        ".models-menu__image[data-lineup-key]",
-      );
-      if (!link) return;
-
-      event.preventDefault();
-      openLineupModel({
-        key: link.dataset.lineupKey,
-      });
-    });
 })();
 
 (() => {
