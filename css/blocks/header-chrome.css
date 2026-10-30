@@ -11,6 +11,11 @@
   scroll-margin-top: 124px;
 }
 
+.clh__header,
+.clh__header .models-menu {
+  background: rgb(60, 70, 80);
+}
+
 .clh__header {
   position: fixed !important;
   top: 0;
@@ -18,7 +23,6 @@
   left: 0;
   z-index: 80;
   color: #fff;
-  background: rgba(60, 70, 80, 0.92);
 }
 
 .clh__brand-logo {
@@ -350,7 +354,7 @@
     position: static;
     width: 100%;
     color: #fff;
-    background: rgba(60, 70, 80, 0.98);
+    background: rgb(60, 70, 80);
     box-shadow: none;
   }
 
@@ -414,35 +418,16 @@
 
   .models-menu__grid {
     display: flex;
-    gap: 12px;
-    padding-bottom: 10px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
+    flex-direction: column;
+    gap: 0;
+    padding-bottom: 0;
+    overflow: visible;
   }
 
   .models-menu__card {
     min-width: 0;
-    flex: 0 0 min(72vw, 260px);
-    padding: 10px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.06);
-    scroll-snap-align: start;
-  }
-
-  .models-menu__image {
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
-
-  .models-menu__card h3 {
-    font-size: 16px;
-  }
-
-  .models-menu__card p,
-  .models-menu__select {
-    font-size: 13px;
+    width: 100%;
+    flex: none;
   }
 
   .models-menu__all-row {
