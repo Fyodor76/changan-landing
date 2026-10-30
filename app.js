@@ -228,8 +228,6 @@
   };
 
   modelsMenu?.addEventListener("click", (event) => {
-    if (event.target.closest("[data-menu-category]")) return;
-
     const link = event.target.closest(
       ".models-menu__image, .models-menu__all-row",
     );
@@ -273,13 +271,6 @@
 
   if (!toggle || !menu) return;
 
-  const categories = [
-    ...menu.querySelectorAll("[data-menu-category]"),
-  ];
-  const cards = [...menu.querySelectorAll(".models-menu__card")];
-  const grid = menu.querySelector(".models-menu__grid");
-  const emptyState = menu.querySelector(".models-menu__empty");
-
   const setOpen = (isOpen) => {
     toggle.setAttribute("aria-expanded", String(isOpen));
     menu.hidden = !isOpen;
@@ -289,33 +280,7 @@
     setOpen(toggle.getAttribute("aria-expanded") !== "true");
   });
 
-  categories.forEach((category) => {
-    category.addEventListener("click", (event) => {
-      event.preventDefault();
-
-      const selectedCategory = category.dataset.menuCategory;
-      let visibleCount = 0;
-
-      categories.forEach((item) => {
-        item.classList.toggle(
-          "models-menu__category--active",
-          item === category,
-        );
-      });
-
-      cards.forEach((card) => {
-        const isVisible = card.dataset.category === selectedCategory;
-        card.hidden = !isVisible;
-        if (isVisible) visibleCount += 1;
-      });
-
-      if (grid) grid.hidden = visibleCount === 0;
-      if (emptyState) emptyState.hidden = visibleCount !== 0;
-    });
-  });
-
   menu.addEventListener("click", (event) => {
-    if (event.target.closest("[data-menu-category]")) return;
     if (event.target.closest(".models-menu__image, .models-menu__all-row")) {
       setOpen(false);
     }
@@ -554,7 +519,7 @@
         "./assets/model-uni-s.jpg",
         "./assets/model-uni-s-2.jpg",
         "./assets/model-uni-s-3.jpg",
-        "./assets/slide-4-desktop.png",
+        "./assets/studio-uni-s-4x4.png",
       ],
     },
     {
@@ -824,7 +789,9 @@
     const dotsRoot = card.querySelector(".catalog-lineup__dots");
     const colors = [...card.querySelectorAll(".catalog-lineup__color")];
     const colorName = card.querySelector(".catalog-lineup__color-name");
-    const modelName = card.querySelector(".catalog-lineup__info h4");
+    const modelTitle =
+      card.querySelector(".catalog-lineup__header h3")?.textContent?.trim() ||
+      "";
     const catalogKey = card.dataset.catalogKey || "";
     const photos = [
       ...card.querySelectorAll(".catalog-lineup__dot[data-photo-src]"),
@@ -919,7 +886,7 @@
           new CustomEvent("catalog-lineup:open-photo", {
             detail: {
               src,
-              alt: photo.alt || modelName?.textContent || "Changan",
+              alt: photo.alt || modelTitle || "Changan",
             },
           }),
         );
@@ -938,7 +905,7 @@
 
     const alt =
       card.querySelector(".catalog-lineup__photo")?.alt ||
-      modelName?.textContent ||
+      modelTitle ||
       "Changan";
     mountPhotoSwiper(photos, alt);
 

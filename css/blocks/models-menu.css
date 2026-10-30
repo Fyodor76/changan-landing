@@ -44,62 +44,9 @@
 
 .models-menu__inner {
   display: grid;
-  grid-template-columns: 230px minmax(0, 1fr);
-  gap: 34px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
   padding-block: 22px 14px;
-}
-
-.models-menu__categories {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 0 28px 0 0;
-  border-right: 1px solid rgba(255, 255, 255, 0.23);
-}
-
-.models-menu__category {
-  min-height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 0 12px;
-  border: 1px solid transparent;
-  border-radius: 7px;
-  color: rgba(255, 255, 255, 0.84);
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.models-menu__category > span:last-child {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 1em;
-  margin-top: -0.08em;
-  font-size: 1.35em;
-  font-weight: 300;
-  line-height: 1;
-}
-
-.models-menu__category:hover,
-.models-menu__category--active {
-  color: #fff;
-  background: var(--clh-orange);
-}
-
-.models-menu__category--all {
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top-color: rgba(255, 255, 255, 0.23);
-  border-radius: 0;
-}
-
-.models-menu__category--all:hover {
-  color: var(--clh-orange);
-  background: transparent;
 }
 
 .models-menu__showcase {
@@ -122,29 +69,24 @@
 }
 
 .models-menu__image {
-  height: 104px;
+  position: relative;
   display: block;
+  aspect-ratio: 16 / 9;
+  height: auto;
   overflow: hidden;
   border-radius: 5px;
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.015)
-  );
+  background: #151515;
 }
 
 .models-menu__image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
   object-position: center;
   transition: transform 0.25s ease;
-}
-
-.models-menu__card:first-child .models-menu__image img,
-.models-menu__card:last-child .models-menu__image img {
-  object-fit: contain;
 }
 
 .models-menu__image:hover img {
@@ -200,15 +142,6 @@
 }
 
 @media (max-width: 1024px) {
-  .models-menu__inner {
-    grid-template-columns: 190px minmax(0, 1fr);
-    gap: 22px;
-  }
-
-  .models-menu__categories {
-    padding-right: 20px;
-  }
-
   .models-menu__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -282,7 +215,8 @@
 .clh__primary-button,
 .catalog__button,
 .personal-cta__button,
-.contacts__card a {
+.contacts__card .contacts__route,
+.contacts__card .contacts__call {
   border-radius: 48px;
 }
 

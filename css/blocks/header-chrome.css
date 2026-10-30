@@ -432,7 +432,8 @@
   }
 
   .models-menu__image {
-    height: 116px;
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
 
   .models-menu__card h3 {

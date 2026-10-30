@@ -143,7 +143,23 @@
   stroke-width: 1.9;
 }
 
-.contacts__card a {
+.contacts__card p a {
+  min-width: 0;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  border: 0;
+  background: none;
+}
+
+.contacts__card p a:hover,
+.contacts__card p a:focus-visible {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.contacts__card .contacts__route,
+.contacts__card .contacts__call {
   min-height: 42px;
   display: flex;
   align-items: center;
@@ -160,6 +176,11 @@
 
 .contacts__card .contacts__call {
   margin-bottom: 0;
+}
+
+.contacts__card .contacts__call:hover .contacts__icon,
+.contacts__card .contacts__call:focus-visible .contacts__icon {
+  color: inherit;
 }
 
 .contacts__card .contacts__route {

@@ -29,11 +29,23 @@ const photos = {
     "./assets/03e583c1-dfc0-49d7-a991-abe183e617b9.png",
     "./assets/Стильный Changan CS75 PLUS в синей студии.png",
   ],
-  hero: [
-    "./assets/hero-desktop.jpg",
-    "./assets/offers-car.png",
-    "./assets/спецпредложение.png",
-    "./assets/hero-desktop.jpg",
+  cs75plusAlt: [
+    "./assets/Стильный Changan CS75 PLUS в синей студии.png",
+    "./assets/03e583c1-dfc0-49d7-a991-abe183e617b9.png",
+    "./assets/model-cs75pro.jpg",
+    "./assets/Стильный Changan CS75 PLUS в синей студии.png",
+  ],
+  cs35maxAlt: [
+    "./assets/model-cs35max-2.jpg",
+    "./assets/model-cs35max-3.jpg",
+    "./assets/model-cs35max.jpg",
+    "./assets/model-cs35max-2.jpg",
+  ],
+  uniSAlt: [
+    "./assets/model-uni-s-2.jpg",
+    "./assets/model-uni-s-3.jpg",
+    "./assets/model-uni-s.jpg",
+    "./assets/model-uni-s-2.jpg",
   ],
 };
 
@@ -123,7 +135,10 @@ const models = [
       ["Серебристый", "#aeb1b3"],
       ["Чёрный", "#202224"],
     ],
-    photos: ["./assets/studio-cs75-plus.png", ...photos.hero],
+    photos: [
+      "./assets/Стильный Changan CS75 PLUS в синей студии.png",
+      ...photos.cs75plus,
+    ],
   },
   {
     key: "uni-t",
@@ -144,7 +159,7 @@ const models = [
       ["Серебристый", "#aeb1b3"],
       ["Чёрный", "#202224"],
     ],
-    photos: photos.uniS,
+    photos: photos.uniSAlt,
   },
   {
     key: "uni-v",
@@ -160,7 +175,7 @@ const models = [
     price: "2 530 000",
     color: "Серебристый",
     swatches: swatchesDefault,
-    photos: photos.hero,
+    photos: photos.uniS,
   },
   {
     key: "cs75-pro",
@@ -208,7 +223,7 @@ const models = [
     price: "3 300 000",
     color: "Серебристый",
     swatches: swatchesDefault,
-    photos: photos.cs75plus,
+    photos: photos.cs75plusAlt,
   },
   {
     key: "cs35-max",
@@ -243,14 +258,14 @@ const models = [
     fuel: "6,7 л / 100 км",
     warranty: "5 лет / 150 000 км",
     price: "1 899 900",
-    color: "Белый",
+    color: "Чёрный",
     swatches: [
+      ["Чёрный", "#202224"],
       ["Белый", "#e7e7e5"],
       ["Графитовый серый", "#52585c"],
       ["Серебристый", "#aeb1b3"],
-      ["Чёрный", "#202224"],
     ],
-    photos: photos.cs35max,
+    photos: photos.cs35maxAlt,
   },
   {
     key: "alsvin",
@@ -266,7 +281,7 @@ const models = [
     price: "1 795 000",
     color: "Белый",
     swatches: swatchesDefault,
-    photos: photos.hero,
+    photos: photos.uniS,
   },
   {
     key: "eado-plus",
@@ -282,7 +297,7 @@ const models = [
     price: "2 120 000",
     color: "Серебристый",
     swatches: swatchesDefault,
-    photos: photos.hero,
+    photos: photos.cs75pro,
   },
   {
     key: "hunter-plus",
@@ -298,7 +313,7 @@ const models = [
     price: "3 279 900",
     color: "Графитовый серый",
     swatches: swatchesDefault,
-    photos: photos.cs75plus,
+    photos: photos.cs75plusAlt,
   },
 ];
 
@@ -337,7 +352,6 @@ const cardHtml = (model) => {
             >
               <header class="catalog-lineup__header">
                 <div class="catalog-lineup__heading">
-                  <p class="catalog-lineup__category">${model.category}</p>
                   <h3>${model.short}</h3>
                 </div>
               </header>
@@ -383,7 +397,6 @@ const cardHtml = (model) => {
                   </div>
                 </div>
                 <div class="catalog-lineup__info">
-                  <h4>${model.name}</h4>
                   <dl class="catalog-lineup__specs">
                     <div>
                       <span aria-hidden="true"></span>
