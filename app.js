@@ -493,7 +493,7 @@
     {
       category: "crossovers",
       tab: "CS75 PRO",
-      name: "CHANGAN CS75 PRO",
+      name: "Чанган CS75 PRO",
       engine: "1.5T л.",
       gearbox: "7DCT",
       torque: "300 Н·м",
@@ -509,7 +509,7 @@
     {
       category: "crossovers",
       tab: "UNI-S",
-      name: "CHANGAN UNI-S 4×4",
+      name: "Чанган UNI-S 4×4",
       engine: "1.5T л.",
       gearbox: "7DCT",
       torque: "280 Н·м",
@@ -525,7 +525,7 @@
     {
       category: "crossovers",
       tab: "CS35 MAX",
-      name: "CHANGAN CS35 MAX",
+      name: "Чанган CS35 MAX",
       engine: "1.5T л.",
       gearbox: "7DCT",
       torque: "280 Н·м",
@@ -886,7 +886,7 @@
           new CustomEvent("catalog-lineup:open-photo", {
             detail: {
               src,
-              alt: photo.alt || modelTitle || "Changan",
+              alt: photo.alt || modelTitle || "Чанган",
             },
           }),
         );

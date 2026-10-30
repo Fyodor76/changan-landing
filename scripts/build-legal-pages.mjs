@@ -69,12 +69,12 @@ for (const page of pages) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/legal.css" />
-    <title>${escapeHtml(title)} — Changan Центр Лидер</title>
+    <title>${escapeHtml(title)} — Чанган Центр Лидер</title>
   </head>
   <body class="legal-page">
     <header class="legal-page__header">
       <div class="clh__container legal-page__top">
-        <a class="legal-page__brand" href="./index.html" aria-label="На главную Changan">
+        <a class="legal-page__brand" href="./index.html" aria-label="На главную Чанган">
           <img
             class="clh__brand-logo"
             src="./assets/Логотип  2.png"
