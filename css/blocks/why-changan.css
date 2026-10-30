@@ -34,14 +34,6 @@
   letter-spacing: 0;
 }
 
-.why-changan__lead {
-  margin: 0 0 clamp(20px, 2.5vw, 28px);
-  max-width: 42em;
-  color: #4a5058;
-  font-size: clamp(14px, 1.15vw, 16px);
-  line-height: 1.55;
-}
-
 .why-changan__title::before {
   width: 40px;
   height: 3px;
@@ -171,20 +163,15 @@
     font-size: 32px;
   }
 
-  .why-changan__lead {
-    order: 1;
-    margin-bottom: 18px;
-  }
-
   body .why-changan .why-changan__media {
-    order: 2;
+    order: 1;
     min-height: 0;
     aspect-ratio: 16 / 9;
     border-radius: 14px;
   }
 
   .why-changan__grid {
-    order: 3;
+    order: 2;
     grid-template-columns: minmax(0, 1fr);
     gap: 10px;
     flex: none;

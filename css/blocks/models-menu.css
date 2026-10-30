@@ -7,6 +7,15 @@
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  /* Match sibling .clh__nav-item padding — base rule zeros it and shifts «Модели» left */
+  .clh__header .clh__models-toggle.clh__nav-item {
+    padding: 0 4px;
+    border: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}
+
 .clh__models-toggle:hover,
 .clh__models-toggle[aria-expanded="true"] {
   color: var(--clh-orange);

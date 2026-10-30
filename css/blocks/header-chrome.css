@@ -342,6 +342,11 @@
     text-align: left;
   }
 
+  /* Closing line under last link («Контакты»), before CTA */
+  .clh__nav > a.clh__nav-item:last-of-type {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
   .clh__header-button {
     min-height: 46px;
     justify-content: center;
