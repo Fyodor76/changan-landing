@@ -104,6 +104,11 @@
 
 .models-menu__showcase {
   min-width: 0;
+  max-height: min(62vh, 520px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 8px;
+  scrollbar-width: thin;
 }
 
 .models-menu__grid {

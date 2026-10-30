@@ -788,51 +788,6 @@
 (() => {
   if (typeof window.Swiper !== "function") return;
 
-  const modelGroups = {
-    crossovers: [
-      {
-        name: "CHANGAN CS75 PRO",
-        engine: "1.5T л.",
-        gearbox: "7DCT",
-        torque: "300 Н·м",
-        power: "188 л.с.",
-        price: "Цена от 2 500 000 ₽",
-        photos: [
-          "./assets/881c3fa9-a324-4830-bace-687386982736.png",
-          "./assets/model-cs75pro.jpg",
-          "./assets/model-cs75pro-2.jpg",
-          "./assets/model-cs75pro-3.jpg",
-        ],
-      },
-      {
-        name: "CHANGAN UNI-S 4×4",
-        engine: "1.5T л.",
-        gearbox: "7DCT",
-        torque: "280 Н·м",
-        power: "181 л.с.",
-        price: "Цена от 2 640 000 ₽",
-        photos: [
-          "./assets/model-uni-s.jpg",
-          "./assets/model-uni-s-2.jpg",
-          "./assets/model-uni-s-3.jpg",
-        ],
-      },
-      {
-        name: "CHANGAN CS35 MAX",
-        engine: "1.5T л.",
-        gearbox: "7DCT",
-        torque: "280 Н·м",
-        power: "147 л.с.",
-        price: "Цена от 2 215 000 ₽",
-        photos: [
-          "./assets/model-cs35max.jpg",
-          "./assets/model-cs35max-2.jpg",
-          "./assets/model-cs35max-3.jpg",
-        ],
-      },
-    ],
-  };
-
   const arrowMarkup = `
     <button
       class="catalog__gallery-arrow catalog__gallery-arrow--prev catalog-lineup__arrow catalog-lineup__arrow--prev"
@@ -869,17 +824,9 @@
     const dotsRoot = card.querySelector(".catalog-lineup__dots");
     const colors = [...card.querySelectorAll(".catalog-lineup__color")];
     const colorName = card.querySelector(".catalog-lineup__color-name");
-    const modelButtons = [
-      ...card.querySelectorAll(".catalog-lineup__model"),
-    ];
-    const modelsScroller = card.querySelector(".catalog-lineup__models");
-    const nextModel = card.querySelector(".catalog-lineup__model-next");
     const modelName = card.querySelector(".catalog-lineup__info h4");
-    const specValues = [...card.querySelectorAll(".catalog-lineup__specs dd")];
-    const price = card.querySelector(".catalog-lineup__price strong");
     const catalogKey = card.dataset.catalogKey || "";
-    const models = modelGroups[catalogKey] || [];
-    const initialPhotos = [
+    const photos = [
       ...card.querySelectorAll(".catalog-lineup__dot[data-photo-src]"),
     ]
       .map((dot) => dot.dataset.photoSrc)
@@ -888,30 +835,7 @@
     if (!frame || !dotsRoot) return;
 
     const gallery = ensureGallery(frame);
-
-    let activeModel = 0;
     let photoSwiper = null;
-    let photos = models[0]?.photos?.slice() || initialPhotos;
-
-    const scrollActiveModelIntoView = () => {
-      const activeButton = modelButtons[activeModel];
-      if (!activeButton || !modelsScroller) return;
-
-      const scrollerRect = modelsScroller.getBoundingClientRect();
-      const buttonRect = activeButton.getBoundingClientRect();
-      const pad = 12;
-      let delta = 0;
-
-      if (buttonRect.left < scrollerRect.left + pad) {
-        delta = buttonRect.left - scrollerRect.left - pad;
-      } else if (buttonRect.right > scrollerRect.right - pad) {
-        delta = buttonRect.right - scrollerRect.right + pad;
-      }
-
-      if (delta) {
-        modelsScroller.scrollBy({ left: delta, behavior: "smooth" });
-      }
-    };
 
     const mountPhotoSwiper = (photoList, altText) => {
       if (!photoList.length) return;
@@ -1002,41 +926,6 @@
       });
     };
 
-    const showModel = (index) => {
-      if (!models.length) return;
-      activeModel = (index + models.length) % models.length;
-      const model = models[activeModel];
-      photos = model.photos.slice();
-
-      modelButtons.forEach((button, buttonIndex) => {
-        const isActive = buttonIndex === activeModel;
-        button.classList.toggle("catalog-lineup__model--active", isActive);
-        button.setAttribute("aria-selected", String(isActive));
-      });
-      scrollActiveModelIntoView();
-
-      if (modelName) modelName.textContent = model.name;
-      [model.engine, model.gearbox, model.torque, model.power].forEach(
-        (value, valueIndex) => {
-          if (specValues[valueIndex]) specValues[valueIndex].textContent = value;
-        },
-      );
-      if (price) {
-        price.innerHTML = model.price.replace(
-          /₽/g,
-          '<span class="catalog-lineup__currency">₽</span>',
-        );
-      }
-
-      mountPhotoSwiper(photos, model.name);
-    };
-
-    modelButtons.forEach((button, index) => {
-      button.addEventListener("click", () => showModel(index));
-    });
-
-    nextModel?.addEventListener("click", () => showModel(activeModel + 1));
-
     colors.forEach((color) => {
       color.addEventListener("click", () => {
         colors.forEach((item) =>
@@ -1047,31 +936,21 @@
       });
     });
 
-    if (models.length) showModel(0);
-    else {
-      const alt =
-        card.querySelector(".catalog-lineup__photo")?.alt ||
-        modelName?.textContent ||
-        "Changan";
-      mountPhotoSwiper(photos, alt);
-    }
+    const alt =
+      card.querySelector(".catalog-lineup__photo")?.alt ||
+      modelName?.textContent ||
+      "Changan";
+    mountPhotoSwiper(photos, alt);
 
     if (catalogKey) {
-      cardControllers.set(catalogKey, {
-        card,
-        selectModel: (index) => {
-          if (!models.length) return;
-          showModel(Number(index) || 0);
-        },
-      });
+      cardControllers.set(catalogKey, { card });
     }
   });
 
-  const openLineupModel = ({ key, modelIndex = 0 } = {}) => {
+  const openLineupModel = ({ key } = {}) => {
     const controller = cardControllers.get(key);
     if (!controller) return;
 
-    controller.selectModel(modelIndex);
     window.requestAnimationFrame(() => {
       controller.card.scrollIntoView({ behavior: "smooth", block: "start" });
     });
@@ -1092,7 +971,6 @@
       event.preventDefault();
       openLineupModel({
         key: link.dataset.lineupKey,
-        modelIndex: Number(link.dataset.lineupModel || 0),
       });
     });
 })();
